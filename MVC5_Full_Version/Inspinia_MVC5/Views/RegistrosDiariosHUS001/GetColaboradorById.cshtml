@@ -1,0 +1,85 @@
+﻿@model Inspinia_MVC5.Models.Colaboradores
+
+
+<div id="divGetColaboradorByIdColor" class="ibox-content text-center" STYLE="background-color:lightseagreen">
+    <div class="m-b-md">
+        <h2 class="font-bold no-margins">
+            @Html.DisplayFor(model => model.ApellidoPaterno) @Html.DisplayFor(model => model.ApellidoMaterno) @Html.DisplayFor(model => model.Nombres)
+        </h2>
+        <small>@Html.DisplayFor(model => model.Cargo)</small>
+    </div>
+    <img width="200" height="200" src="@Url.Action("ConvertirAImagen", "RegistrosDiariosHUS001", new {COD_Colaborador =Model.COD_Colaborador})" class="img-circle circle-border m-b-md" alt="profile">
+
+    <div>
+
+        <h2>
+            @Html.DisplayFor(model => model.COD_Colaborador)
+        </h2>
+    </div>
+</div>
+<div class="widget-text-box">
+    <br />
+    @*<small class="pull-right text-navy">CONTRATO: @Html.DisplayFor(model => model.FechaIngresoReingreso) - @Html.DisplayFor(model => model.FechaCese)  @Html.DisplayFor(model => model.Estado)</small>*@
+    
+    <h4 class="media-heading">Fecha y Hora:</h4>
+    <p>20/10/2019  4:21 pm</p>
+    <div class="text-right">
+        <h2 id="divGetEstado">ACCESO DENEGADO</h2>       
+        <small id="divGetEstadoIngresoSalida" class="pull-right text-navy"></small>
+
+
+    </div>
+
+    <div class="text-right" id="botonera">
+     <br />
+        <br />
+    </div>
+</div>
+
+
+
+<script>
+
+
+    if ("@(ViewBag.estado)" == "ACCESO PERMITIDO") {
+        document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'lightseagreen';
+        document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)";
+
+    }
+
+    else if ("@(ViewBag.estado)" == "ACCESO DENEGADO") {
+        document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'crimson';
+        document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)";
+
+
+    } else if ("@(ViewBag.estado)" == "ACCESO REGISTRADO") {
+        document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'lightseagreen';
+        document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)" + "@(ViewBag.ingresosalida)";
+        document.getElementById("divGetEstadoIngresoSalida").textContent = "@(ViewBag.ingresosalida)";
+        var urliz = '@Url.Action("GetColaboradoresTopCinco", "RegistrosDiariosHUS001")';
+
+        $("#divGetColaboradoresTopCinco").load(urliz);
+
+    } else if ("@(ViewBag.estado)" == "UD YA NO PUEDE INGRESAR A LAS INSTALACIONES EL DIA DE HOY") {
+        document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'crimson';
+        document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)";
+
+    }
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

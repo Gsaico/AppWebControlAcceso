@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetFotocheck" targetNamespace="http://tempuri.org/DataSetFotocheck.xsd" xmlns:mstns="http://tempuri.org/DataSetFotocheck.xsd" xmlns="http://tempuri.org/DataSetFotocheck.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetFotocheck" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetFotocheck" msprop:Generator_UserDSName="DataSetFotocheck">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Colaboradores" msprop:Generator_TableClassName="ColaboradoresDataTable" msprop:Generator_TableVarName="tableColaboradores" msprop:Generator_TablePropName="Colaboradores" msprop:Generator_RowDeletingName="ColaboradoresRowDeleting" msprop:Generator_RowChangingName="ColaboradoresRowChanging" msprop:Generator_RowEvHandlerName="ColaboradoresRowChangeEventHandler" msprop:Generator_RowDeletedName="ColaboradoresRowDeleted" msprop:Generator_UserTableName="Colaboradores" msprop:Generator_RowChangedName="ColaboradoresRowChanged" msprop:Generator_RowEvArgName="ColaboradoresRowChangeEvent" msprop:Generator_RowClassName="ColaboradoresRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COD_Colaborador" msprop:Generator_ColumnVarNameInTable="columnCOD_Colaborador" msprop:Generator_ColumnPropNameInRow="COD_Colaborador" msprop:Generator_ColumnPropNameInTable="COD_ColaboradorColumn" msprop:Generator_UserColumnName="COD_Colaborador" type="xs:string" minOccurs="0" />
+              <xs:element name="ApellidoPaterno" msprop:Generator_ColumnVarNameInTable="columnApellidoPaterno" msprop:Generator_ColumnPropNameInRow="ApellidoPaterno" msprop:Generator_ColumnPropNameInTable="ApellidoPaternoColumn" msprop:Generator_UserColumnName="ApellidoPaterno" type="xs:string" minOccurs="0" />
+              <xs:element name="ApellidoMaterno" msprop:Generator_ColumnVarNameInTable="columnApellidoMaterno" msprop:Generator_ColumnPropNameInRow="ApellidoMaterno" msprop:Generator_ColumnPropNameInTable="ApellidoMaternoColumn" msprop:Generator_UserColumnName="ApellidoMaterno" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombres" msprop:Generator_ColumnVarNameInTable="columnNombres" msprop:Generator_ColumnPropNameInRow="Nombres" msprop:Generator_ColumnPropNameInTable="NombresColumn" msprop:Generator_UserColumnName="Nombres" type="xs:string" minOccurs="0" />
+              <xs:element name="Foto" msprop:Generator_ColumnVarNameInTable="columnFoto" msprop:Generator_ColumnPropNameInRow="Foto" msprop:Generator_ColumnPropNameInTable="FotoColumn" msprop:Generator_UserColumnName="Foto" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

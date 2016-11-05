@@ -1,0 +1,104 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <img alt="image" class="img-circle" src="~/Images/profile_small.jpg" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">David Williams</strong>
+                            </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="@Url.Action("Profile", "AppViews")">Profile</a></li>
+                        <li><a href="@Url.Action("Contacts", "AppViews")">Contacts</a></li>
+                        <li><a href="@Url.Action("Inbox", "Mailbox")">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="@Url.Action("Login", "Pages")">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+
+            <!--Menu principal de la aplicacion INICIO -->
+
+            <li class="@Html.IsSelected(controller: "Colaboradores")">
+                <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-th-large"></i> <span class="nav-label">SPRINT 1</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Colaboradores")">Mostrar Todos HUS002</a></li>
+                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Nuevo Colaborador HUS002</a></li>
+                    <li class="@Html.IsSelected(action: "Search")"><a href="@Url.Action("Search", "Colaboradores")">Buscar Colaborador HUS002</a></li>
+                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Imprimir Fotocheck  HUS002</a></li>
+                </ul>
+            </li>
+            <!--Menu principal de la aplicacion FINAL -->
+            <!--Menu principal de la aplicacion INICIO Registro de Ingreso  y Salida-->
+
+            <li class="@Html.IsSelected(controller: "Colaboradores")">
+                <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-th-large"></i> <span class="nav-label">SPRINT 2</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsSelected(action: "RegistroDiario")"><a href="@Url.Action("RegistroDiario", "RegistrosDiariosHUS001")">Registro de Ingreso y Salida de Colaboradores HUS001</a></li>
+                    <li class="@Html.IsSelected(action: "ShowReport")"><a href="@Url.Action("ShowReport", "RegistrosDiariosHUS001")">Reporte HUS004</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte HUS007</a></li>
+
+                </ul>
+            </li>
+            <!--Menu principal de la aplicacion FINAL de Ingreso  y Salida -->
+            <!--Menu principal de la aplicacion INICIO TAREO -->
+
+            <li class="@Html.IsSelected(controller: "Tareos")">
+                <a href="@Url.Action("action", "controller")"><i class="fa fa-edit"></i> <span class="nav-label">Tareo de Personal</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Tareo Mensual</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Tareo por Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Tareo por Area</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Imprimir Tareo</a></li>
+                </ul>
+            </li>
+            <!--Menu principal de la aplicacion FINAL TAREO -->
+            <!--Menu principal de la aplicacion INICIO ASISTENCIAS -->
+
+            <li class="@Html.IsSelected(controller: "Asistencias")">
+                <a href="@Url.Action("action", "controller")"><i class="fa fa-edit"></i> <span class="nav-label">Asistencias</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Asistencia Mensual</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Asistencia por Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Asistencia por Area</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Imprimir Asistencia</a></li>
+                </ul>
+            </li>
+            <!--Menu principal de la aplicacion FINAL ASISTENCIAS -->
+            <!--Menu principal de la aplicacion INICIO REPORTES -->
+            <li class="@Html.IsSelected(controller: "Reportes")">
+                <a href="@Url.Action("action", "controller")"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte de Asistencias</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte Trimestral</a></li>
+
+                </ul>
+            </li>
+            <!--Menu principal de la aplicacion FINAL REPORTES -->
+            <!--Menu principal de la aplicacion INICIO INFORMACION -->
+            <li class="@Html.IsSelected(controller: "Información")">
+                <a href="@Url.Action("action", "controller")"><i class="fa fa-desktop"></i> <span class="nav-label">Información</span>  <span class="pull-right label label-primary">ESPECIAL</span></a>
+                <ul class="nav nav-second-level">
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Inasistencias 3 dias</a></li>
+                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Inasistencias 1 dia</a></li>
+
+                </ul>
+            </li>
+
+            <!--Menu principal de la aplicacion INICIO INFORMACION -->
+
+
+
+            
+        </ul>
+    </div>
+</nav>

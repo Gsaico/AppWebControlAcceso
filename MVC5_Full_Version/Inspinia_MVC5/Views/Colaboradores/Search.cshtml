@@ -1,0 +1,177 @@
+﻿@model IEnumerable<Inspinia_MVC5.Models.Colaboradores>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Search</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Colaboradores</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Criterio de Busqueda</h5>
+					
+                </div>
+                <div class="ibox-content">
+
+                
+                      
+                                                @using (Html.BeginForm("Search", "Colaboradores", FormMethod.Get))
+                                                {
+                                                    <div class="form-horizontal">
+                                                        
+                                                       
+                                                        <div class="form-group">
+                                                            @Html.Label("DNI:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.TextBox("SearchStringDNI", null, new { @class = "form-control", id = "SearchStringDNI" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.Label("Apellido Paterno:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.TextBox("SearchStringApePaterno", null, new { @class = "form-control", id = "SearchStringApePaterno" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.Label("Nombres:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.TextBox("SearchStringNombres", null, new { @class = "form-control", id = "SearchStringNombres" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-2 col-md-10">
+                                                                <input type="submit" value="Buscar" class="btn btn-primary" />                                                               
+                                                              
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                }
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Resultado de Busqueda</h5>
+
+                </div>
+                <div class="ibox-content">
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ApellidoPaterno)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ApellidoMaterno)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombres)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaIngresoReingreso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaCese)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Foto)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cargo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Areas.NombreArea)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Empresas.RazonSocial)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombres)
+                                </td>
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaIngresoReingreso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaCese)
+                                </td>
+
+
+                                <td>
+                                    <img width="50" height="50" src="@Url.Action("ConvertirAImagen", "Colaboradores", new {COD_Colaborador = item.COD_Colaborador})" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cargo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Areas.NombreArea)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Empresas.RazonSocial)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
+                                    
+                                    @Html.ActionLink("Details", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

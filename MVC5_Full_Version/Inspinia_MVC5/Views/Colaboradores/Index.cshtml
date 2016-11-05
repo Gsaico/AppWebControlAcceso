@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Inspinia_MVC5.Models.Colaboradores>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Colaboradores</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Lista</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Listado de Colaboradores</h5>
+					<div class="ibox-tools">
+						@Html.ActionLink("Agregar Nuevo Colaborador", "Create", null, new { @class = "btn btn-primary btn-xs"})
+					</div>
+                </div>
+                <div class="ibox-content">
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoPaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoMaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>    
+                   
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Areas.NombreArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngresoReingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCese)
+        </th>
+     
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img width="50" height="50" src="@Url.Action("ConvertirAImagen", "Colaboradores", new {COD_Colaborador = item.COD_Colaborador})" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+                  
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Areas.NombreArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngresoReingreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCese)
+        </td>
+        <td>
+            @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" }) 
+            @Html.ActionLink("Detalles", "Details", new { id=item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+            @Html.ActionLink("Editar", "Edit", new { id=item.COD_Colaborador }, new { @class = "btn btn-white btn-sm"})
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.COD_Colaborador }, new { @class = "btn btn-white btn-sm"})
+        </td>
+    </tr>
+}
+
+</table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
