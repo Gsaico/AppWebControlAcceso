@@ -32,7 +32,7 @@ namespace Inspinia_MVC5.Controllers
         {
 
 
-            ViewBag.Colaborador = db.Colaboradores.Where(q => q.COD_Colaborador == "12345678").ToList();
+            ViewBag.Colaborador = db.Colaboradores.Where(q => q.COD_Colaborador == "12345678work").ToList();
 
 
             return View();
