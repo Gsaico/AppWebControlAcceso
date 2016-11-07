@@ -37,11 +37,12 @@
         <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
 
             <!-- Top Navbar -->
+           
             @Html.Partial("_TopNavbar")
-
+            @*@Html.Partial("_LoginPartial")*@
             <!-- Main view  -->
             @RenderBody()
-
+      
             <!-- Footer -->
             @Html.Partial("_Footer")
 
@@ -49,7 +50,7 @@
         <!-- End page wrapper-->
 
         <!-- Right Sidebar -->
-        @Html.Partial("_RightSidebar")
+        @*@Html.Partial("_RightSidebar")*@
 
     </div>
     <!-- End wrapper-->

@@ -9,10 +9,11 @@
             </form>
         </div>
         <ul class="nav navbar-top-links navbar-right">
-            <li>
+            @*<li>
                 <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
-            </li>
-            <li class="dropdown">
+            </li>*@
+
+            @*<li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
                 </a>
@@ -65,6 +66,7 @@
                     </li>
                 </ul>
             </li>
+            
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
@@ -106,17 +108,20 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li>*@
             <li>
-                <a href="@Url.Action("Login", "Pages")">
-                    <i class="fa fa-sign-out"></i> Log out
+                @Html.Partial("_LoginPartial")
+                
+                 @*<a href="@Url.Action("Login", "Pages")">*@
+                    @*<i class="fa fa-sign-out"></i> Log out*@
+                  
                 </a>
             </li>
-            <li>
+            @*<li>
                 <a class="right-sidebar-toggle">
                     <i class="fa fa-tasks"></i>
                 </a>
-            </li>
+            </li>*@
         </ul>
     </nav>
 </div>
