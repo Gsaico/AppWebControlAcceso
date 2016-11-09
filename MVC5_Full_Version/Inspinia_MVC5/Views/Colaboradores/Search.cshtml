@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Inspinia_MVC5.Models.Colaboradores>
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Busqueda";
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Search</h2>
+        <h2>Busqueda</h2>
         <ol class="breadcrumb">
             <li class="active">
                 <strong>Colaboradores</strong>
@@ -87,15 +87,9 @@
                     <table class="table table-striped">
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.ApellidoPaterno)
+                               Apellidos yNombres
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ApellidoMaterno)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Nombres)
-                            </th>
-
+                           
                             <th>
                                 @Html.DisplayNameFor(model => model.FechaIngresoReingreso)
                             </th>
@@ -115,9 +109,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Areas.NombreArea)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Empresas.RazonSocial)
-                            </th>
+                         
                             <th></th>
                         </tr>
 
@@ -125,16 +117,9 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+                                    @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ApellidoMaterno)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nombres)
-                                </td>
-
-
+                             
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FechaIngresoReingreso)
                                 </td>
@@ -155,15 +140,13 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Areas.NombreArea)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Empresas.RazonSocial)
-                                </td>
+                             
                                 <td>
                                     @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
                                     
-                                    @Html.ActionLink("Details", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                    @Html.ActionLink("Detalle", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
                                 </td>
                             </tr>
                         }

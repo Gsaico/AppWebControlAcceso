@@ -32,7 +32,7 @@
                     <h5>Colaboradores</h5>
                 </div>
                 <div class="ibox-content">
-				<h4 class="text-danger">¿Estás seguro que quieres eliminar los datos del colaborador?</h4>
+				<h4 class="text-danger">@ViewBag.mensajedelete</h4>
 				 <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.ApellidoPaterno)
@@ -90,29 +90,7 @@
             @Html.DisplayFor(model => model.FechaCese)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.COD_Departamento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.COD_Departamento)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.COD_Provincia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.COD_Provincia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.COD_Distrito)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.COD_Distrito)
-        </dd>
+     
 
         <dt>
             @Html.DisplayNameFor(model => model.Direccion)
@@ -168,7 +146,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-primary" />
+            <input type="submit" value="Eliminar" class="btn btn-primary" @ViewBag.estadobotoneleiminar />
             @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white"})
         </div>
     }

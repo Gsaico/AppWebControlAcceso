@@ -21,7 +21,6 @@ namespace Inspinia_MVC5.Models
         {
             this.RegistrosDiarios = new HashSet<RegistrosDiarios>();
         }
-
         [DisplayName("DNI")]
         [Required]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimo 8 caracteres")]//minimo
@@ -33,9 +32,10 @@ namespace Inspinia_MVC5.Models
         [StringLength(11)]
         public string COD_Empresa { get; set; }
 
+
         [DisplayName("Área")]
         [Required]
-        public Nullable<int> ID_Area { get; set; }
+        public int ID_Area { get; set; }
 
         [DisplayName("Apellido Paterno")]
         [Required]
@@ -56,40 +56,25 @@ namespace Inspinia_MVC5.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> FechaNacimiento { get; set; }
+        public System.DateTime FechaNacimiento { get; set; }
 
         [DisplayName("Fecha Contratación")]
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> FechaContratacion { get; set; }
+        public System.DateTime FechaContratacion { get; set; }
 
         [DisplayName("Fecha Ingreso o Reingreso")]
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> FechaIngresoReingreso { get; set; }
+        public System.DateTime FechaIngresoReingreso { get; set; }
 
         [DisplayName("Fecha Cese")]
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> FechaCese { get; set; }
-
-        [DisplayName("Ubigeo Departamento")]
-        [Required]
-        [StringLength(2)]
-        public string COD_Departamento { get; set; }
-
-        [DisplayName("Ubigeo Provincia")]
-        [Required]
-        [StringLength(2)]
-        public string COD_Provincia { get; set; }
-
-        [DisplayName("Ubigeo Distrito")]
-        [Required]
-        [StringLength(2)]
-        public string COD_Distrito { get; set; }
+        public System.DateTime FechaCese { get; set; }
 
         [DisplayName("Dirección")]
         [Required]
@@ -107,14 +92,13 @@ namespace Inspinia_MVC5.Models
 
         [DisplayName("Estado de Fotocheck")]
         [Required]
-        //[Display(Name = "Estado de Fotocheck")]
+        
         //[Range(typeof(bool), "true", "true", ErrorMessage = "You gotta tick the box!")]
-        public Nullable<bool> Estado { get; set; }
-
-
+        public bool Estado { get; set; }
+    
         public virtual Areas Areas { get; set; }
-        public virtual Empresas Empresas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistrosDiarios> RegistrosDiarios { get; set; }
+        public virtual Empresas Empresas { get; set; }
     }
 }

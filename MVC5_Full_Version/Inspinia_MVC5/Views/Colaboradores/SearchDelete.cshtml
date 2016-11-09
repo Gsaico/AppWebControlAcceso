@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "SearchDelete";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Busqueda</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Colaboradores</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Criterio de Busqueda Por DNI</h5>
+
+                </div>
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm("Delete", "Colaboradores", FormMethod.Get))
+                    {
+                        <div class="form-horizontal">
+
+
+                            <div class="form-group">
+                                @Html.Label("DNI:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("id", null, new { @class = "form-control", id = "SearchStringDNI", maxlength = "8", onkeypress = "return justNumbers(event);", placeholder = "Ingrese el Número de DNI" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Eliminar Colaborador" class="btn btn-primary" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+        function justNumbers(e) {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8) || (keynum == 46))
+                return true;
+
+            return /\d/.test(String.fromCharCode(keynum));
+        }
+    </script>
+
+}

@@ -12,15 +12,13 @@ namespace Inspinia_MVC5.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RegistrosDiarios
+    public partial class Calendarios
     {
-        public int ID_RegistroDiario { get; set; }
-        public string COD_Colaborador { get; set; }
+        public int ID_Calendario { get; set; }
         public string Periodo { get; set; }
         public System.DateTime Fecha { get; set; }
-        public System.DateTime FechaYHoraIngreso { get; set; }
-        public Nullable<System.DateTime> FechaYHoraSalida { get; set; }
+        public string ID_TipoDia { get; set; }
     
-        public virtual Colaboradores Colaboradores { get; set; }
+        public virtual TiposDeDias TiposDeDias { get; set; }
     }
 }

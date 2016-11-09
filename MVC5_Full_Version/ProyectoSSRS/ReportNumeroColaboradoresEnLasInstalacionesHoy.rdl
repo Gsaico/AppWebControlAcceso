@@ -48,20 +48,22 @@ FROM            dbo.Areas INNER JOIN
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>ReportNumeroTrabajadoresEnLasInstalaciones</Value>
+                    <Value>ASISTENCIA DE COLABORADORES POR AREA</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
-                      <FontSize>24pt</FontSize>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
-            <Height>0.43in</Height>
-            <Width>5in</Width>
+            <Height>0.25292in</Height>
+            <Width>6.03125in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -73,13 +75,13 @@ FROM            dbo.Areas INNER JOIN
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.55208in</Width>
+                  <Width>2.01042in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.55208in</Width>
+                  <Width>2.01042in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.55208in</Width>
+                  <Width>2.01042in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -100,7 +102,6 @@ FROM            dbo.Areas INNER JOIN
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#666666</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -115,6 +116,7 @@ FROM            dbo.Areas INNER JOIN
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <FontFamily />
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -138,7 +140,6 @@ FROM            dbo.Areas INNER JOIN
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#666666</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -153,6 +154,7 @@ FROM            dbo.Areas INNER JOIN
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <FontFamily />
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -176,7 +178,6 @@ FROM            dbo.Areas INNER JOIN
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#666666</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -194,6 +195,7 @@ FROM            dbo.Areas INNER JOIN
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <FontFamily />
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -350,20 +352,23 @@ FROM            dbo.Areas INNER JOIN
             <DataSetName>DataSet1</DataSetName>
             <Top>0.43in</Top>
             <Height>0.43in</Height>
-            <Width>4.65625in</Width>
+            <Width>6.03125in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>0.86in</Height>
+        <Height>2.1844cm</Height>
         <Style />
       </Body>
-      <Width>5in</Width>
+      <Width>15.875cm</Width>
       <Page>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2.54cm</LeftMargin>
+        <RightMargin>2.54cm</RightMargin>
+        <TopMargin>2.54cm</TopMargin>
+        <BottomMargin>2.54cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -376,6 +381,6 @@ FROM            dbo.Areas INNER JOIN
   </ReportParametersLayout>
   <Language>es-ES</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>a15fee2d-0e82-4c97-be0c-a77a6c61ad4b</rd:ReportID>
 </Report>

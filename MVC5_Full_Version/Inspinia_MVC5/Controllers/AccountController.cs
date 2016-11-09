@@ -12,7 +12,7 @@ using Inspinia_MVC5.Models;
 
 namespace Inspinia_MVC5.Controllers
 {
-    [Authorize]
+    [Authorize]//para solicitar autenticacion
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

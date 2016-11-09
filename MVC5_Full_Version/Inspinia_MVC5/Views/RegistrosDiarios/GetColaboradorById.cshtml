@@ -8,7 +8,7 @@
         </h2>
         <small>@Html.DisplayFor(model => model.Cargo)</small>
     </div>
-    <img width="200" height="200" src="@Url.Action("ConvertirAImagen", "RegistrosDiariosHUS001", new {COD_Colaborador =Model.COD_Colaborador})" class="img-circle circle-border m-b-md" alt="profile">
+    <img width="200" height="200" src="@Url.Action("ConvertirAImagen", "RegistrosDiarios", new {COD_Colaborador =Model.COD_Colaborador})" class="img-circle circle-border m-b-md" alt="profile">
 
     <div>
 
@@ -22,7 +22,8 @@
     @*<small class="pull-right text-navy">CONTRATO: @Html.DisplayFor(model => model.FechaIngresoReingreso) - @Html.DisplayFor(model => model.FechaCese)  @Html.DisplayFor(model => model.Estado)</small>*@
     
     <h4 class="media-heading">Fecha y Hora:</h4>
-    <p>20/10/2019  4:21 pm</p>
+    @*<p>20/10/2019  4:21 pm</p>*@
+    <small id="divFechaHoraServidorRegistrado"></small>
     <div class="text-right">
         <h2 id="divGetEstado">ACCESO DENEGADO</h2>       
         <small id="divGetEstadoIngresoSalida" class="pull-right text-navy"></small>
@@ -50,19 +51,21 @@
     else if ("@(ViewBag.estado)" == "ACCESO DENEGADO") {
         document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'crimson';
         document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)";
-
+        document.getElementById("divFechaHoraServidorRegistrado").textContent = "@(ViewBag.FechayHora)";
 
     } else if ("@(ViewBag.estado)" == "ACCESO REGISTRADO") {
         document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'lightseagreen';
-        document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)" + "@(ViewBag.ingresosalida)";
+        document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)";
         document.getElementById("divGetEstadoIngresoSalida").textContent = "@(ViewBag.ingresosalida)";
-        var urliz = '@Url.Action("GetColaboradoresTopCinco", "RegistrosDiariosHUS001")';
+        document.getElementById("divFechaHoraServidorRegistrado").textContent = "@(ViewBag.FechayHora)";
+        var urliz = '@Url.Action("GetColaboradoresTopCinco", "RegistrosDiarios")';
 
         $("#divGetColaboradoresTopCinco").load(urliz);
 
     } else if ("@(ViewBag.estado)" == "UD YA NO PUEDE INGRESAR A LAS INSTALACIONES EL DIA DE HOY") {
         document.getElementById("divGetColaboradorByIdColor").style.backgroundColor = 'crimson';
         document.getElementById("divGetEstado").textContent = "@(ViewBag.estado)";
+        document.getElementById("divFechaHoraServidorRegistrado").textContent = "@(ViewBag.FechayHora)";
 
     }
 

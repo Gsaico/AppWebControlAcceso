@@ -10,16 +10,24 @@
   <DataSets />
   <Reports>
     <ProjectItem>
+      <Name>Report1.rdl</Name>
+      <FullPath>Report1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report2.rdl</Name>
+      <FullPath>Report2.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>ReportAllColaboradores.rdl</Name>
       <FullPath>ReportAllColaboradores.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ReportRegistroControlDeAsistenciasXDNI.rdl</Name>
-      <FullPath>ReportRegistroControlDeAsistenciasXDNI.rdl</FullPath>
+      <Name>ReportNumeroColaboradoresEnLasInstalacionesHoy.rdl</Name>
+      <FullPath>ReportNumeroColaboradoresEnLasInstalacionesHoy.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ReportNumeroTrabajadoresEnLasInstalaciones.rdl</Name>
-      <FullPath>ReportNumeroTrabajadoresEnLasInstalaciones.rdl</FullPath>
+      <Name>ReportRegistroControlDeAsistenciasXDNI.rdl</Name>
+      <FullPath>ReportRegistroControlDeAsistenciasXDNI.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
