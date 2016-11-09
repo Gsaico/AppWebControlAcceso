@@ -20,6 +20,7 @@ namespace Inspinia_MVC5.Models
         public System.DateTime Fecha { get; set; }
         public System.DateTime FechaYHoraIngreso { get; set; }
         public Nullable<System.DateTime> FechaYHoraSalida { get; set; }
+        public Nullable<System.DateTime> UltimaActualizacion { get; set; }
     
         public virtual Colaboradores Colaboradores { get; set; }
     }

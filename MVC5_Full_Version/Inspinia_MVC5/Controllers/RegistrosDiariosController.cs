@@ -53,7 +53,7 @@ namespace Inspinia_MVC5.Controllers
 
             using (db)
             {
-                var utltimoscolaboradores = db.RegistrosDiarios.OrderByDescending(u => u.ID_RegistroDiario).Include(c => c.Colaboradores).Take(5).ToList();
+                var utltimoscolaboradores = db.RegistrosDiarios.OrderByDescending(u => u.UltimaActualizacion).Include(c => c.Colaboradores).Take(5).ToList();
 
                 return PartialView("GetColaboradoresTopCinco", utltimoscolaboradores);
             }
@@ -112,6 +112,8 @@ namespace Inspinia_MVC5.Controllers
                                 rd.Fecha = DateTime.Now;
                                 rd.FechaYHoraIngreso = DateTime.Now;
                                 rd.FechaYHoraSalida = null;
+                                rd.UltimaActualizacion = DateTime.Now;
+
                                 // registramos su ingreso pero su salida lo ponemos en null
 
 
@@ -133,6 +135,7 @@ namespace Inspinia_MVC5.Controllers
                                     RegistrosDiarios registrodiariosx =  db.RegistrosDiarios.Find(GetRegistroDiarioColaborador.ID_RegistroDiario);
 
                                     registrodiariosx.FechaYHoraSalida = DateTime.Now;
+                                    registrodiariosx.UltimaActualizacion = DateTime.Now;
 
                                     db.Entry(registrodiariosx).State = EntityState.Modified;
                                     db.SaveChanges();

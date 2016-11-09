@@ -29,8 +29,8 @@ namespace Inspinia_MVC5.Models
         public virtual DbSet<Calendarios> Calendarios { get; set; }
         public virtual DbSet<Colaboradores> Colaboradores { get; set; }
         public virtual DbSet<Empresas> Empresas { get; set; }
-        public virtual DbSet<RegistrosDiarios> RegistrosDiarios { get; set; }
         public virtual DbSet<TiposDeDias> TiposDeDias { get; set; }
         public virtual DbSet<Ubigeos> Ubigeos { get; set; }
+        public virtual DbSet<RegistrosDiarios> RegistrosDiarios { get; set; }
     }
 }

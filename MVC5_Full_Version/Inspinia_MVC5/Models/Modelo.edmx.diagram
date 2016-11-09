@@ -9,13 +9,13 @@
         <EntityTypeShape EntityType="IDCHECKDBModel.Calendarios" Width="1.5" PointX="8" PointY="7.5" />
         <EntityTypeShape EntityType="IDCHECKDBModel.Colaboradores" Width="1.5" PointX="3" PointY="2.625" />
         <EntityTypeShape EntityType="IDCHECKDBModel.Empresas" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="IDCHECKDBModel.RegistrosDiarios" Width="3.5" PointX="5.25" PointY="3.5" />
         <EntityTypeShape EntityType="IDCHECKDBModel.TiposDeDias" Width="1.5" PointX="5.75" PointY="7.625" />
         <EntityTypeShape EntityType="IDCHECKDBModel.Ubigeos" Width="1.5" PointX="0.75" PointY="8.25" />
         <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Areas" />
         <AssociationConnector Association="IDCHECKDBModel.FK_Calendarios_TiposDeDias" />
-        <AssociationConnector Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" />
         <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Empresas" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.RegistrosDiarios" Width="4" PointX="5.25" PointY="3.5" />
+        <AssociationConnector Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

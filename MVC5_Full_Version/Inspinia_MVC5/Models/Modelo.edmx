@@ -60,6 +60,7 @@
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="FechaYHoraIngreso" Type="datetime" Nullable="false" />
           <Property Name="FechaYHoraSalida" Type="datetime" />
+          <Property Name="UltimaActualizacion" Type="datetime" />
         </EntityType>
         <EntityType Name="TiposDeDias">
           <Key>
@@ -164,7 +165,6 @@
           <EntitySet Name="Calendarios" EntityType="IDCHECKDBModel.Calendarios" />
           <EntitySet Name="Colaboradores" EntityType="IDCHECKDBModel.Colaboradores" />
           <EntitySet Name="Empresas" EntityType="IDCHECKDBModel.Empresas" />
-          <EntitySet Name="RegistrosDiarios" EntityType="IDCHECKDBModel.RegistrosDiarios" />
           <EntitySet Name="TiposDeDias" EntityType="IDCHECKDBModel.TiposDeDias" />
           <EntitySet Name="Ubigeos" EntityType="IDCHECKDBModel.Ubigeos" />
           <AssociationSet Name="FK_Trabajadores_Areas" Association="IDCHECKDBModel.FK_Trabajadores_Areas">
@@ -175,13 +175,14 @@
             <End Role="TiposDeDias" EntitySet="TiposDeDias" />
             <End Role="Calendarios" EntitySet="Calendarios" />
           </AssociationSet>
-          <AssociationSet Name="FK_RegistrosDiarios_Trabajadores" Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores">
-            <End Role="Colaboradores" EntitySet="Colaboradores" />
-            <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
-          </AssociationSet>
           <AssociationSet Name="FK_Trabajadores_Empresas" Association="IDCHECKDBModel.FK_Trabajadores_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <EntitySet Name="RegistrosDiarios" EntityType="IDCHECKDBModel.RegistrosDiarios" />
+          <AssociationSet Name="FK_RegistrosDiarios_Trabajadores" Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Areas">
@@ -222,8 +223,8 @@
           <Property Name="Cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Areas" Relationship="IDCHECKDBModel.FK_Trabajadores_Areas" FromRole="Colaboradores" ToRole="Areas" />
-          <NavigationProperty Name="RegistrosDiarios" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="Colaboradores" ToRole="RegistrosDiarios" />
           <NavigationProperty Name="Empresas" Relationship="IDCHECKDBModel.FK_Trabajadores_Empresas" FromRole="Colaboradores" ToRole="Empresas" />
+          <NavigationProperty Name="RegistrosDiarios" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="Colaboradores" ToRole="RegistrosDiarios" />
         </EntityType>
         <EntityType Name="Empresas">
           <Key>
@@ -234,18 +235,6 @@
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_Trabajadores_Empresas" FromRole="Empresas" ToRole="Colaboradores" />
-        </EntityType>
-        <EntityType Name="RegistrosDiarios">
-          <Key>
-            <PropertyRef Name="ID_RegistroDiario" />
-          </Key>
-          <Property Name="ID_RegistroDiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="COD_Colaborador" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
-          <Property Name="Periodo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaYHoraIngreso" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaYHoraSalida" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="RegistrosDiarios" ToRole="Colaboradores" />
         </EntityType>
         <EntityType Name="TiposDeDias">
           <Key>
@@ -293,18 +282,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RegistrosDiarios_Trabajadores">
-          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="1" />
-          <End Type="IDCHECKDBModel.RegistrosDiarios" Role="RegistrosDiarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Colaboradores">
-              <PropertyRef Name="COD_Colaborador" />
-            </Principal>
-            <Dependent Role="RegistrosDiarios">
-              <PropertyRef Name="COD_Colaborador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Trabajadores_Empresas">
           <End Type="IDCHECKDBModel.Empresas" Role="Empresas" Multiplicity="1" />
           <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="*" />
@@ -314,6 +291,31 @@
             </Principal>
             <Dependent Role="Colaboradores">
               <PropertyRef Name="COD_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RegistrosDiarios">
+          <Key>
+            <PropertyRef Name="ID_RegistroDiario" />
+          </Key>
+          <Property Name="ID_RegistroDiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COD_Colaborador" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Periodo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaYHoraIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaYHoraSalida" Type="DateTime" Precision="3" />
+          <Property Name="UltimaActualizacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="RegistrosDiarios" ToRole="Colaboradores" />
+        </EntityType>
+        <Association Name="FK_RegistrosDiarios_Trabajadores">
+          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="1" />
+          <End Type="IDCHECKDBModel.RegistrosDiarios" Role="RegistrosDiarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="COD_Colaborador" />
+            </Principal>
+            <Dependent Role="RegistrosDiarios">
+              <PropertyRef Name="COD_Colaborador" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -372,18 +374,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RegistrosDiarios">
-            <EntityTypeMapping TypeName="IDCHECKDBModel.RegistrosDiarios">
-              <MappingFragment StoreEntitySet="RegistrosDiarios">
-                <ScalarProperty Name="FechaYHoraSalida" ColumnName="FechaYHoraSalida" />
-                <ScalarProperty Name="FechaYHoraIngreso" ColumnName="FechaYHoraIngreso" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
-                <ScalarProperty Name="ID_RegistroDiario" ColumnName="ID_RegistroDiario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TiposDeDias">
             <EntityTypeMapping TypeName="IDCHECKDBModel.TiposDeDias">
               <MappingFragment StoreEntitySet="TiposDeDias">
@@ -402,6 +392,19 @@
                 <ScalarProperty Name="COD_Distrito" ColumnName="COD_Distrito" />
                 <ScalarProperty Name="COD_Provincia" ColumnName="COD_Provincia" />
                 <ScalarProperty Name="COD_Departamento" ColumnName="COD_Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrosDiarios">
+            <EntityTypeMapping TypeName="IDCHECKDBModel.RegistrosDiarios">
+              <MappingFragment StoreEntitySet="RegistrosDiarios">
+                <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
+                <ScalarProperty Name="FechaYHoraSalida" ColumnName="FechaYHoraSalida" />
+                <ScalarProperty Name="FechaYHoraIngreso" ColumnName="FechaYHoraIngreso" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
+                <ScalarProperty Name="ID_RegistroDiario" ColumnName="ID_RegistroDiario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

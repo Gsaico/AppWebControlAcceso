@@ -32,7 +32,6 @@ namespace Inspinia_MVC5.Models
         [StringLength(11)]
         public string COD_Empresa { get; set; }
 
-
         [DisplayName("Área")]
         [Required]
         public int ID_Area { get; set; }
@@ -92,13 +91,13 @@ namespace Inspinia_MVC5.Models
 
         [DisplayName("Estado de Fotocheck")]
         [Required]
-        
+        //[Display(Name = "Estado de Fotocheck")]
         //[Range(typeof(bool), "true", "true", ErrorMessage = "You gotta tick the box!")]
         public bool Estado { get; set; }
     
         public virtual Areas Areas { get; set; }
+        public virtual Empresas Empresas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistrosDiarios> RegistrosDiarios { get; set; }
-        public virtual Empresas Empresas { get; set; }
     }
 }
