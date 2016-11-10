@@ -189,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="Views\Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistrosDiariosController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,19 +271,19 @@
     <Compile Include="ReportViewerSSRS\ReportViewer.aspx.designer.cs">
       <DependentUpon>ReportViewer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerHUS004.aspx.cs">
-      <DependentUpon>ReportViewerHUS004.aspx</DependentUpon>
+    <Compile Include="ReportViewerSSRS\ReportViewerRegistroControlDeAsistenciasXDNI.aspx.cs">
+      <DependentUpon>ReportViewerRegistroControlDeAsistenciasXDNI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerHUS004.aspx.designer.cs">
-      <DependentUpon>ReportViewerHUS004.aspx</DependentUpon>
+    <Compile Include="ReportViewerSSRS\ReportViewerRegistroControlDeAsistenciasXDNI.aspx.designer.cs">
+      <DependentUpon>ReportViewerRegistroControlDeAsistenciasXDNI.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerHUS007.aspx.cs">
-      <DependentUpon>ReportViewerHUS007.aspx</DependentUpon>
+    <Compile Include="ReportViewerSSRS\ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx.cs">
+      <DependentUpon>ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerHUS007.aspx.designer.cs">
-      <DependentUpon>ReportViewerHUS007.aspx</DependentUpon>
+    <Compile Include="ReportViewerSSRS\ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx.designer.cs">
+      <DependentUpon>ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -588,8 +590,8 @@
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
     <Content Include="ReportViewerSSRS\ReportViewer.aspx" />
-    <Content Include="ReportViewerSSRS\ReportViewerHUS004.aspx" />
-    <Content Include="ReportViewerSSRS\ReportViewerHUS007.aspx" />
+    <Content Include="ReportViewerSSRS\ReportViewerRegistroControlDeAsistenciasXDNI.aspx" />
+    <Content Include="ReportViewerSSRS\ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\inspinia.min.js" />
     <Content Include="Scripts\app\skin.config.min.js" />

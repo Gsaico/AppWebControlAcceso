@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportViewerHUS007.aspx.cs" Inherits="Inspinia_MVC5.ReportViewerSSRS.ReportViewerHUS007" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx.cs" Inherits="Inspinia_MVC5.ReportViewerSSRS.ReportViewerHUS007" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 

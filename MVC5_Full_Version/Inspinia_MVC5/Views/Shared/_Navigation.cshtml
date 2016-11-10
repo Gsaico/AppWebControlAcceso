@@ -69,8 +69,8 @@
             <li class="@Html.IsSelected(controller: "Reportes")">
                 <a href="@Url.Action("action", "controller")"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">         
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte de Control de Asistencias</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte Colaboradores Por Area</a></li>
+                    <li class="@Html.IsSelected(action: "ShowReportRegistroControlDeAsistenciasXDNI")"><a href="@Url.Action("ShowReportRegistroControlDeAsistenciasXDNI", "Reportes")">Registro de Control de Asistencias</a></li>
+                    <li class="@Html.IsSelected(action: "ShowReportNumeroColaboradoresEnLasInstalacionesHoy")"><a href="@Url.Action("ShowReportNumeroColaboradoresEnLasInstalacionesHoy", "Reportes")">Colaboradores En las Instalaciones</a></li>
 
                 </ul>
             </li>

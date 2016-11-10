@@ -19,17 +19,7 @@ namespace Inspinia_MVC5.Controllers
         private IDCHECKDBEntities db = new IDCHECKDBEntities();
         private IDCHECKDBEntities dbx = new IDCHECKDBEntities();
       
-        public ActionResult ShowReport()
-        {
-
-           // var query = db.RegistrosDiarios.Where(r => r.FechaYHora.Value.Month == 10 && r.FechaYHora.Value.Year == 2016 && r.FechaYHora.Value.Day == 25).Include(c => c.Colaboradores).ToList();
-
-
-            //query = query.GroupBy(h => h.FechaYHora, h => new {h.COD_Colaborador }).ToList();
-
-            return Redirect("../ReportViewerSSRS/ReportViewer.aspx");
-
-        }
+       
         public ActionResult ConvertirAImagen(string COD_Colaborador)
         {
             var imagenMunicipio = db.Colaboradores.Where(x => x.COD_Colaborador == COD_Colaborador).FirstOrDefault();

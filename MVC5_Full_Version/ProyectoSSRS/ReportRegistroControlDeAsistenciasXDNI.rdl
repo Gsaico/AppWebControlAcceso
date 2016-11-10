@@ -13,11 +13,6 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DataSourceIDCHECKDB</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="@DNI">
-            <Value>=Parameters!dni.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
         <CommandText>SELECT        dbo.Empresas.RazonSocial as  [Razon Social], dbo.Empresas.COD_Empresa as RUC, concat(dbo.Colaboradores.ApellidoPaterno,' ', dbo.Colaboradores.ApellidoMaterno,' ', dbo.Colaboradores.Nombres) as  [Apellidos y Nombres], dbo.Colaboradores.COD_Colaborador as DNI, 
                         CONVERT (char(10), dbo.Calendarios.Fecha, 103) as Fecha, convert(char(8),  dbo.RegistrosDiarios.FechaYHoraIngreso, 108) as [Hora Ingreso] , convert(char(8),  dbo.RegistrosDiarios.FechaYHoraSalida, 108) as [Hora Salida], cast( ((DATEDIFF ( MINUTE , dbo.RegistrosDiarios.FechaYHoraIngreso , dbo.RegistrosDiarios.FechaYHoraSalida )/60)-9) as decimal(16,2))  as [Tiempo de Permanencia Fuera de la Jornada Laboral]
 FROM            dbo.Empresas INNER JOIN
@@ -27,7 +22,7 @@ FROM            dbo.Empresas INNER JOIN
 
 
 
-where dbo.RegistrosDiarios.Fecha is null or  dbo.RegistrosDiarios.COD_Colaborador = @DNI</CommandText>
+where dbo.RegistrosDiarios.Fecha is null or  dbo.RegistrosDiarios.COD_Colaborador = '11111111'</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -783,9 +778,8 @@ where dbo.RegistrosDiarios.Fecha is null or  dbo.RegistrosDiarios.COD_Colaborado
                 </TablixRowHierarchy>
                 <DataSetName>DataSet1</DataSetName>
                 <Top>1.02811in</Top>
-                <Left>0cm</Left>
                 <Height>0.43in</Height>
-                <Width>6.45958in</Width>
+                <Width>6.4596in</Width>
                 <ZIndex>8</ZIndex>
                 <Style />
               </Tablix>
@@ -793,8 +787,8 @@ where dbo.RegistrosDiarios.Fecha is null or  dbo.RegistrosDiarios.COD_Colaborado
             <KeepTogether>true</KeepTogether>
             <Top>0.82224cm</Top>
             <Left>0.31434cm</Left>
-            <Height>3.70359cm</Height>
-            <Width>16.40734cm</Width>
+            <Height>3.7036cm</Height>
+            <Width>16.40738cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -840,7 +834,7 @@ where dbo.RegistrosDiarios.Fecha is null or  dbo.RegistrosDiarios.COD_Colaborado
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>5.76083cm</Height>
+        <Height>5.76084cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -860,23 +854,10 @@ where dbo.RegistrosDiarios.Fecha is null or  dbo.RegistrosDiarios.COD_Colaborado
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParameters>
-    <ReportParameter Name="dni">
-      <DataType>String</DataType>
-      <Prompt>dni</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>dni</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>

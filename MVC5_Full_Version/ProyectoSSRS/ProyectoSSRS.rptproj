@@ -10,14 +10,6 @@
   <DataSets />
   <Reports>
     <ProjectItem>
-      <Name>Report1.rdl</Name>
-      <FullPath>Report1.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Report2.rdl</Name>
-      <FullPath>Report2.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>ReportAllColaboradores.rdl</Name>
       <FullPath>ReportAllColaboradores.rdl</FullPath>
     </ProjectItem>
