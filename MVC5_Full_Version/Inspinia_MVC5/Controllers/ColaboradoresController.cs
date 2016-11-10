@@ -15,12 +15,13 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Inspinia_MVC5.Controllers
 {
+    [Authorize]//Para solicitar autenticacion
     public class ColaboradoresController : Controller
     {
         private IDCHECKDBEntities db = new IDCHECKDBEntities();
 
-
         private static Byte[] _MyGlobalVariable;
+
         public ActionResult ListadoColaboradores()
         {
             ViewBag.ListColaboradores = db.Colaboradores.ToList();
@@ -28,15 +29,7 @@ namespace Inspinia_MVC5.Controllers
             return View();
         }
 
-        public ActionResult BuscarColaboradorPorDNI()
-        {
-
-
-            ViewBag.Colaborador = db.Colaboradores.Where(q => q.COD_Colaborador == "12345678").ToList();
-
-
-            return View();
-        }
+      
         public ActionResult FotocheckColaboradorPDF(string COD_Colaborador)
         {
 
@@ -59,68 +52,67 @@ namespace Inspinia_MVC5.Controllers
             stream.Seek(0, SeekOrigin.Begin);
 
 
-           // return File(stream, "application/pdf");
-            return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
+            return File(stream, "application/pdf");
+            // return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
         }
-        public CrystalReportPdfResult Pdf()
+   
+
+        public ActionResult ConvertirAImagen(string COD_Colaborador)
         {
+            var imagenMunicipio = db.Colaboradores.Where(x => x.COD_Colaborador == COD_Colaborador).FirstOrDefault();
 
-            List<Colaboradores> model = new List<Colaboradores>();
-            model.Add(new Colaboradores { COD_Colaborador = "12345678", Nombres = "Joe Blogs", ApellidoMaterno = "sdfdf", ApellidoPaterno = "dfgfdfg" });
-            string reportPath = Path.Combine(Server.MapPath("~/Reports"), "CrystalReportFotocheck.rpt");
-            return new CrystalReportPdfResult(reportPath, model);
-        }
-
-        public ActionResult ExportColaboradoresPDF()
-        {
-
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Reports/CrystalReportColaboradores.rpt")));
-            rd.SetDataSource(db.Colaboradores.Select(p => new
+            if (imagenMunicipio.Foto != null)
             {
-                COD_Colaborador = p.COD_Colaborador,
-                ApellidoPaterno = p.ApellidoPaterno,
-                ApellidoMaterno = p.ApellidoMaterno,
-                Nombres = p.Nombres,
-                Foto = p.Foto
+                return File(imagenMunicipio.Foto, "image/jpeg");
+            }
+            else
+            {
+                return null;
+            }
 
-            }).ToList());
 
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-            stream.Seek(0, SeekOrigin.Begin);
-            return File(stream, "application/pdf", "ListColaboradores.pdf");
         }
 
+        
 
-
-
-
-
-
-
-
-        // GET: Colaboradores
-        public async Task<ActionResult> Index()
+        public ActionResult EmptyPage()
         {
-            var colaboradores = db.Colaboradores.Include(c => c.Areas).Include(c => c.Empresas);
-            return View(await colaboradores.ToListAsync());
+
+            return View();
+
         }
+        public async Task<ActionResult> SearchEdit( string id)
+        {
 
+            return View();
 
+        }
+        public async Task<ActionResult> SearchDetails(string id)
+        {
 
+            return View();
 
+        }
+        public async Task<ActionResult> SearchDelete(string id)
+        {
 
+            return View();
+
+        }
+        public async Task<ActionResult> SearchImprimir(string id)
+        {
+
+            return View();
+
+        }
 
         public async Task<ActionResult> Search(string SearchStringApePaterno, string SearchStringNombres, string SearchStringDNI)
         {
-            
+
             ViewBag.Areasx = new SelectList(db.Areas, "ID_Area", "NombreArea");
 
 
-            var colaboradoresquery = from m in db.Colaboradores  select m;
+            var colaboradoresquery = from m in db.Colaboradores select m;
 
             if (!String.IsNullOrEmpty(SearchStringDNI))
             {
@@ -153,21 +145,16 @@ namespace Inspinia_MVC5.Controllers
 
             return View(await colaboradoresquery.ToListAsync());
         }
-        public ActionResult ConvertirAImagen(string COD_Colaborador)
+
+
+        // GET: Colaboradores
+        public async Task<ActionResult> Index()
         {
-            var imagenMunicipio = db.Colaboradores.Where(x => x.COD_Colaborador == COD_Colaborador).FirstOrDefault();
-
-            if (imagenMunicipio.Foto != null)
-            {
-                return File(imagenMunicipio.Foto, "image/jpeg");
-            }
-            else
-            {
-                return null;
-            }
-
-
+            var colaboradores = db.Colaboradores.Include(c => c.Areas).Include(c => c.Empresas);
+            return View(await colaboradores.ToListAsync());
         }
+
+  
         // GET: Colaboradores/Details/5
         public async Task<ActionResult> Details(string id)
         {
@@ -177,10 +164,11 @@ namespace Inspinia_MVC5.Controllers
             }
             Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
 
-           
+
             if (colaboradores == null)
             {
-                return HttpNotFound();
+               // return HttpNotFound();
+                return RedirectToAction("EmptyPage", "Colaboradores");
             }
             return View(colaboradores);
         }
@@ -216,7 +204,7 @@ namespace Inspinia_MVC5.Controllers
             {
                 return Content("<script language='javascript' type='text/javascript'>alert('Error El DNI que ud desea ingresar ya existe en la Base de Datos!');</script>");
             }
-        
+
             else
             {
                 if (ModelState.IsValid)
@@ -230,7 +218,7 @@ namespace Inspinia_MVC5.Controllers
                 ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
                 return View(colaboradores);
             }
-           
+
         }
 
         // GET: Colaboradores/Edit/5
@@ -242,14 +230,21 @@ namespace Inspinia_MVC5.Controllers
             }
             Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
 
-ColaboradoresController._MyGlobalVariable = colaboradores.Foto;
-            
-
            
+
+
             if (colaboradores == null)
             {
-                return HttpNotFound();
+                //  return HttpNotFound();
+                return RedirectToAction("EmptyPage", "Colaboradores");
             }
+            else
+            {
+                ColaboradoresController._MyGlobalVariable = colaboradores.Foto;
+            }
+
+
+
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea", colaboradores.ID_Area);
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
             return View(colaboradores);
@@ -298,11 +293,38 @@ ColaboradoresController._MyGlobalVariable = colaboradores.Foto;
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            
             Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
             if (colaboradores == null)
             {
                 return HttpNotFound();
             }
+
+            else
+            {
+                RegistrosDiarios registrodiarios = await db.RegistrosDiarios.Where(r => r.COD_Colaborador == id).FirstOrDefaultAsync();
+
+                if (registrodiarios == null)
+                {//no existe registro de ingresoso salidas
+                    ViewBag.mensajedelete = "¿Estás seguro que quieres eliminar los datos del colaborador?";
+                    ViewBag.estadobotoneleiminar = "enabled";
+                }
+                else
+                {
+
+                    ViewBag.mensajedelete = "Los datos del colaborador no se pueden eliminar, ya existe información registrada";
+
+                    ViewBag.estadobotoneleiminar = "disabled";
+                }
+
+            }
+
+         
+
+
+          
+        
             return View(colaboradores);
         }
 

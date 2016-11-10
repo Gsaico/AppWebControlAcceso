@@ -1,5 +1,6 @@
 ﻿using Microsoft.Reporting.WebForms;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Inspinia_MVC5.ReportViewerSSRS
 {
-    public partial class ReportViewerHUS007 : System.Web.UI.Page
+    public partial class ReportViewerHUS004 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,25 +31,25 @@ namespace Inspinia_MVC5.ReportViewerSSRS
 
                 // setting report path  
                 //Passing the Report Path with report name no need to add report extension   
-                rptViewer.ServerReport.ReportPath = "/ProyectoSSRS/ReportAllColaboradores";
+                rptViewer.ServerReport.ReportPath = "/ProyectoSSRS/ReportRegistroControlDeAsistenciasXDNI";
 
                 //Set report Parameter  
                 //Creating an ArrayList for combine the Parameters which will be passed into SSRS Report  
-                //ArrayList reportParam = new ArrayList();  
-                //reportParam = ReportDefaultPatam();  
+                //ArrayList reportParam = new ArrayList();
+                //reportParam = ReportDefaultPatam(); 
 
-                //ReportParameter[] param = new ReportParameter[reportParam.Count];  
-                //for (int k = 0; k < reportParam.Count; k++)  
-                //{  
-                //    param[k] = (ReportParameter)reportParam[k];  
-                //}  
+                //ReportParameter[] param = new ReportParameter[reportParam.Count];
+                //for (int k = 0; k < reportParam.Count; k++)
+                //{
+                //    param[k] = (ReportParameter)reportParam[k];
+                //}
 
                 // pass credential as if any... no need to pass anything if we use windows authentication  
-                //rptViewer.ServerReport.ReportServerCredentials =   
-                //  new ReportServerCredentials("UserName", "Password", "domainname");  
+                // rptViewer.ServerReport.ReportServerCredentials =   
+                //  new ReportServerCredentials("yoni", "12345", "domainname");  
 
                 //pass parameters to report  
-                //rptViewer.ServerReport.SetParameters(param);   
+                // rptViewer.ServerReport.SetParameters("");   
                 rptViewer.ServerReport.Refresh();
             }
             catch (Exception ex)

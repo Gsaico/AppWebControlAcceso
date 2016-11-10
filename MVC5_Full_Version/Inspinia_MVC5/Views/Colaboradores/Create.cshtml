@@ -42,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.COD_Colaborador, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.COD_Colaborador, new { htmlAttributes = new { @class = "form-control", @name = "number" } })
+                @Html.TextBoxFor(model => model.COD_Colaborador, new { @class = "form-control", maxlength = "8", onkeypress = "return justNumbers(event);" } )
                 @Html.ValidationMessageFor(model => model.COD_Colaborador, "", new { @class = "text-danger" })
 
                 
@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.COD_Empresa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.DropDownList("COD_Empresa", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("COD_Empresa", null, htmlAttributes: new { @class = "form-control"})
                 @Html.ValidationMessageFor(model => model.COD_Empresa, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,21 +65,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ApellidoPaterno, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.EditorFor(model => model.ApellidoPaterno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", maxlength = "100",  style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
                 @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ApellidoMaterno, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.EditorFor(model => model.ApellidoMaterno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
                 @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Nombres, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
                 @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -112,31 +112,10 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.COD_Departamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.COD_Departamento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COD_Departamento, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.COD_Provincia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.COD_Provincia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COD_Provincia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.COD_Distrito, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.COD_Distrito, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COD_Distrito, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
             @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
 
-                @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
                 @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -144,25 +123,25 @@
         <div class="form-group">         
             @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="blah" alt="your image" width="280" height="250" />
+                <img id="blah" alt="Foto del colaborador" width="280" height="250" />
                 <input type="file" name="FotoColaborador" id="imgInp" />
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Cargo, new { @class = "form-control", maxlength = "50", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
                 @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                <div class="checkbox">
+              
 
                     @Html.EditorFor(model => model.Estado)
                     @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-                </div>
+            
             </div>
         </div>
       
@@ -215,6 +194,14 @@
         $("#imgInp").change(function () {
             readURL(this);
         });
+
+        function justNumbers(e) {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8) || (keynum == 46))
+                return true;
+
+            return /\d/.test(String.fromCharCode(keynum));
+        }
     </script>
 @Scripts.Render("~/plugins/iCheck")
 @Scripts.Render("~/plugins/dataPicker")

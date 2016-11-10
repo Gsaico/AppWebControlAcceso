@@ -11,22 +11,15 @@ using Inspinia_MVC5.Models;
 
 namespace Inspinia_MVC5.Controllers
 {
-    public class RegistrosDiariosHUS001Controller : Controller
+
+    [Authorize]//para solicitar autenticacion
+    public class RegistrosDiariosController : Controller
     {
 
         private IDCHECKDBEntities db = new IDCHECKDBEntities();
         private IDCHECKDBEntities dbx = new IDCHECKDBEntities();
-        public ActionResult ShowReport()
-        {
-
-           // var query = db.RegistrosDiarios.Where(r => r.FechaYHora.Value.Month == 10 && r.FechaYHora.Value.Year == 2016 && r.FechaYHora.Value.Day == 25).Include(c => c.Colaboradores).ToList();
-
-
-            //query = query.GroupBy(h => h.FechaYHora, h => new {h.COD_Colaborador }).ToList();
-
-            return Redirect("../ReportViewerSSRS/ReportViewer.aspx");
-
-        }
+      
+       
         public ActionResult ConvertirAImagen(string COD_Colaborador)
         {
             var imagenMunicipio = db.Colaboradores.Where(x => x.COD_Colaborador == COD_Colaborador).FirstOrDefault();
@@ -50,7 +43,7 @@ namespace Inspinia_MVC5.Controllers
 
             using (db)
             {
-                var utltimoscolaboradores = db.RegistrosDiarios.OrderByDescending(u => u.ID_RegistroDiario).Include(c => c.Colaboradores).Take(5).ToList();
+                var utltimoscolaboradores = db.RegistrosDiarios.OrderByDescending(u => u.UltimaActualizacion).Include(c => c.Colaboradores).Take(5).ToList();
 
                 return PartialView("GetColaboradoresTopCinco", utltimoscolaboradores);
             }
@@ -79,7 +72,7 @@ namespace Inspinia_MVC5.Controllers
                 if (GetColaboradorById == null)
                 {
                     //ViewBag.estado = "COLABORADOR NO REGISTRADO";
-
+                    ViewBag.FechayHora = DateTime.Now;
                     return PartialView("GetColaboradorDesconocido", null);
 
 
@@ -96,7 +89,7 @@ namespace Inspinia_MVC5.Controllers
 
 
 
-                            var GetRegistroDiarioColaborador = dbx.RegistrosDiarios.Where(r => r.COD_Colaborador == COD_Colaborador && r.Fecha.Value.Month == DateTime.Today.Month && r.Fecha.Value.Year == DateTime.Today.Year && r.Fecha.Value.Day == DateTime.Today.Day).FirstOrDefault();
+                            var GetRegistroDiarioColaborador = dbx.RegistrosDiarios.Where(r => r.COD_Colaborador == COD_Colaborador && r.Fecha.Month == DateTime.Today.Month && r.Fecha.Year == DateTime.Today.Year && r.Fecha.Day == DateTime.Today.Day).FirstOrDefault();
 
                             if (GetRegistroDiarioColaborador == null)//el colaborador no registro el dia de hoy su ingreso o salida
                             {
@@ -105,9 +98,12 @@ namespace Inspinia_MVC5.Controllers
                                 RegistrosDiarios rd = new RegistrosDiarios();
 
                                 rd.COD_Colaborador = COD_Colaborador;
+                                rd.Periodo =Convert.ToString( DateTime.Today.Year);
                                 rd.Fecha = DateTime.Now;
                                 rd.FechaYHoraIngreso = DateTime.Now;
                                 rd.FechaYHoraSalida = null;
+                                rd.UltimaActualizacion = DateTime.Now;
+
                                 // registramos su ingreso pero su salida lo ponemos en null
 
 
@@ -116,6 +112,7 @@ namespace Inspinia_MVC5.Controllers
 
                                 ViewBag.estado = "ACCESO REGISTRADO";
                                 ViewBag.ingresosalida = "INGRESO";
+                                ViewBag.FechayHora = DateTime.Now;
 
                             }
                             else
@@ -128,17 +125,20 @@ namespace Inspinia_MVC5.Controllers
                                     RegistrosDiarios registrodiariosx =  db.RegistrosDiarios.Find(GetRegistroDiarioColaborador.ID_RegistroDiario);
 
                                     registrodiariosx.FechaYHoraSalida = DateTime.Now;
+                                    registrodiariosx.UltimaActualizacion = DateTime.Now;
 
                                     db.Entry(registrodiariosx).State = EntityState.Modified;
                                     db.SaveChanges();
 
                                     ViewBag.estado = "ACCESO REGISTRADO";
                                     ViewBag.ingresosalida = "SALIDA";
+                                    ViewBag.FechayHora = DateTime.Now;
                                 }
                                 else if (GetRegistroDiarioColaborador.FechaYHoraIngreso != null && GetRegistroDiarioColaborador.FechaYHoraSalida != null)// el colaborador ya registro su ingreso y salida
                                 {
                                     //MOSTRAR MENSAJE QUE YA NO PUEDE INGRESAR A LAS INSTALACIONES EL DIA DE HOY
                                     ViewBag.estado = "UD YA NO PUEDE INGRESAR A LAS INSTALACIONES EL DIA DE HOY";
+                                    ViewBag.FechayHora = DateTime.Now;
 
                                 }
 

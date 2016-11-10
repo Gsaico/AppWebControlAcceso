@@ -10,37 +10,43 @@
             <PropertyRef Name="ID_Area" />
           </Key>
           <Property Name="ID_Area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreArea" Type="nvarchar" MaxLength="100" />
-          <Property Name="CentroCostos" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreArea" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CentroCostos" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calendarios">
+          <Key>
+            <PropertyRef Name="ID_Calendario" />
+          </Key>
+          <Property Name="ID_Calendario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Periodo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="ID_TipoDia" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Colaboradores">
           <Key>
             <PropertyRef Name="COD_Colaborador" />
           </Key>
           <Property Name="COD_Colaborador" Type="nchar" MaxLength="8" Nullable="false" />
-          <Property Name="COD_Empresa" Type="nchar" MaxLength="11" />
-          <Property Name="ID_Area" Type="int" />
-          <Property Name="ApellidoPaterno" Type="nvarchar" MaxLength="100" />
-          <Property Name="ApellidoMaterno" Type="nvarchar" MaxLength="100" />
-          <Property Name="Nombres" Type="nvarchar" MaxLength="100" />
-          <Property Name="FechaNacimiento" Type="date" />
-          <Property Name="FechaContratacion" Type="date" />
-          <Property Name="FechaIngresoReingreso" Type="date" />
-          <Property Name="FechaCese" Type="date" />
-          <Property Name="COD_Departamento" Type="nvarchar" MaxLength="2" />
-          <Property Name="COD_Provincia" Type="nvarchar" MaxLength="2" />
-          <Property Name="COD_Distrito" Type="nvarchar" MaxLength="2" />
-          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="COD_Empresa" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="ID_Area" Type="int" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="FechaContratacion" Type="date" Nullable="false" />
+          <Property Name="FechaIngresoReingreso" Type="date" Nullable="false" />
+          <Property Name="FechaCese" Type="date" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Foto" Type="image" />
-          <Property Name="Cargo" Type="nvarchar" MaxLength="50" />
-          <Property Name="Estado" Type="bit" />
+          <Property Name="Cargo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Empresas">
           <Key>
             <PropertyRef Name="COD_Empresa" />
           </Key>
           <Property Name="COD_Empresa" Type="nchar" MaxLength="11" Nullable="false" />
-          <Property Name="RazonSocial" Type="nvarchar" MaxLength="200" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Telefono" Type="nchar" MaxLength="20" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -49,10 +55,20 @@
             <PropertyRef Name="ID_RegistroDiario" />
           </Key>
           <Property Name="ID_RegistroDiario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="COD_Colaborador" Type="nchar" MaxLength="8" />
-          <Property Name="Fecha" Type="date" />
-          <Property Name="FechaYHoraIngreso" Type="datetime" />
+          <Property Name="COD_Colaborador" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="Periodo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="FechaYHoraIngreso" Type="datetime" Nullable="false" />
           <Property Name="FechaYHoraSalida" Type="datetime" />
+          <Property Name="UltimaActualizacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TiposDeDias">
+          <Key>
+            <PropertyRef Name="ID_TipoDia" />
+          </Key>
+          <Property Name="ID_TipoDia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreTipoDia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescripcionTipoDia" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Ubigeos">
           <Key>
@@ -67,8 +83,20 @@
           <Property Name="Provincia" Type="nvarchar" MaxLength="100" />
           <Property Name="Distrito" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_Calendarios_TiposDeDias">
+          <End Role="TiposDeDias" Type="Self.TiposDeDias" Multiplicity="1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDeDias">
+              <PropertyRef Name="ID_TipoDia" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="ID_TipoDia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RegistrosDiarios_Trabajadores">
-          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="1" />
           <End Role="RegistrosDiarios" Type="Self.RegistrosDiarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Colaboradores">
@@ -80,7 +108,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trabajadores_Areas">
-          <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
           <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Areas">
@@ -92,7 +120,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trabajadores_Empresas">
-          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
           <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empresas">
@@ -105,10 +133,16 @@
         </Association>
         <EntityContainer Name="IDCHECKDBModelStoreContainer">
           <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calendarios" EntityType="Self.Calendarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Colaboradores" EntityType="Self.Colaboradores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistrosDiarios" EntityType="Self.RegistrosDiarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposDeDias" EntityType="Self.TiposDeDias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubigeos" EntityType="Self.Ubigeos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Calendarios_TiposDeDias" Association="Self.FK_Calendarios_TiposDeDias">
+            <End Role="TiposDeDias" EntitySet="TiposDeDias" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
           <AssociationSet Name="FK_RegistrosDiarios_Trabajadores" Association="Self.FK_RegistrosDiarios_Trabajadores">
             <End Role="Colaboradores" EntitySet="Colaboradores" />
             <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
@@ -126,97 +160,22 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IDCHECKDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Areas">
-          <Key>
-            <PropertyRef Name="ID_Area" />
-          </Key>
-          <Property Name="ID_Area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreArea" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CentroCostos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Colaboradores" Relationship="Self.FK_Trabajadores_Areas" FromRole="Areas" ToRole="Colaboradores" />
-        </EntityType>
-        <EntityType Name="Colaboradores">
-          <Key>
-            <PropertyRef Name="COD_Colaborador" />
-          </Key>
-          <Property Name="COD_Colaborador" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="COD_Empresa" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
-          <Property Name="ID_Area" Type="Int32" />
-          <Property Name="ApellidoPaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ApellidoMaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
-          <Property Name="FechaContratacion" Type="DateTime" Precision="0" />
-          <Property Name="FechaIngresoReingreso" Type="DateTime" Precision="0" />
-          <Property Name="FechaCese" Type="DateTime" Precision="0" />
-          <Property Name="COD_Departamento" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="COD_Provincia" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="COD_Distrito" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="Areas" Relationship="Self.FK_Trabajadores_Areas" FromRole="Colaboradores" ToRole="Areas" />
-          <NavigationProperty Name="Empresas" Relationship="Self.FK_Trabajadores_Empresas" FromRole="Colaboradores" ToRole="Empresas" />
-          <NavigationProperty Name="RegistrosDiarios" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="Colaboradores" ToRole="RegistrosDiarios" />
-        </EntityType>
-        <EntityType Name="Empresas">
-          <Key>
-            <PropertyRef Name="COD_Empresa" />
-          </Key>
-          <Property Name="COD_Empresa" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="RazonSocial" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Colaboradores" Relationship="Self.FK_Trabajadores_Empresas" FromRole="Empresas" ToRole="Colaboradores" />
-        </EntityType>
-        <EntityType Name="Ubigeos">
-          <Key>
-            <PropertyRef Name="COD_Departamento" />
-            <PropertyRef Name="COD_Provincia" />
-            <PropertyRef Name="COD_Distrito" />
-          </Key>
-          <Property Name="COD_Departamento" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="COD_Provincia" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="COD_Distrito" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_Trabajadores_Areas">
-          <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
-          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Areas">
-              <PropertyRef Name="ID_Area" />
-            </Principal>
-            <Dependent Role="Colaboradores">
-              <PropertyRef Name="ID_Area" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Trabajadores_Empresas">
-          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1" />
-          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresas">
-              <PropertyRef Name="COD_Empresa" />
-            </Principal>
-            <Dependent Role="Colaboradores">
-              <PropertyRef Name="COD_Empresa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="IDCHECKDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Areas" EntityType="Self.Areas" />
-          <EntitySet Name="Colaboradores" EntityType="Self.Colaboradores" />
-          <EntitySet Name="Empresas" EntityType="Self.Empresas" />
-          <EntitySet Name="Ubigeos" EntityType="Self.Ubigeos" />
-          <AssociationSet Name="FK_Trabajadores_Areas" Association="Self.FK_Trabajadores_Areas">
+          <EntitySet Name="Areas" EntityType="IDCHECKDBModel.Areas" />
+          <EntitySet Name="Calendarios" EntityType="IDCHECKDBModel.Calendarios" />
+          <EntitySet Name="Colaboradores" EntityType="IDCHECKDBModel.Colaboradores" />
+          <EntitySet Name="Empresas" EntityType="IDCHECKDBModel.Empresas" />
+          <EntitySet Name="TiposDeDias" EntityType="IDCHECKDBModel.TiposDeDias" />
+          <EntitySet Name="Ubigeos" EntityType="IDCHECKDBModel.Ubigeos" />
+          <AssociationSet Name="FK_Trabajadores_Areas" Association="IDCHECKDBModel.FK_Trabajadores_Areas">
             <End Role="Areas" EntitySet="Areas" />
             <End Role="Colaboradores" EntitySet="Colaboradores" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trabajadores_Empresas" Association="Self.FK_Trabajadores_Empresas">
+          <AssociationSet Name="FK_Calendarios_TiposDeDias" Association="IDCHECKDBModel.FK_Calendarios_TiposDeDias">
+            <End Role="TiposDeDias" EntitySet="TiposDeDias" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trabajadores_Empresas" Association="IDCHECKDBModel.FK_Trabajadores_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="Colaboradores" EntitySet="Colaboradores" />
           </AssociationSet>
@@ -226,19 +185,130 @@
             <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="ID_Area" />
+          </Key>
+          <Property Name="ID_Area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreArea" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CentroCostos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_Trabajadores_Areas" FromRole="Areas" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="Calendarios">
+          <Key>
+            <PropertyRef Name="ID_Calendario" />
+          </Key>
+          <Property Name="ID_Calendario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Periodo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_TipoDia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TiposDeDias" Relationship="IDCHECKDBModel.FK_Calendarios_TiposDeDias" FromRole="Calendarios" ToRole="TiposDeDias" />
+        </EntityType>
+        <EntityType Name="Colaboradores">
+          <Key>
+            <PropertyRef Name="COD_Colaborador" />
+          </Key>
+          <Property Name="COD_Colaborador" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="COD_Empresa" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="ID_Area" Type="Int32" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoMaterno" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaContratacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaIngresoReingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaCese" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Areas" Relationship="IDCHECKDBModel.FK_Trabajadores_Areas" FromRole="Colaboradores" ToRole="Areas" />
+          <NavigationProperty Name="Empresas" Relationship="IDCHECKDBModel.FK_Trabajadores_Empresas" FromRole="Colaboradores" ToRole="Empresas" />
+          <NavigationProperty Name="RegistrosDiarios" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="Colaboradores" ToRole="RegistrosDiarios" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="COD_Empresa" />
+          </Key>
+          <Property Name="COD_Empresa" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_Trabajadores_Empresas" FromRole="Empresas" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="TiposDeDias">
+          <Key>
+            <PropertyRef Name="ID_TipoDia" />
+          </Key>
+          <Property Name="ID_TipoDia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreTipoDia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionTipoDia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Calendarios" Relationship="IDCHECKDBModel.FK_Calendarios_TiposDeDias" FromRole="TiposDeDias" ToRole="Calendarios" />
+        </EntityType>
+        <EntityType Name="Ubigeos">
+          <Key>
+            <PropertyRef Name="COD_Departamento" />
+            <PropertyRef Name="COD_Provincia" />
+            <PropertyRef Name="COD_Distrito" />
+          </Key>
+          <Property Name="COD_Departamento" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="COD_Provincia" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="COD_Distrito" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Trabajadores_Areas">
+          <End Type="IDCHECKDBModel.Areas" Role="Areas" Multiplicity="1" />
+          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="ID_Area" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="ID_Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_TiposDeDias">
+          <End Type="IDCHECKDBModel.TiposDeDias" Role="TiposDeDias" Multiplicity="1" />
+          <End Type="IDCHECKDBModel.Calendarios" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDeDias">
+              <PropertyRef Name="ID_TipoDia" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="ID_TipoDia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trabajadores_Empresas">
+          <End Type="IDCHECKDBModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="COD_Empresa" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="COD_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="RegistrosDiarios">
           <Key>
             <PropertyRef Name="ID_RegistroDiario" />
           </Key>
           <Property Name="ID_RegistroDiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="COD_Colaborador" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <Property Name="FechaYHoraIngreso" Type="DateTime" Precision="3" />
+          <Property Name="COD_Colaborador" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Periodo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaYHoraIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaYHoraSalida" Type="DateTime" Precision="3" />
+          <Property Name="UltimaActualizacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="RegistrosDiarios" ToRole="Colaboradores" />
         </EntityType>
         <Association Name="FK_RegistrosDiarios_Trabajadores">
-          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="1" />
           <End Type="IDCHECKDBModel.RegistrosDiarios" Role="RegistrosDiarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Colaboradores">
@@ -249,7 +319,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -258,63 +328,81 @@
           <EntitySetMapping Name="Areas">
             <EntityTypeMapping TypeName="IDCHECKDBModel.Areas">
               <MappingFragment StoreEntitySet="Areas">
-                <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
-                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
                 <ScalarProperty Name="CentroCostos" ColumnName="CentroCostos" />
+                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
+                <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendarios">
+            <EntityTypeMapping TypeName="IDCHECKDBModel.Calendarios">
+              <MappingFragment StoreEntitySet="Calendarios">
+                <ScalarProperty Name="ID_TipoDia" ColumnName="ID_TipoDia" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="ID_Calendario" ColumnName="ID_Calendario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Colaboradores">
             <EntityTypeMapping TypeName="IDCHECKDBModel.Colaboradores">
               <MappingFragment StoreEntitySet="Colaboradores">
-                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
-                <ScalarProperty Name="COD_Empresa" ColumnName="COD_Empresa" />
-                <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
-                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
-                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
-                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
-                <ScalarProperty Name="FechaIngresoReingreso" ColumnName="FechaIngresoReingreso" />
-                <ScalarProperty Name="FechaCese" ColumnName="FechaCese" />
-                <ScalarProperty Name="COD_Departamento" ColumnName="COD_Departamento" />
-                <ScalarProperty Name="COD_Provincia" ColumnName="COD_Provincia" />
-                <ScalarProperty Name="COD_Distrito" ColumnName="COD_Distrito" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Foto" ColumnName="Foto" />
-                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaCese" ColumnName="FechaCese" />
+                <ScalarProperty Name="FechaIngresoReingreso" ColumnName="FechaIngresoReingreso" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
+                <ScalarProperty Name="COD_Empresa" ColumnName="COD_Empresa" />
+                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Empresas">
             <EntityTypeMapping TypeName="IDCHECKDBModel.Empresas">
               <MappingFragment StoreEntitySet="Empresas">
-                <ScalarProperty Name="COD_Empresa" ColumnName="COD_Empresa" />
-                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="COD_Empresa" ColumnName="COD_Empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposDeDias">
+            <EntityTypeMapping TypeName="IDCHECKDBModel.TiposDeDias">
+              <MappingFragment StoreEntitySet="TiposDeDias">
+                <ScalarProperty Name="DescripcionTipoDia" ColumnName="DescripcionTipoDia" />
+                <ScalarProperty Name="NombreTipoDia" ColumnName="NombreTipoDia" />
+                <ScalarProperty Name="ID_TipoDia" ColumnName="ID_TipoDia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ubigeos">
             <EntityTypeMapping TypeName="IDCHECKDBModel.Ubigeos">
               <MappingFragment StoreEntitySet="Ubigeos">
-                <ScalarProperty Name="COD_Departamento" ColumnName="COD_Departamento" />
-                <ScalarProperty Name="COD_Provincia" ColumnName="COD_Provincia" />
-                <ScalarProperty Name="COD_Distrito" ColumnName="COD_Distrito" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
                 <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="COD_Distrito" ColumnName="COD_Distrito" />
+                <ScalarProperty Name="COD_Provincia" ColumnName="COD_Provincia" />
+                <ScalarProperty Name="COD_Departamento" ColumnName="COD_Departamento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RegistrosDiarios">
             <EntityTypeMapping TypeName="IDCHECKDBModel.RegistrosDiarios">
               <MappingFragment StoreEntitySet="RegistrosDiarios">
+                <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
                 <ScalarProperty Name="FechaYHoraSalida" ColumnName="FechaYHoraSalida" />
                 <ScalarProperty Name="FechaYHoraIngreso" ColumnName="FechaYHoraIngreso" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
                 <ScalarProperty Name="ID_RegistroDiario" ColumnName="ID_RegistroDiario" />
               </MappingFragment>

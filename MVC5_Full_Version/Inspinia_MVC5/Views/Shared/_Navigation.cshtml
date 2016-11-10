@@ -29,23 +29,25 @@
             <!--Menu principal de la aplicacion INICIO -->
 
             <li class="@Html.IsSelected(controller: "Colaboradores")">
-                <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-th-large"></i> <span class="nav-label">SPRINT 1</span> <span class="fa arrow"></span></a>
+                <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-th-large"></i> <span class="nav-label">Colaboradores</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Colaboradores")">Mostrar Todos HUS002</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Nuevo Colaborador HUS002</a></li>
-                    <li class="@Html.IsSelected(action: "Search")"><a href="@Url.Action("Search", "Colaboradores")">Buscar Colaborador HUS002</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Imprimir Fotocheck  HUS002</a></li>
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Colaboradores")">Mostrar Todos</a></li>
+                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Nuevo Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "SearchEdit")"><a href="@Url.Action("SearchEdit", "Colaboradores")">Editar Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "SearchDetails")"><a href="@Url.Action("SearchDetails", "Colaboradores")">Detalle Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "SearchDelete")"><a href="@Url.Action("SearchDelete", "Colaboradores")">Eliminar Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "Search")"><a href="@Url.Action("Search", "Colaboradores")">Buscar Colaborador </a></li>
+                    <li class="@Html.IsSelected(action: "SearchImprimir")"><a href="@Url.Action("SearchImprimir", "Colaboradores")">Imprimir Fotocheck</a></li>
                 </ul>
             </li>
             <!--Menu principal de la aplicacion FINAL -->
             <!--Menu principal de la aplicacion INICIO Registro de Ingreso  y Salida-->
 
-            <li class="@Html.IsSelected(controller: "Colaboradores")">
-                <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-th-large"></i> <span class="nav-label">SPRINT 2</span> <span class="fa arrow"></span></a>
+            <li class="@Html.IsSelected(controller: "Control de Asistencias")">
+                <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-edit"></i> <span class="nav-label">Registro Diario</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "RegistroDiario")"><a href="@Url.Action("RegistroDiario", "RegistrosDiariosHUS001")">Registro de Ingreso y Salida de Colaboradores HUS001</a></li>
-                    <li class="@Html.IsSelected(action: "ShowReport")"><a href="@Url.Action("ShowReport", "RegistrosDiariosHUS001")">Reporte HUS004</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte HUS007</a></li>
+                    <li class="@Html.IsSelected(action: "RegistroDiario")"><a href="@Url.Action("RegistroDiario", "RegistrosDiarios")">Registro de Ingreso y Salida de Colaboradores</a></li>
+                
 
                 </ul>
             </li>
@@ -62,24 +64,13 @@
                 </ul>
             </li>
             <!--Menu principal de la aplicacion FINAL TAREO -->
-            <!--Menu principal de la aplicacion INICIO ASISTENCIAS -->
-
-            <li class="@Html.IsSelected(controller: "Asistencias")">
-                <a href="@Url.Action("action", "controller")"><i class="fa fa-edit"></i> <span class="nav-label">Asistencias</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Asistencia Mensual</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Asistencia por Colaborador</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Asistencia por Area</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Imprimir Asistencia</a></li>
-                </ul>
-            </li>
-            <!--Menu principal de la aplicacion FINAL ASISTENCIAS -->
+           
             <!--Menu principal de la aplicacion INICIO REPORTES -->
             <li class="@Html.IsSelected(controller: "Reportes")">
                 <a href="@Url.Action("action", "controller")"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte de Asistencias</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Reporte Trimestral</a></li>
+                <ul class="nav nav-second-level">         
+                    <li class="@Html.IsSelected(action: "ShowReportRegistroControlDeAsistenciasXDNI")"><a href="@Url.Action("ShowReportRegistroControlDeAsistenciasXDNI", "Reportes")">Registro de Control de Asistencias</a></li>
+                    <li class="@Html.IsSelected(action: "ShowReportNumeroColaboradoresEnLasInstalacionesHoy")"><a href="@Url.Action("ShowReportNumeroColaboradoresEnLasInstalacionesHoy", "Reportes")">Colaboradores En las Instalaciones</a></li>
 
                 </ul>
             </li>

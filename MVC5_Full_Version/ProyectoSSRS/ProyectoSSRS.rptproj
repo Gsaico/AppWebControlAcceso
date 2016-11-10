@@ -14,8 +14,12 @@
       <FullPath>ReportAllColaboradores.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Report1.rdl</Name>
-      <FullPath>Report1.rdl</FullPath>
+      <Name>ReportNumeroColaboradoresEnLasInstalacionesHoy.rdl</Name>
+      <FullPath>ReportNumeroColaboradoresEnLasInstalacionesHoy.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportRegistroControlDeAsistenciasXDNI.rdl</Name>
+      <FullPath>ReportRegistroControlDeAsistenciasXDNI.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

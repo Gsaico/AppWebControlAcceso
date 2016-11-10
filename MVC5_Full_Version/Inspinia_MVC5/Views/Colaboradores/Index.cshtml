@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Inspinia_MVC5.Models.Colaboradores>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Todos";
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -34,15 +34,12 @@
             @Html.DisplayNameFor(model => model.Foto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApellidoPaterno)
+            @Html.DisplayNameFor(model => model.COD_Colaborador)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApellidoMaterno)
+            Apellidos Y Nombres
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombres)
-        </th>    
-                   
+                         
         <th>
             @Html.DisplayNameFor(model => model.Cargo)
         </th>
@@ -66,15 +63,12 @@
             <img width="50" height="50" src="@Url.Action("ConvertirAImagen", "Colaboradores", new {COD_Colaborador = item.COD_Colaborador})" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+            @Html.DisplayFor(modelItem => item.COD_Colaborador)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+            @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombres)
-        </td>
-                  
+                         
         <td>
             @Html.DisplayFor(modelItem => item.Cargo)
         </td>

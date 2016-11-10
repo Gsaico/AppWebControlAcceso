@@ -1,0 +1,87 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Registry</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>Registro Diario de personal</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <strong>@Html.ActionLink("Home", "Index", "Colaboradores", null, null)</strong>
+                </li>
+
+            </ol>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    
+        <div class="wrapper wrapper-content  animated fadeInRight">
+
+
+            <div class="row">
+                <div id="divGetColaboradorById" class="col-md-6">
+                </div>
+                <div id="divGetColaboradoresTopCinco" class="col-lg-6">
+                </div>
+            </div>
+            <div class="row">
+               
+            </div>
+
+        </div>
+
+    
+
+</body>
+
+</html>
+
+@*script para detectar codigo de barras*@
+
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script>
+    var x = "";
+    $(document).ready(function () {
+
+        $(document).keypress(function (e) {
+
+            //13 es el código de la tecla
+            if (e.which == 13) {
+                //  alert('X = ' + x);
+                // var urli = "@Url.Action("GetColaboradorById", "RegistrosDiarios")/" + x;
+                var urli = '@Url.Action("GetColaboradorById", "RegistrosDiarios", new { COD_Colaborador = "ID"})';
+                urli = urli.replace("ID", x);
+                $("#divGetColaboradorById").load(urli);
+                x = "";
+                var urliz = '@Url.Action("GetColaboradoresTopCinco", "RegistrosDiarios")';
+
+                $("#divGetColaboradoresTopCinco").load(urliz);
+
+            }
+            else {
+                x = x.concat(String.fromCharCode(e.which));
+            }
+        });
+
+    });  </script>

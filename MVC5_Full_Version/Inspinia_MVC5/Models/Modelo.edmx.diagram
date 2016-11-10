@@ -4,14 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b8488ce3fb8f42438ea86bebdfcaefae" Name="Diagram1">
-        <EntityTypeShape EntityType="IDCHECKDBModel.Areas" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IDCHECKDBModel.Colaboradores" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IDCHECKDBModel.Empresas" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IDCHECKDBModel.Ubigeos" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
-        <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Areas" ManuallyRouted="false" />
-        <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Empresas" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="IDCHECKDBModel.RegistrosDiarios" Width="1.5" PointX="5.25" PointY="3.625" />
+      <Diagram DiagramId="b8488ce3fb8f42438ea86bebdfcaefae" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="IDCHECKDBModel.Areas" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.Calendarios" Width="1.5" PointX="8" PointY="7.5" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.Colaboradores" Width="1.5" PointX="3" PointY="2.625" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.Empresas" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.TiposDeDias" Width="1.5" PointX="5.75" PointY="7.625" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.Ubigeos" Width="1.5" PointX="0.75" PointY="8.25" />
+        <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Areas" />
+        <AssociationConnector Association="IDCHECKDBModel.FK_Calendarios_TiposDeDias" />
+        <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Empresas" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.RegistrosDiarios" Width="4" PointX="5.25" PointY="3.5" />
         <AssociationConnector Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" />
       </Diagram>
     </edmx:Diagrams>

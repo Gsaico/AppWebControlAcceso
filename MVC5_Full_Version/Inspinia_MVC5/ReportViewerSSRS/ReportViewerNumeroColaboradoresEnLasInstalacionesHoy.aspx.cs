@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Inspinia_MVC5.ReportViewerSSRS
 {
-    public partial class ReportViewerHUS004 : System.Web.UI.Page
+    public partial class ReportViewerHUS007 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace Inspinia_MVC5.ReportViewerSSRS
 
                 // setting report path  
                 //Passing the Report Path with report name no need to add report extension   
-                rptViewer.ServerReport.ReportPath = "/ProyectoSSRS/ReportAllColaboradores";
+                rptViewer.ServerReport.ReportPath = "/ProyectoSSRS/ReportNumeroColaboradoresEnLasInstalacionesHoy";
 
                 //Set report Parameter  
                 //Creating an ArrayList for combine the Parameters which will be passed into SSRS Report  
