@@ -1,53 +1,74 @@
 ﻿@model Inspinia_MVC5.Models.SelectUserRolesViewModel
-
 @{
     ViewBag.Title = "User Roles";
 }
-
-<h2>Roles for user @Html.DisplayFor(model => model.UserName)</h2>
-<hr />
-
-@using (Html.BeginForm("UserRoles", "Account", FormMethod.Post, new { encType = "multipart/form-data", name = "myform" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true)
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.UserName)
-            </div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Usuarios</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Listado", "Index")
+            </li>
+            <li class="active">
+                <strong>Roles del Usuario</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary" })
         </div>
+    </div>
+</div>
 
-        <h4>Select Role Assignments</h4>
-        <br />
-        <hr />
 
-        <table>
-            <tr>
-                <th>
-                    Select
-                </th>
-                <th>
-                    Role
-                </th>
-            </tr>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h2>Roles del Usuario @Html.DisplayFor(model => model.UserName)</h2>
+                </div>
+                <div class="ibox-content">
+                    @using (Html.BeginForm("UserRoles", "Account", FormMethod.Post, new { encType = "multipart/form-data", name = "myform" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-            @Html.EditorFor(model => model.Roles)
-        
-        </table>
-        <br />
-        <hr />
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.UserName)
+                                </div>
+                            </div>
+                            <h4>Select Role Assignments</h4>
+                            <br />
+                            <hr />
+                            <table>
+                                <tr>
+                                    <th>
+                                        Select
+                                    </th>
+                                    <th>
+                                        Role
+                                    </th>
+                                </tr>
+                                @Html.EditorFor(model => model.Roles)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                            </table>
+                            <br />
+                            <hr />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Guardar"  class = "btn btn-primary"  />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
