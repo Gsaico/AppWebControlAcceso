@@ -81,25 +81,25 @@ namespace Inspinia_MVC5.Controllers
             return View();
 
         }
-        public async Task<ActionResult> SearchEdit( string id)
+        public  ActionResult SearchEdit( string id)
         {
 
             return View();
 
         }
-        public async Task<ActionResult> SearchDetails(string id)
+        public ActionResult SearchDetails(string id)
         {
 
             return View();
 
         }
-        public async Task<ActionResult> SearchDelete(string id)
+        public ActionResult SearchDelete(string id)
         {
 
             return View();
 
         }
-        public async Task<ActionResult> SearchImprimir(string id)
+        public  ActionResult SearchImprimir(string id)
         {
 
             return View();

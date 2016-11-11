@@ -79,8 +79,9 @@
             <li class="@Html.IsSelected(controller: "Cuentas de Usuario")">
                 <a href="@Url.Action("action", "controller")"><i class="fa fa-desktop"></i> <span class="nav-label">Cuentas de Usuario</span>  <span class="pull-right label label-primary">ESPECIAL</span></a>
                 <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Agregar Usuario</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Permisos</a></li>
+                    
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Account")">Usuarios</a></li>
+                    <li class="@Html.IsSelected(action: "Register")"><a href="@Url.Action("Register", "Account")">Nuevo Usuario</a></li>
 
 
                 </ul>
