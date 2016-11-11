@@ -6,9 +6,12 @@ using System.Web.Mvc;
 
 namespace Inspinia_MVC5.Controllers
 {
+    [Authorize]
     public class ReportesController : Controller
     {
         // GET: Reportes
+       
+      
         public ActionResult ShowReportRegistroControlDeAsistenciasXDNI()
         {
 
@@ -20,6 +23,7 @@ namespace Inspinia_MVC5.Controllers
             return Redirect("../ReportViewerSSRS/ReportViewerRegistroControlDeAsistenciasXDNI.aspx");
 
         }
+       
         public ActionResult ShowReportNumeroColaboradoresEnLasInstalacionesHoy()
         {
 

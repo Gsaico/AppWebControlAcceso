@@ -177,7 +177,7 @@ namespace Inspinia_MVC5.Controllers
             }
 
         }
-
+        [AllowAnonymous]
         public  ActionResult RegistroDiario()
         {
             //var registrosdiarios = db.RegistrosDiarios.Include(r => r.Colaboradores);
