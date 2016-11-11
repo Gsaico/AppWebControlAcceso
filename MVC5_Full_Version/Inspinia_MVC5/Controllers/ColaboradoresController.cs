@@ -148,21 +148,21 @@ namespace Inspinia_MVC5.Controllers
 
 
         // GET: Colaboradores
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var colaboradores = db.Colaboradores.Include(c => c.Areas).Include(c => c.Empresas);
-            return View(await colaboradores.ToListAsync());
+            return View( colaboradores.ToList());
         }
 
   
         // GET: Colaboradores/Details/5
-        public async Task<ActionResult> Details(string id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
+            Colaboradores colaboradores = db.Colaboradores.Find(id);
 
 
             if (colaboradores == null)
@@ -222,17 +222,14 @@ namespace Inspinia_MVC5.Controllers
         }
 
         // GET: Colaboradores/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
-
-           
-
-
+            Colaboradores colaboradores = db.Colaboradores.Find(id);
+                    
             if (colaboradores == null)
             {
                 //  return HttpNotFound();
@@ -242,8 +239,6 @@ namespace Inspinia_MVC5.Controllers
             {
                 ColaboradoresController._MyGlobalVariable = colaboradores.Foto;
             }
-
-
 
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea", colaboradores.ID_Area);
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
@@ -287,7 +282,7 @@ namespace Inspinia_MVC5.Controllers
         }
 
         // GET: Colaboradores/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -295,7 +290,7 @@ namespace Inspinia_MVC5.Controllers
             }
 
             
-            Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
+            Colaboradores colaboradores =  db.Colaboradores.Find(id);
             if (colaboradores == null)
             {
                 return HttpNotFound();
@@ -303,7 +298,7 @@ namespace Inspinia_MVC5.Controllers
 
             else
             {
-                RegistrosDiarios registrodiarios = await db.RegistrosDiarios.Where(r => r.COD_Colaborador == id).FirstOrDefaultAsync();
+                RegistrosDiarios registrodiarios = db.RegistrosDiarios.Where(r => r.COD_Colaborador == id).FirstOrDefault();
 
                 if (registrodiarios == null)
                 {//no existe registro de ingresoso salidas
@@ -331,11 +326,11 @@ namespace Inspinia_MVC5.Controllers
         // POST: Colaboradores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Colaboradores colaboradores = await db.Colaboradores.FindAsync(id);
+            Colaboradores colaboradores =  db.Colaboradores.Find(id);
             db.Colaboradores.Remove(colaboradores);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

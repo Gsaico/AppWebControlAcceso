@@ -71,7 +71,7 @@ namespace Inspinia_MVC5.Controllers
 
                 if (GetColaboradorById == null)
                 {
-                    //ViewBag.estado = "COLABORADOR NO REGISTRADO";
+                    ViewBag.desconocido = "COLABORADOR NO REGISTRADO";
                     ViewBag.FechayHora = DateTime.Now;
                     return PartialView("GetColaboradorDesconocido", null);
 
