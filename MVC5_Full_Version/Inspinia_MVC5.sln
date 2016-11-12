@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SSRS", "SSRS", "{2C50102C-C
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoSSRS", "ProyectoSSRS\ProyectoSSRS.rptproj", "{BD701A58-E8F8-497F-AA7B-5CCB32DFE8D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspinia_MVC5.Tests", "Inspinia_MVC5.Tests\Inspinia_MVC5.Tests.csproj", "{E0B15C68-674D-4053-BB65-6F52D4CA9756}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,12 @@ Global
 		{BD701A58-E8F8-497F-AA7B-5CCB32DFE8D5}.Release|Any CPU.ActiveCfg = Release
 		{BD701A58-E8F8-497F-AA7B-5CCB32DFE8D5}.Release|Any CPU.Build.0 = Release
 		{BD701A58-E8F8-497F-AA7B-5CCB32DFE8D5}.Release|Any CPU.Deploy.0 = Release
+		{E0B15C68-674D-4053-BB65-6F52D4CA9756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B15C68-674D-4053-BB65-6F52D4CA9756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B15C68-674D-4053-BB65-6F52D4CA9756}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B15C68-674D-4053-BB65-6F52D4CA9756}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{E0B15C68-674D-4053-BB65-6F52D4CA9756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B15C68-674D-4053-BB65-6F52D4CA9756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
