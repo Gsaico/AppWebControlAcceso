@@ -12,6 +12,7 @@ namespace Inspinia_MVC5.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
+        /*
         [TestMethod]
         public void Index()
         {
@@ -50,5 +51,6 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
            // Assert.IsNotNull(result);
         }
+        */
     }
 }
