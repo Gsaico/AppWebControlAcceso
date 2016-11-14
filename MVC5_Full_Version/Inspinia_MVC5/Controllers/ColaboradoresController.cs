@@ -22,12 +22,12 @@ namespace Inspinia_MVC5.Controllers
 
         private static Byte[] _MyGlobalVariable;
 
-        public ActionResult ListadoColaboradores()
-        {
-            ViewBag.ListColaboradores = db.Colaboradores.ToList();
+        //public ActionResult ListadoColaboradores()
+        //{
+        //    ViewBag.ListColaboradores = db.Colaboradores.ToList();
 
-            return View();
-        }
+        //    return View();
+        //}
 
       
         public ActionResult FotocheckColaboradorPDF(string COD_Colaborador)
