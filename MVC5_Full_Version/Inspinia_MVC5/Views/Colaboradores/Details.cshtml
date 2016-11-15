@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-8">
         <div class="title-action">
-            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary", id = "btnRegresarAListadoColaboradores", name = "btnRegresarAListadoColaboradores" })
         </div>
     </div>
 </div>
@@ -167,9 +167,9 @@
 
 
 	   
-        @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = Model.COD_Colaborador }, new { @class = "btn btn-primary" }) 
-                    @Html.ActionLink("Editar", "Edit", new { id = Model.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
-                    @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white btn-sm" })
+        @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = Model.COD_Colaborador }, new { @class = "btn btn-primary", id = "btnImprimirFotocheck", name = "btnImprimirFotocheck" }) 
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.COD_Colaborador }, new { @class = "btn btn-white btn-sm", id = "btnEditarColaborador", name = "btnEditarColaborador" })
+                    @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white btn-sm", id = "btnRegresarAListadoColaboradores", name = "btnRegresarAListadoColaboradores" })
 
                 </div>
             </div>

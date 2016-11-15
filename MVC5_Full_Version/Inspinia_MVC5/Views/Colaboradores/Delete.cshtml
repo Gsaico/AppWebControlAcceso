@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-8">
         <div class="title-action">
-			@Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary"})
+			@Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary", id = "btnRegresarListadoColaboradores", name = "btnRegresarListadoColaboradores" })
         </div>
     </div>
 </div>
@@ -167,8 +167,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-primary" @ViewBag.estadobotoneleiminar />
-            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white"})
+            <input type="submit" value="Eliminar" class="btn btn-primary" id = "btnEliminarColaborador" name = "btnEliminarColaborador" @ViewBag.estadobotoneleiminar />
+            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white", id = "btnRegresarListadoColaboradores", name = "btnRegresarListadoColaboradores" })
         </div>
     }
 

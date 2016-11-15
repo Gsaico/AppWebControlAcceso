@@ -465,6 +465,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\validCampoFranz.js" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Colaboradores\EmptyPage.cshtml" />
@@ -480,6 +482,7 @@
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Doc\_bin_deployableAssemblies.zip" />
     <Content Include="Doc\backupidcheck.bak" />
+    <Content Include="Doc\backupidcheck.zip" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

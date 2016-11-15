@@ -16,7 +16,7 @@
     </div>
     <div class="col-sm-8">
         <div class="title-action">
-            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary", id = "btnRegresarListadoUsuarios", name = "btnRegresarListadoUsuarios" })
         </div>
     </div>
 </div>
@@ -76,7 +76,7 @@
                             <hr />
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                                    <input type="submit" value="Guardar" class="btn btn-primary"  id = "btnGuardar" name = "btnGuardar" />
                                 </div>
                             </div>
                         </div>

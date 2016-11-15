@@ -111,10 +111,10 @@
                                     @Html.DisplayFor(modelItem => item.Estado)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                    @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm", id = "btnImprimirFotocheck", name = "btnImprimirFotocheck" })
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm", id = "btnDetalleColaborador", name = "btnDetalleColaborador" })
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm", id = "btnEditarColaborador", name = "btnEditarColaborador" })
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm", id = "btnEliminarColaborador", name = "btnEliminarColaborador" })
                                 </td>
                             </tr>
                           }

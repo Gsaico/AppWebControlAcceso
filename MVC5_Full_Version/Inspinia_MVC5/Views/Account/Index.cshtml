@@ -23,7 +23,7 @@
                 <div class="ibox-title">
                     <h5>Listado de Usuarios</h5>
                     <div class="ibox-tools">
-                        @Html.ActionLink("Agregar Nuevo Usuario", "Register", null, new { @class = "btn btn-primary btn-xs" })
+                        @Html.ActionLink("Agregar Nuevo Usuario", "Register", null, new { @class = "btn btn-primary btn-xs", id = "btnAgregaNuevoUsuario", name = "btnAgregaNuevoUsuario" })
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -59,9 +59,9 @@
                                     @Html.DisplayFor(modelItem => item.Estado)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm" }) 
-                                    @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm" }) 
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.UserName }, new { @class = "btn btn-primary btn-sm" })
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnEditarUsuario", name = "btnEditarUsuario" }) 
+                                    @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnRolesUsuario", name = "btnRolesUsuario" }) 
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.UserName }, new { @class = "btn btn-primary btn-sm", id = "btnEliminarUsuario", name = "btnEliminarUsuario" })
                                 </td>
                             </tr>
                         }

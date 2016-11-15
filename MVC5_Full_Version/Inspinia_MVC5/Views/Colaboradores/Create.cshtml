@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-8">
         <div class="title-action">
-			@Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary"})
+			@Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary", id = "btnRegresarListadoColaboradores", name = "btnRegresarListadoColaboradores" })
         </div>
     </div>
 </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="ibox-content">
 
-@using (Html.BeginForm("Create", "Colaboradores", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Colaboradores", FormMethod.Post, new { enctype = "multipart/form-data", id = "createform"  }))
 {
     @Html.AntiForgeryToken()
     
@@ -86,7 +86,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ApellidoPaterno, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", maxlength = "100",  style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
+                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", maxlength = "100",  style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();", onkeypress = "return val(event);" })
                 @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -168,8 +168,8 @@
       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Agregar Nuevo Colaborador" class="btn btn-primary" />
-				@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-white"})
+                <input type="submit" value="Agregar Nuevo Colaborador" class="btn btn-primary"  id="btnAgregarNuevoColaborador" name = "btnAgregarNuevoColaborador" />
+				@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-white", id="btnCancelar", name = "btnCancelar" })
             </div>
         </div>
     </div>
@@ -180,7 +180,59 @@
         </div>
     </div>
  </div>
+@*<script src="~/Scripts/moment.js"></script>
+<script type="text/javascript">
+    (document).ready(function () {
 
+        FormValidation.Validator.mayorEdad = {
+            validate: function (validator, $field, options) {
+                var value = $field.val();
+
+
+                var fechanacimiento = moment(value, "DD-MM-YYYY");
+
+                if (!fechanacimiento.isValid())
+                    return false;
+
+                var years = moment().diff(fechanacimiento, 'years');
+
+                return years > 18;
+
+            }
+        };
+
+        $('#createform').formValidation({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                FechaNacimiento: {
+                    validators: {
+                        notEmpty: {
+                            message: 'La fecha de nacimiento es requerida'
+                        },
+                        mayorEdad: {
+                            message: 'No es mayor de edad'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>*@ 
+<script src="jquery.min.js"></script>
+<script src="validCampoFranz.js"></script>
+<script type="text/javascript">
+            $(function(){
+                //Para escribir solo letras
+                $('#ApellidoPaterno').validCampoFranz(' abcdefghijklmnñopqrstuvwxyzáéiou');
+
+                //Para escribir solo numeros
+                $('#Apellidoaterno').validCampoFranz('0123456789');
+            });
+</script>      
  @section Styles {
     @Styles.Render("~/plugins/awesomeCheckboxStyles")
     @Styles.Render("~/plugins/clockpickerStyles")
@@ -198,6 +250,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
     <script>
 
         function readURL(input) {
@@ -222,6 +275,13 @@
                 return true;
 
             return /\d/.test(String.fromCharCode(keynum));
+        }
+        function val(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
         }
     </script>
 @Scripts.Render("~/plugins/iCheck")
