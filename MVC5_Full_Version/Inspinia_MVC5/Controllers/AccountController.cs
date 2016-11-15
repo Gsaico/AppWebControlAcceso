@@ -216,7 +216,7 @@ namespace Inspinia_MVC5.Controllers
                 user.ApellidoPaterno = model.ApellidoPaterno;
                 user.ApellidoMaterno = model.ApellidoMaterno;
                 user.Nombres = model.Nombres;
-                user.Estado = model.Estado;
+               
                
                
                 Db.Entry(user).State = System.Data.Entity.EntityState.Modified;

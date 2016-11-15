@@ -80,22 +80,18 @@ namespace Inspinia_MVC5.Models
         [Display(Name = "Nombres")]
         public string Nombres { get; set; }
 
-        [Required]
-        public bool Estado { get; set; }
-
+       
              
         // Return a pre-poulated instance of AppliationUser:
         public ApplicationUser GetUser()
         {
             var user = new ApplicationUser()
             {
-                UserName = this.UserName,
-            
+                UserName = this.UserName,            
                 ApellidoPaterno = this.ApellidoPaterno,
                 ApellidoMaterno = this.ApellidoMaterno,
                 Nombres = this.Nombres,
-                Estado = this.Estado
-
+              
             };
             return user;
         }
@@ -110,12 +106,11 @@ namespace Inspinia_MVC5.Models
         public EditUserViewModel(ApplicationUser user)
         {
 
-            this.UserName = user.UserName;
-          
+            this.UserName = user.UserName;          
             this.ApellidoPaterno = user.ApellidoPaterno;
             this.ApellidoMaterno = user.ApellidoMaterno;
             this.Nombres = user.Nombres;
-            this.Estado = user.Estado;
+         
       
         }
 
@@ -140,8 +135,7 @@ namespace Inspinia_MVC5.Models
         [Display(Name = "Nombres")]
         public string Nombres { get; set; }
 
-        [Required]
-        public bool Estado { get; set; }
+      
 
     }
 
@@ -163,7 +157,7 @@ namespace Inspinia_MVC5.Models
             this.ApellidoPaterno = user.ApellidoPaterno;
             this.ApellidoMaterno = user.ApellidoMaterno;
             this.Nombres = user.Nombres;
-            this.Estado = user.Estado;
+           
             
             var Db = new ApplicationDbContext();
 
@@ -187,16 +181,14 @@ namespace Inspinia_MVC5.Models
 
         public string UserName { get; set; }
     
-     
-
-       
+            
         public string ApellidoPaterno { get; set; }
      
         public string ApellidoMaterno { get; set; }
     
         public string Nombres { get; set; }
      
-        public bool Estado { get; set; }
+       
 
     
         public List<SelectRoleEditorViewModel> Roles { get; set; }

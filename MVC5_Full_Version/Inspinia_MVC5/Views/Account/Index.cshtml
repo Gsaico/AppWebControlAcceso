@@ -38,9 +38,7 @@
                                 Apellidos y Nombres
                             </th>
                         
-                            <th>
-                                @Html.DisplayNameFor(model => model.Estado)
-                            </th>
+                           
                             <th></th>
                         </tr>
 
@@ -55,9 +53,7 @@
                                     @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
                                 </td>
                                
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Estado)
-                                </td>
+                              
                                 <td>
                                     @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnEditarUsuario", name = "btnEditarUsuario" }) 
                                     @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnRolesUsuario", name = "btnRolesUsuario" }) 

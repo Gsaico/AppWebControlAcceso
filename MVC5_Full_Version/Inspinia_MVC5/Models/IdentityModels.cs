@@ -13,8 +13,7 @@ namespace Inspinia_MVC5.Models
         public string ApellidoMaterno { get; set; }
         [Required]
         public string Nombres { get; set; }
-        [Required]
-        public bool Estado { get; set; }
+       
 
       
     }
