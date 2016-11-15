@@ -205,9 +205,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611110035345_init.cs" />
-    <Compile Include="Migrations\201611110035345_init.Designer.cs">
-      <DependentUpon>201611110035345_init.cs</DependentUpon>
+    <Compile Include="Migrations\201611150114568_init.cs" />
+    <Compile Include="Migrations\201611150114568_init.Designer.cs">
+      <DependentUpon>201611150114568_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,6 +288,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Inspinia_MVC5_1.mdf" />
+    <Content Include="App_Data\aspnet-Inspinia_MVC5_1_log.ldf">
+      <DependentUpon>aspnet-Inspinia_MVC5_1.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -463,10 +467,7 @@
     </Content>
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Colaboradores\SearchEdit.cshtml" />
     <Content Include="Views\Colaboradores\EmptyPage.cshtml" />
-    <Content Include="Views\Colaboradores\SearchDetails.cshtml" />
-    <Content Include="Views\Colaboradores\SearchDelete.cshtml" />
     <Content Include="Views\Colaboradores\SearchImprimir.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
@@ -1043,8 +1044,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611110035345_init.resx">
-      <DependentUpon>201611110035345_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611150114568_init.resx">
+      <DependentUpon>201611150114568_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReportFotocheck.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

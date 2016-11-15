@@ -24,12 +24,10 @@ namespace Inspinia_MVC5.Migrations
                         UserName = c.String(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
-                        COD_Colaborador = c.String(),
                         ApellidoPaterno = c.String(),
                         ApellidoMaterno = c.String(),
                         Nombres = c.String(),
                         Estado = c.Boolean(),
-                        Email = c.String(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);

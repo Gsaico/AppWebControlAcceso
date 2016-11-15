@@ -22,47 +22,82 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Criterio de Busqueda</h5>
-					
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        @*<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="#">Config option 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Config option 2</a>
+                    </li>
+                </ul>*@
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="ibox-content">
 
-                
-                      
-                                                @using (Html.BeginForm("Search", "Colaboradores", FormMethod.Get))
-                                                {
-                                                    <div class="form-horizontal">
-                                                        
-                                                       
-                                                        <div class="form-group">
-                                                            @Html.Label("DNI:", htmlAttributes: new { @class = "control-label col-md-2" })
-                                                            <div class="col-md-10">
-                                                                @Html.TextBox("SearchStringDNI", null, new { @class = "form-control", id = "SearchStringDNI" })
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            @Html.Label("Apellido Paterno:", htmlAttributes: new { @class = "control-label col-md-2" })
-                                                            <div class="col-md-10">
-                                                                @Html.TextBox("SearchStringApePaterno", null, new { @class = "form-control", id = "SearchStringApePaterno" })
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            @Html.Label("Nombres:", htmlAttributes: new { @class = "control-label col-md-2" })
-                                                            <div class="col-md-10">
-                                                                @Html.TextBox("SearchStringNombres", null, new { @class = "form-control", id = "SearchStringNombres" })
+                    @using (Html.BeginForm("Search", "Colaboradores", FormMethod.Post))
+                    {
+                        <div class="form-horizontal">
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-offset-2 col-md-10">
-                                                                <input type="submit" value="Buscar" class="btn btn-primary" />                                                               
-                                                              
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                }
+
+                            <div class="form-group">
+                                @Html.Label("DNI:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("SearchStringDNI", null, new { @class = "form-control", id = "SearchStringDNI", maxlength = "8", onkeypress = "return justNumbers(event);" })
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Apellido Paterno:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("SearchStringApePaterno", null, new { @class = "form-control", id = "SearchStringApePaterno" })
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Apellido Materno:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("SearchStringApeMaterno", null, new { @class = "form-control", id = "SearchStringApeMaterno" })
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Nombres:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("SearchStringNombres", null, new { @class = "form-control", id = "SearchStringNombres" })
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("AREA:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("Areasx", null, string.Empty, htmlAttributes: new { @class = "form-control", empty = "Nulo" })
+
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Buscar" class="btn btn-primary" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
 
 
 
@@ -70,26 +105,41 @@
             </div>
         </div>
     </div>
- </div>
 
-
-
-<div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Resultado de Busqueda</h5>
 
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        @*<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="#">Config option 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Config option 2</a>
+                    </li>
+                </ul>*@
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="ibox-content">
-                    
+
                     <table class="table table-striped">
                         <tr>
                             <th>
-                               Apellidos yNombres
+                                Apellidos yNombres
                             </th>
-                           
+
                             <th>
                                 @Html.DisplayNameFor(model => model.FechaIngresoReingreso)
                             </th>
@@ -109,7 +159,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Areas.NombreArea)
                             </th>
-                         
+
                             <th></th>
                         </tr>
 
@@ -119,7 +169,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
                                 </td>
-                             
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FechaIngresoReingreso)
                                 </td>
@@ -140,10 +190,10 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Areas.NombreArea)
                                 </td>
-                             
+
                                 <td>
                                     @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
-                                    
+
                                     @Html.ActionLink("Detalle", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
                                     @Html.ActionLink("Editar", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
@@ -157,4 +207,18 @@
             </div>
         </div>
     </div>
+
+
 </div>
+
+
+<script>
+         
+        function justNumbers(e) {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8) || (keynum == 46))
+                return true;
+
+            return /\d/.test(String.fromCharCode(keynum));
+        }
+</script>

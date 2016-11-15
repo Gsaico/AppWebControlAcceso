@@ -37,9 +37,7 @@
                             <th>
                                 Apellidos y Nombres
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Email)
-                            </th>
+                        
                             <th>
                                 @Html.DisplayNameFor(model => model.Estado)
                             </th>
@@ -56,15 +54,13 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
+                               
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Estado)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm" }) |
-                                    @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm" }) |
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm" }) 
+                                    @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm" }) 
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.UserName }, new { @class = "btn btn-primary btn-sm" })
                                 </td>
                             </tr>

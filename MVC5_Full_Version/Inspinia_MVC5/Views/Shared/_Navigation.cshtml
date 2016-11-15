@@ -31,13 +31,10 @@
             <li class="@Html.IsSelected(controller: "Colaboradores")">
                 <a href="@Url.Action("Index", "Colaboradores")"><i class="fa fa-th-large"></i> <span class="nav-label">Colaboradores</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Colaboradores")">Mostrar Todos</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Nuevo Colaborador</a></li>
-                    <li class="@Html.IsSelected(action: "SearchEdit")"><a href="@Url.Action("SearchEdit", "Colaboradores")">Editar Colaborador</a></li>
-                    <li class="@Html.IsSelected(action: "SearchDetails")"><a href="@Url.Action("SearchDetails", "Colaboradores")">Detalle Colaborador</a></li>
-                    <li class="@Html.IsSelected(action: "SearchDelete")"><a href="@Url.Action("SearchDelete", "Colaboradores")">Eliminar Colaborador</a></li>
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Colaboradores")">Colaboradores Con Autorización Para Ingresar a la Instalaciones</a></li>
+                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Colaboradores")">Registrar Nuevo Colaborador</a></li>
                     <li class="@Html.IsSelected(action: "Search")"><a href="@Url.Action("Search", "Colaboradores")">Buscar Colaborador </a></li>
-                    <li class="@Html.IsSelected(action: "SearchImprimir")"><a href="@Url.Action("SearchImprimir", "Colaboradores")">Imprimir Fotocheck</a></li>
+                    <li class="@Html.IsSelected(action: "SearchImprimir")"><a href="@Url.Action("SearchImprimir", "Colaboradores")">Imprimir Fotocheck de Colaborador</a></li>
                 </ul>
             </li>
             <!--Menu principal de la aplicacion FINAL -->

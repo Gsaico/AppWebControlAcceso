@@ -41,26 +41,42 @@
                                     @Html.HiddenFor(model => model.UserName)
                                 </div>
                             </div>
-                            <h4>Select Role Assignments</h4>
+                            <h4>Selecciona el Rol Asignado</h4>
                             <br />
                             <hr />
-                            <table>
+                            <table class="table table-striped">
                                 <tr>
                                     <th>
-                                        Select
+                                        Estado
                                     </th>
-                                    <th>
-                                        Role
-                                    </th>
-                                </tr>
-                                @Html.EditorFor(model => model.Roles)
 
+                                    <th>
+                                        Rol
+                                    </th>
+
+                                </tr>
+
+                                @foreach (var item in Model.Roles)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.EditorFor(modelItem => item.Selected)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RoleName)
+                                        </td>
+
+                                    </tr>
+                                }
+
+                                @Html.EditorFor(model => model.Roles)
                             </table>
                             <br />
                             <hr />
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Guardar"  class = "btn btn-primary"  />
+                                    <input type="submit" value="Guardar" class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>
@@ -71,4 +87,3 @@
         </div>
     </div>
 </div>
-

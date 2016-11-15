@@ -81,24 +81,7 @@ namespace Inspinia_MVC5.Controllers
             return View();
 
         }
-        public  ActionResult SearchEdit( string id)
-        {
-
-            return View();
-
-        }
-        public ActionResult SearchDetails(string id)
-        {
-
-            return View();
-
-        }
-        public ActionResult SearchDelete(string id)
-        {
-
-            return View();
-
-        }
+       
         public  ActionResult SearchImprimir(string id)
         {
 
@@ -106,14 +89,21 @@ namespace Inspinia_MVC5.Controllers
 
         }
 
-        public async Task<ActionResult> Search(string SearchStringApePaterno, string SearchStringNombres, string SearchStringDNI)
+        public async Task<ActionResult> Search(string SearchStringDNI, string SearchStringApePaterno, string SearchStringApeMaterno, string SearchStringNombres, string Areasx)
         {
 
             ViewBag.Areasx = new SelectList(db.Areas, "ID_Area", "NombreArea");
-
+          
 
             var colaboradoresquery = from m in db.Colaboradores select m;
 
+            //if (String.IsNullOrEmpty(SearchStringDNI) && String.IsNullOrEmpty(SearchStringApePaterno) && String.IsNullOrEmpty(SearchStringApeMaterno) && String.IsNullOrEmpty(SearchStringNombres) && String.IsNullOrEmpty(Areasx))
+            //{
+            //    return View(null);
+            //}
+            //else
+            //{
+         
             if (!String.IsNullOrEmpty(SearchStringDNI))
             {
                 colaboradoresquery = colaboradoresquery.Where(s => s.COD_Colaborador.Contains(SearchStringDNI));
@@ -124,23 +114,23 @@ namespace Inspinia_MVC5.Controllers
                 colaboradoresquery = colaboradoresquery.Where(s => s.ApellidoPaterno.Contains(SearchStringApePaterno));
             }
 
+            if (!String.IsNullOrEmpty(SearchStringApeMaterno))
+            {
+                colaboradoresquery = colaboradoresquery.Where(s => s.ApellidoMaterno.Contains(SearchStringApeMaterno));
+            }
+
             if (!String.IsNullOrEmpty(SearchStringNombres))
             {
                 colaboradoresquery = colaboradoresquery.Where(s => s.Nombres.Contains(SearchStringNombres));
             }
-            // < div class="form-group">
-            //                                                @Html.Label("AREA:", htmlAttributes: new { @class = "control-label col-md-2" })
-            //                                                <div class="col-md-10">
-            //                                                    @Html.DropDownList("Areasx", null, htmlAttributes: new { @class = "form-control" })
 
-            //                                                </div>
-            // </div>
-            //if (!String.IsNullOrEmpty(Areasx))
-            //{
-            //    int id;
-            //    id = Convert.ToInt32(Areasx);
+            if (!String.IsNullOrEmpty(Areasx))
+            {
+                int id;
+                id = Convert.ToInt32(Areasx);
 
-            //    colaboradoresquery = colaboradoresquery.Where(x => x.ID_Area == id);
+                colaboradoresquery = colaboradoresquery.Where(x => x.ID_Area == id);
+            }
             //}
 
             return View(await colaboradoresquery.ToListAsync());
@@ -150,7 +140,7 @@ namespace Inspinia_MVC5.Controllers
         // GET: Colaboradores
         public ActionResult Index()
         {
-            var colaboradores = db.Colaboradores.Include(c => c.Areas).Include(c => c.Empresas);
+            var colaboradores = db.Colaboradores.Where(c=>c.Estado ==true).Include(c => c.Areas).Include(c => c.Empresas);
             return View( colaboradores.ToList());
         }
 

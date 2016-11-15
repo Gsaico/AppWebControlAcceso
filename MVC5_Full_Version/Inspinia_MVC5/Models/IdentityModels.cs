@@ -8,9 +8,6 @@ namespace Inspinia_MVC5.Models
     public class ApplicationUser : IdentityUser
     {
         [Required]
-        public string COD_Colaborador { get; set; }
-
-        [Required]
         public string ApellidoPaterno { get; set; }
         [Required]
         public string ApellidoMaterno { get; set; }
@@ -19,8 +16,7 @@ namespace Inspinia_MVC5.Models
         [Required]
         public bool Estado { get; set; }
 
-        [Required]
-        public string Email { get; set; }
+      
     }
 
 

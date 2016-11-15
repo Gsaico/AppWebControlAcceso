@@ -63,10 +63,7 @@ namespace Inspinia_MVC5.Models
 
         // New Fields added to extend Application User class:
 
-        [Required]
-        [StringLength(8, ErrorMessage = "El {0} debe tener al menos {2} caracteres.", MinimumLength = 8)]
-        [Display(Name = "DNI")]
-        public string COD_Colaborador { get; set; }
+        
 
         [Required]
         [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres.", MinimumLength = 1)]
@@ -86,25 +83,19 @@ namespace Inspinia_MVC5.Models
         [Required]
         public bool Estado { get; set; }
 
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
-
-      
+             
         // Return a pre-poulated instance of AppliationUser:
         public ApplicationUser GetUser()
         {
             var user = new ApplicationUser()
             {
                 UserName = this.UserName,
-                COD_Colaborador = this.COD_Colaborador,
+            
                 ApellidoPaterno = this.ApellidoPaterno,
                 ApellidoMaterno = this.ApellidoMaterno,
                 Nombres = this.Nombres,
-                Estado = this.Estado,
+                Estado = this.Estado
 
-                Email = this.Email,
             };
             return user;
         }
@@ -120,23 +111,19 @@ namespace Inspinia_MVC5.Models
         {
 
             this.UserName = user.UserName;
-            this.COD_Colaborador = user.COD_Colaborador;
+          
             this.ApellidoPaterno = user.ApellidoPaterno;
             this.ApellidoMaterno = user.ApellidoMaterno;
             this.Nombres = user.Nombres;
             this.Estado = user.Estado;
-            this.Email = user.Email;
+      
         }
 
         [Required]
         [Display(Name = "Nombre Usuario")]
         public string UserName { get; set; }
-
-
-        [Required]
-        [StringLength(8, ErrorMessage = "El {0} debe tener al menos {2} caracteres.", MinimumLength = 8)]
-        [Display(Name = "DNI")]
-        public string COD_Colaborador { get; set; }
+        
+      
 
         [Required]
         [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres.", MinimumLength = 1)]
@@ -156,10 +143,6 @@ namespace Inspinia_MVC5.Models
         [Required]
         public bool Estado { get; set; }
 
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
     }
 
 
@@ -176,7 +159,7 @@ namespace Inspinia_MVC5.Models
             : this()
         {
             this.UserName = user.UserName;
-            this.COD_Colaborador = user.COD_Colaborador;
+          
             this.ApellidoPaterno = user.ApellidoPaterno;
             this.ApellidoMaterno = user.ApellidoMaterno;
             this.Nombres = user.Nombres;
@@ -197,15 +180,14 @@ namespace Inspinia_MVC5.Models
             // which the current user is a member:
             foreach (var userRole in user.Roles)
             {
-                var checkUserRole =
-                    this.Roles.Find(r => r.RoleName == userRole.Role.Name);
+                var checkUserRole =  this.Roles.Find(r => r.RoleName == userRole.Role.Name);
                 checkUserRole.Selected = true;
             }
         }
 
         public string UserName { get; set; }
     
-        public string COD_Colaborador { get; set; }
+     
 
        
         public string ApellidoPaterno { get; set; }

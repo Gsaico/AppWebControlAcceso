@@ -60,8 +60,8 @@ namespace Inspinia_MVC5.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
-       // [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -69,8 +69,8 @@ namespace Inspinia_MVC5.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        //[AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -212,13 +212,13 @@ namespace Inspinia_MVC5.Controllers
             {
                 var Db = new ApplicationDbContext();
                 var user = Db.Users.First(u => u.UserName == model.UserName);
-                user.COD_Colaborador = model.COD_Colaborador;
+               
                 user.ApellidoPaterno = model.ApellidoPaterno;
                 user.ApellidoMaterno = model.ApellidoMaterno;
                 user.Nombres = model.Nombres;
                 user.Estado = model.Estado;
                
-                user.Email = model.Email;
+               
                 Db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 await Db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -258,8 +258,8 @@ namespace Inspinia_MVC5.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
-        //[AllowAnonymous]
+     //   [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         public ActionResult UserRoles(string id)
         {
             var Db = new ApplicationDbContext();
@@ -270,8 +270,8 @@ namespace Inspinia_MVC5.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        //[AllowAnonymous]
+       // [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult UserRoles(SelectUserRolesViewModel model)
         {
