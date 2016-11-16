@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-8">
         <div class="title-action">
-			@Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary"})
+			@Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary", id = "btnRegresarListadoColaboradores", name = "btnRegresarListadoColaboradores" })
         </div>
     </div>
 </div>
@@ -28,8 +28,29 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
+               
                 <div class="ibox-title">
-                    <h5>Colaboradores</h5>
+                    <h5>Eliminar Información del Colaborador</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        @*<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="#">Config option 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Config option 2</a>
+                    </li>
+                </ul>*@
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="ibox-content">
 				<h4 class="text-danger">@ViewBag.mensajedelete</h4>
@@ -146,8 +167,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-primary" @ViewBag.estadobotoneleiminar />
-            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white"})
+            <input type="submit" value="Eliminar" class="btn btn-primary" id = "btnEliminarColaborador" name = "btnEliminarColaborador" @ViewBag.estadobotoneleiminar />
+            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white", id = "btnRegresarListadoColaboradores", name = "btnRegresarListadoColaboradores" })
         </div>
     }
 

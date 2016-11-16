@@ -22,12 +22,12 @@ namespace Inspinia_MVC5.Controllers
 
         private static Byte[] _MyGlobalVariable;
 
-        public ActionResult ListadoColaboradores()
-        {
-            ViewBag.ListColaboradores = db.Colaboradores.ToList();
+        //public ActionResult ListadoColaboradores()
+        //{
+        //    ViewBag.ListColaboradores = db.Colaboradores.ToList();
 
-            return View();
-        }
+        //    return View();
+        //}
 
       
         public ActionResult FotocheckColaboradorPDF(string COD_Colaborador)
@@ -81,24 +81,7 @@ namespace Inspinia_MVC5.Controllers
             return View();
 
         }
-        public  ActionResult SearchEdit( string id)
-        {
-
-            return View();
-
-        }
-        public ActionResult SearchDetails(string id)
-        {
-
-            return View();
-
-        }
-        public ActionResult SearchDelete(string id)
-        {
-
-            return View();
-
-        }
+       
         public  ActionResult SearchImprimir(string id)
         {
 
@@ -106,14 +89,21 @@ namespace Inspinia_MVC5.Controllers
 
         }
 
-        public async Task<ActionResult> Search(string SearchStringApePaterno, string SearchStringNombres, string SearchStringDNI)
+        public async Task<ActionResult> Search(string SearchStringDNI, string SearchStringApePaterno, string SearchStringApeMaterno, string SearchStringNombres, string Areasx)
         {
 
             ViewBag.Areasx = new SelectList(db.Areas, "ID_Area", "NombreArea");
-
+          
 
             var colaboradoresquery = from m in db.Colaboradores select m;
 
+            //if (String.IsNullOrEmpty(SearchStringDNI) && String.IsNullOrEmpty(SearchStringApePaterno) && String.IsNullOrEmpty(SearchStringApeMaterno) && String.IsNullOrEmpty(SearchStringNombres) && String.IsNullOrEmpty(Areasx))
+            //{
+            //    return View(null);
+            //}
+            //else
+            //{
+         
             if (!String.IsNullOrEmpty(SearchStringDNI))
             {
                 colaboradoresquery = colaboradoresquery.Where(s => s.COD_Colaborador.Contains(SearchStringDNI));
@@ -124,23 +114,23 @@ namespace Inspinia_MVC5.Controllers
                 colaboradoresquery = colaboradoresquery.Where(s => s.ApellidoPaterno.Contains(SearchStringApePaterno));
             }
 
+            if (!String.IsNullOrEmpty(SearchStringApeMaterno))
+            {
+                colaboradoresquery = colaboradoresquery.Where(s => s.ApellidoMaterno.Contains(SearchStringApeMaterno));
+            }
+
             if (!String.IsNullOrEmpty(SearchStringNombres))
             {
                 colaboradoresquery = colaboradoresquery.Where(s => s.Nombres.Contains(SearchStringNombres));
             }
-            // < div class="form-group">
-            //                                                @Html.Label("AREA:", htmlAttributes: new { @class = "control-label col-md-2" })
-            //                                                <div class="col-md-10">
-            //                                                    @Html.DropDownList("Areasx", null, htmlAttributes: new { @class = "form-control" })
 
-            //                                                </div>
-            // </div>
-            //if (!String.IsNullOrEmpty(Areasx))
-            //{
-            //    int id;
-            //    id = Convert.ToInt32(Areasx);
+            if (!String.IsNullOrEmpty(Areasx))
+            {
+                int id;
+                id = Convert.ToInt32(Areasx);
 
-            //    colaboradoresquery = colaboradoresquery.Where(x => x.ID_Area == id);
+                colaboradoresquery = colaboradoresquery.Where(x => x.ID_Area == id);
+            }
             //}
 
             return View(await colaboradoresquery.ToListAsync());
@@ -150,7 +140,8 @@ namespace Inspinia_MVC5.Controllers
         // GET: Colaboradores
         public ActionResult Index()
         {
-            var colaboradores = db.Colaboradores.Include(c => c.Areas).Include(c => c.Empresas);
+            var colaboradores = db.Colaboradores.Where(c=>c.Estado ==true).Include(c => c.Areas).Include(c => c.Empresas);
+            ViewBag.ListaColaboradores = colaboradores;
             return View( colaboradores.ToList());
         }
 
@@ -163,13 +154,14 @@ namespace Inspinia_MVC5.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Colaboradores colaboradores = db.Colaboradores.Find(id);
-
+           
 
             if (colaboradores == null)
             {
                // return HttpNotFound();
                 return RedirectToAction("EmptyPage", "Colaboradores");
             }
+            ViewBag.DetalleColaborador = colaboradores;
             return View(colaboradores);
         }
 
@@ -178,6 +170,7 @@ namespace Inspinia_MVC5.Controllers
         {
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea");
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial");
+            
             return View();
         }
 
@@ -203,6 +196,7 @@ namespace Inspinia_MVC5.Controllers
             if (colaboradoresx != null)
             {
                 return Content("<script language='javascript' type='text/javascript'>alert('Error El DNI que ud desea ingresar ya existe en la Base de Datos!');</script>");
+                // return Content("<script language='javascript' type='text/javascript'> toastr.success('Without any options', 'Simple notification!')</script>");
             }
 
             else
@@ -211,6 +205,7 @@ namespace Inspinia_MVC5.Controllers
                 {
                     db.Colaboradores.Add(colaboradores);
                     await db.SaveChangesAsync();
+                    ViewBag.MensajeAlerta = "El colaborador se agrego correctamente a la Base de Datos";
                     return RedirectToAction("Index");
                 }
 
@@ -242,6 +237,8 @@ namespace Inspinia_MVC5.Controllers
 
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea", colaboradores.ID_Area);
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
+
+            ViewBag.DetalleColaborador = colaboradores;
             return View(colaboradores);
         }
 
@@ -274,10 +271,13 @@ namespace Inspinia_MVC5.Controllers
             {
                 db.Entry(colaboradores).State = EntityState.Modified;
                 await db.SaveChangesAsync();
+                ViewBag.MensajeAlerta = "Los cambios se agregaron correctamente a la Base de Datos";
                 return RedirectToAction("Index");
             }
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea", colaboradores.ID_Area);
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
+
+            ViewBag.DetalleColaboradorAgregado = colaboradores;
             return View(colaboradores);
         }
 
@@ -315,11 +315,11 @@ namespace Inspinia_MVC5.Controllers
 
             }
 
-         
 
 
-          
-        
+            ViewBag.DetalleColaborador = colaboradores;
+
+
             return View(colaboradores);
         }
 
@@ -331,6 +331,7 @@ namespace Inspinia_MVC5.Controllers
             Colaboradores colaboradores =  db.Colaboradores.Find(id);
             db.Colaboradores.Remove(colaboradores);
             db.SaveChanges();
+            ViewBag.MensajeAlerta = "El colaborador se elimino de la Base de Datos";
             return RedirectToAction("Index");
         }
 

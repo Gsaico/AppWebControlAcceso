@@ -1,0 +1,14 @@
+﻿1.- habilitando entity
+
+Enable-Migrations -ContextTypeName Inspinia_MVC5.Models.ApplicationDbContext
+
+
+2.- Enable-Migrations –EnableAutomaticMigrations
+
+3.- Migrando
+
+Add-Migration init
+
+4.- commit
+
+Update-Database

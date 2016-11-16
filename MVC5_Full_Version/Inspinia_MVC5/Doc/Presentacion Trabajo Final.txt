@@ -1,16 +1,4 @@
-﻿1.- habilitando entity
-
-Enable-Migrations -ContextTypeName Inspinia_MVC5.Models.ApplicationDbContext
-
-2.- Migrando
-
-Add-Migration init
-
-3.- commit
-
-Update-Database
-
-
+﻿
 PRESENTACION DE TRABAJO FINAL
 -----------------------------
 

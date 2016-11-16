@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-8">
         <div class="title-action">
-            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-primary", id = "btnRegresarAListadoColaboradores", name = "btnRegresarAListadoColaboradores" })
         </div>
     </div>
 </div>
@@ -30,9 +30,31 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
+               
                 <div class="ibox-title">
-                    <h5>Detalle de de Datos de Colaborador</h5>
+                    <h5>Información Detallada de Colaborador</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        @*<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="#">Config option 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Config option 2</a>
+                    </li>
+                </ul>*@
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </div>
+
                 <div class="ibox-content">
 
 
@@ -123,6 +145,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Estado)
+           
         </dd>
 
         <dt>
@@ -145,9 +168,9 @@
 
 
 	   
-        @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = Model.COD_Colaborador }, new { @class = "btn btn-primary" }) 
-                    @Html.ActionLink("Editar", "Edit", new { id = Model.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
-                    @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white btn-sm" })
+        @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = Model.COD_Colaborador }, new { @class = "btn btn-primary", id = "btnImprimirFotocheck", name = "btnImprimirFotocheck" }) 
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.COD_Colaborador }, new { @class = "btn btn-white btn-sm", id = "btnEditarColaborador", name = "btnEditarColaborador" })
+                    @Html.ActionLink("Regresar a Listado de Colaboradores", "Index", null, new { @class = "btn btn-white btn-sm", id = "btnRegresarAListadoColaboradores", name = "btnRegresarAListadoColaboradores" })
 
                 </div>
             </div>

@@ -13,7 +13,7 @@ namespace Inspinia_MVC5.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611110035345_init"; }
+            get { return "201611152217050_init"; }
         }
         
         string IMigrationMetadata.Source

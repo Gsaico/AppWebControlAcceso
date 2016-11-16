@@ -205,9 +205,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611110035345_init.cs" />
-    <Compile Include="Migrations\201611110035345_init.Designer.cs">
-      <DependentUpon>201611110035345_init.cs</DependentUpon>
+    <Compile Include="Migrations\201611152217050_init.cs" />
+    <Compile Include="Migrations\201611152217050_init.Designer.cs">
+      <DependentUpon>201611152217050_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -390,7 +390,8 @@
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\switchery\switchery.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
-    <Content Include="Doc\ComandosIdentity.txt" />
+    <Content Include="Doc\Presentacion Trabajo Final.txt" />
+    <Content Include="Doc\Configuracion BasedeDatosLogin.txt" />
     <Content Include="Doc\script.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
@@ -461,12 +462,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\validCampoFranz.js" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Colaboradores\SearchEdit.cshtml" />
     <Content Include="Views\Colaboradores\EmptyPage.cshtml" />
-    <Content Include="Views\Colaboradores\SearchDetails.cshtml" />
-    <Content Include="Views\Colaboradores\SearchDelete.cshtml" />
     <Content Include="Views\Colaboradores\SearchImprimir.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
@@ -477,6 +477,9 @@
     <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Doc\_bin_deployableAssemblies.zip" />
+    <Content Include="Doc\backupidcheck.zip" />
+    <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -1043,8 +1046,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611110035345_init.resx">
-      <DependentUpon>201611110035345_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611152217050_init.resx">
+      <DependentUpon>201611152217050_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReportFotocheck.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

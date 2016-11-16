@@ -86,9 +86,7 @@ namespace Inspinia_MVC5.Controllers
                     {
                         if (DateTime.Now >= GetColaboradorById.FechaIngresoReingreso && DateTime.Now <= GetColaboradorById.FechaCese)
                         {//Hasta aqui el colaborador tiene permitido el ingreso y vigente su contrato
-
-
-
+                            
                             var GetRegistroDiarioColaborador = dbx.RegistrosDiarios.Where(r => r.COD_Colaborador == COD_Colaborador && r.Fecha.Month == DateTime.Today.Month && r.Fecha.Year == DateTime.Today.Year && r.Fecha.Day == DateTime.Today.Day).FirstOrDefault();
 
                             if (GetRegistroDiarioColaborador == null)//el colaborador no registro el dia de hoy su ingreso o salida
@@ -103,10 +101,8 @@ namespace Inspinia_MVC5.Controllers
                                 rd.FechaYHoraIngreso = DateTime.Now;
                                 rd.FechaYHoraSalida = null;
                                 rd.UltimaActualizacion = DateTime.Now;
-
                                 // registramos su ingreso pero su salida lo ponemos en null
-
-
+                                
                                 db.RegistrosDiarios.Add(rd);
                                 db.SaveChanges();
 
