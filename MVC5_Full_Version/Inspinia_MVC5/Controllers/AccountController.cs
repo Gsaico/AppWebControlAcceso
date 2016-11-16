@@ -258,8 +258,8 @@ namespace Inspinia_MVC5.Controllers
         }
 
 
-     //   [Authorize(Roles = "Admin")]
-        [AllowAnonymous]
+       [Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
         public ActionResult UserRoles(string id)
         {
             var Db = new ApplicationDbContext();
@@ -270,8 +270,8 @@ namespace Inspinia_MVC5.Controllers
 
 
         [HttpPost]
-       // [Authorize(Roles = "Admin")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult UserRoles(SelectUserRolesViewModel model)
         {

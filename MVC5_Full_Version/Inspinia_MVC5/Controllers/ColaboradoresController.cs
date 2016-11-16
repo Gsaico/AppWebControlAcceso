@@ -141,6 +141,7 @@ namespace Inspinia_MVC5.Controllers
         public ActionResult Index()
         {
             var colaboradores = db.Colaboradores.Where(c=>c.Estado ==true).Include(c => c.Areas).Include(c => c.Empresas);
+            ViewBag.ListaColaboradores = colaboradores;
             return View( colaboradores.ToList());
         }
 
@@ -153,13 +154,14 @@ namespace Inspinia_MVC5.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Colaboradores colaboradores = db.Colaboradores.Find(id);
-
+           
 
             if (colaboradores == null)
             {
                // return HttpNotFound();
                 return RedirectToAction("EmptyPage", "Colaboradores");
             }
+            ViewBag.DetalleColaborador = colaboradores;
             return View(colaboradores);
         }
 
@@ -168,6 +170,7 @@ namespace Inspinia_MVC5.Controllers
         {
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea");
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial");
+            
             return View();
         }
 
@@ -193,6 +196,7 @@ namespace Inspinia_MVC5.Controllers
             if (colaboradoresx != null)
             {
                 return Content("<script language='javascript' type='text/javascript'>alert('Error El DNI que ud desea ingresar ya existe en la Base de Datos!');</script>");
+                // return Content("<script language='javascript' type='text/javascript'> toastr.success('Without any options', 'Simple notification!')</script>");
             }
 
             else
@@ -201,6 +205,7 @@ namespace Inspinia_MVC5.Controllers
                 {
                     db.Colaboradores.Add(colaboradores);
                     await db.SaveChangesAsync();
+                    ViewBag.MensajeAlerta = "El colaborador se agrego correctamente a la Base de Datos";
                     return RedirectToAction("Index");
                 }
 
@@ -232,6 +237,8 @@ namespace Inspinia_MVC5.Controllers
 
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea", colaboradores.ID_Area);
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
+
+            ViewBag.DetalleColaborador = colaboradores;
             return View(colaboradores);
         }
 
@@ -264,10 +271,13 @@ namespace Inspinia_MVC5.Controllers
             {
                 db.Entry(colaboradores).State = EntityState.Modified;
                 await db.SaveChangesAsync();
+                ViewBag.MensajeAlerta = "Los cambios se agregaron correctamente a la Base de Datos";
                 return RedirectToAction("Index");
             }
             ViewBag.ID_Area = new SelectList(db.Areas, "ID_Area", "NombreArea", colaboradores.ID_Area);
             ViewBag.COD_Empresa = new SelectList(db.Empresas, "COD_Empresa", "RazonSocial", colaboradores.COD_Empresa);
+
+            ViewBag.DetalleColaboradorAgregado = colaboradores;
             return View(colaboradores);
         }
 
@@ -305,11 +315,11 @@ namespace Inspinia_MVC5.Controllers
 
             }
 
-         
 
 
-          
-        
+            ViewBag.DetalleColaborador = colaboradores;
+
+
             return View(colaboradores);
         }
 
@@ -321,6 +331,7 @@ namespace Inspinia_MVC5.Controllers
             Colaboradores colaboradores =  db.Colaboradores.Find(id);
             db.Colaboradores.Remove(colaboradores);
             db.SaveChanges();
+            ViewBag.MensajeAlerta = "El colaborador se elimino de la Base de Datos";
             return RedirectToAction("Index");
         }
 

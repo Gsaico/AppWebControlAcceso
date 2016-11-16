@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.ApellidoPaterno, new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
+                                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();", onkeypress = "return val(event);" })
                                     @Html.ValidationMessageFor(model => model.ApellidoPaterno)
                                   
                                 </div>
@@ -92,7 +92,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.ApellidoMaterno, new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
+                                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();", onkeypress = "return val(event);" })
                                     @Html.ValidationMessageFor(model => model.ApellidoMaterno)
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Nombres, new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.Nombres, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();" })
+                                    @Html.TextBoxFor(model => model.Nombres, new { @class = "form-control", maxlength = "100", style = "text-transform:uppercase;", onkeyup = "javascript:this.value=this.value.toUpperCase();", onkeypress = "return val(event);" })
                                     @Html.ValidationMessageFor(model => model.Nombres)
                                 </div>
                             </div>
@@ -169,7 +169,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Estado, new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
-                                    @Html.EditorFor(model => model.Estado)
+                                  
+                                    @Html.CheckBoxFor(model => model.Estado, new { @class = "i-checks", style = "position: absolute; opacity: 0;" })
                                     @Html.ValidationMessageFor(model => model.Estado)
                                 </div>
                             </div>
@@ -226,6 +227,13 @@
         $("#imgInp").change(function () {
             readURL(this);
         });
+        function val(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
     </script>
     @Scripts.Render("~/plugins/iCheck")
     @Scripts.Render("~/plugins/dataPicker")

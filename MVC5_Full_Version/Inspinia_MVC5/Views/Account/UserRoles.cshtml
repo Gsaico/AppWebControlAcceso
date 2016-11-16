@@ -27,7 +27,26 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h2>Roles del Usuario @Html.DisplayFor(model => model.UserName)</h2>
+                    <h5>Roles del Usuario @Html.DisplayFor(model => model.UserName)</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        @*<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li>
+                    <a href="#">Config option 1</a>
+                </li>
+                <li>
+                    <a href="#">Config option 2</a>
+                </li>
+            </ul>*@
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="ibox-content">
                     @using (Html.BeginForm("UserRoles", "Account", FormMethod.Post, new { encType = "multipart/form-data", name = "myform" }))
@@ -41,32 +60,38 @@
                                     @Html.HiddenFor(model => model.UserName)
                                 </div>
                             </div>
-                            <h4>Selecciona el Rol Asignado</h4>
-                            <br />
-                            <hr />
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>
-                                        Estado
-                                    </th>
 
-                                    <th>
-                                        Rol
-                                    </th>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Estado
+                                            </th>
 
-                                </tr>
-                                                            
+                                            <th>
+                                                Rol
+                                            </th>
 
-                                @Html.EditorFor(model => model.Roles)
-                            </table>
-                            <br />
-                            <hr />
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Guardar" class="btn btn-primary"  id = "btnGuardar" name = "btnGuardar" />
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @Html.EditorFor(model => model.Roles)
+                                </table>
+                            </div>
+                                <br />
+                                <hr />
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Guardar" class="btn btn-primary" id="btnGuardar" name="btnGuardar" />
+                                        @Html.ActionLink("Regresar a Listado de Usuarios", "Index", null, new { @class = "btn btn-white", id = "btnRegresarListadoUsuariosx", name = "btnRegresarListadoUsuariosx" })
+
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
                     }
 
                 </div>
@@ -74,3 +99,53 @@
         </div>
     </div>
 </div>
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/peity")
+    @Scripts.Render("~/plugins/iCheck")
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+
+                $("span.pie").peity("pie", {
+                    fill: ['#1ab394', '#d7d7d7', '#ffffff']
+                })
+
+                $(".line").peity("line", {
+                    fill: '#1ab394',
+                    stroke: '#169c81',
+                })
+
+                $(".bar").peity("bar", {
+                    fill: ["#1ab394", "#d7d7d7"]
+                })
+
+                $(".bar_dashboard").peity("bar", {
+                    fill: ["#1ab394", "#d7d7d7"],
+                    width: 100
+                })
+
+                var updatingChart = $(".updating-chart").peity("line", { fill: '#1ab394', stroke: '#169c81', width: 64 })
+
+                setInterval(function () {
+                    var random = Math.round(Math.random() * 10)
+                    var values = updatingChart.text().split(",")
+                    values.shift()
+                    values.push(random)
+
+                    updatingChart
+                        .text(values.join(","))
+                        .change()
+                }, 1000);
+
+            });
+    </script>
+}

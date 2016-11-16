@@ -134,73 +134,81 @@
                 </div>
                 <div class="ibox-content">
 
-                    <table class="table table-striped">
-                        <tr>
-                            <th>
-                                Apellidos yNombres
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.FechaIngresoReingreso)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.FechaCese)
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.Foto)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Cargo)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Estado)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Areas.NombreArea)
-                            </th>
-
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
-                                </td>
+                                <th>
+                                    Apellidos yNombres
+                                </th>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FechaIngresoReingreso)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FechaCese)
-                                </td>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FechaIngresoReingreso)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FechaCese)
+                                </th>
 
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Foto)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Cargo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Estado)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Areas.NombreArea)
+                                </th>
 
-                                <td>
-                                    <img width="50" height="50" src="@Url.Action("ConvertirAImagen", "Colaboradores", new {COD_Colaborador = item.COD_Colaborador})" />
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Cargo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Estado)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Areas.NombreArea)
-                                </td>
+                                <th></th>
+                            </tr>
+                        </thead>
+<tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
+                                    </td>
 
-                                <td>
-                                    @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaIngresoReingreso)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaCese)
+                                    </td>
 
-                                    @Html.ActionLink("Detalle", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                    <td>
+                                        <img width="50" height="50" src="@Url.Action("ConvertirAImagen", "Colaboradores", new {COD_Colaborador = item.COD_Colaborador})" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cargo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Areas.NombreArea)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Imprimir Fotocheck", "FotocheckColaboradorPDF", new { COD_Colaborador = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
+
+                                        @Html.ActionLink("Detalle", "Details", new { id = item.COD_Colaborador }, new { @class = "btn btn-primary btn-sm" })
+                                        @Html.ActionLink("Editar", "Edit", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                        @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_Colaborador }, new { @class = "btn btn-white btn-sm" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <ul class="pagination pull-right"></ul>
                                 </td>
                             </tr>
-                        }
-
+                        </tfoot>
                     </table>
 
                 </div>
@@ -210,6 +218,25 @@
 
 
 </div>
+
+
+@section Styles {
+    @Styles.Render("~/plugins/footableStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/footable")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+
+        });
+    </script>
+}
 
 
 <script>

@@ -4,16 +4,27 @@
     ViewBag.Title = "Todos";
 }
 
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
         <h2>Usuarios</h2>
         <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("Listado", "Index")
+            </li>
             <li class="active">
                 <strong>Lista</strong>
             </li>
         </ol>
     </div>
-</div>
+        <div class="col-sm-8">
+            <div class="title-action">
+                @Html.ActionLink("Agregar Nuevo Usuario", "Register", null, new { @class = "btn btn-primary", id = "btnAgregaNuevoUsuario", name = "btnAgregaNuevoUsuario" })
+            </div>
+        </div>
+
+    </div>
+
 
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -23,49 +34,83 @@
                 <div class="ibox-title">
                     <h5>Listado de Usuarios</h5>
                     <div class="ibox-tools">
-                        @Html.ActionLink("Agregar Nuevo Usuario", "Register", null, new { @class = "btn btn-primary btn-xs", id = "btnAgregaNuevoUsuario", name = "btnAgregaNuevoUsuario" })
+                       
+                         <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                       
                     </div>
                 </div>
                 <div class="ibox-content">
 
-                    <table class="table table-striped">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.UserName)
-                            </th>
-
-                            <th>
-                                Apellidos y Nombres
-                            </th>
-                        
-                           
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="5">
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </th>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
-                                </td>
-                               
-                              
-                                <td>
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnEditarUsuario", name = "btnEditarUsuario" }) 
-                                    @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnRolesUsuario", name = "btnRolesUsuario" }) 
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.UserName }, new { @class = "btn btn-primary btn-sm", id = "btnEliminarUsuario", name = "btnEliminarUsuario" })
+                                <th>
+                                    Apellidos y Nombres
+                                </th>
+
+
+                                <th></th>
+                            </tr>
+                        <tbody>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ApellidoPaterno) @Html.DisplayFor(modelItem => item.ApellidoMaterno) @Html.DisplayFor(modelItem => item.Nombres)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.ActionLink("Editar", "Edit", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnEditarUsuario", name = "btnEditarUsuario" })
+                                        @Html.ActionLink("Roles", "UserRoles", new { id = item.UserName }, new { @class = "btn btn-white btn-sm", id = "btnRolesUsuario", name = "btnRolesUsuario" })
+                                        @Html.ActionLink("Eliminar", "Delete", new { id = item.UserName }, new { @class = "btn btn-primary btn-sm", id = "btnEliminarUsuario", name = "btnEliminarUsuario" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <ul class="pagination pull-right"></ul>
                                 </td>
                             </tr>
-                        }
+                        </tfoot>
 
-                    </table>
+</table>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section Styles {
+    @Styles.Render("~/plugins/footableStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/footable")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+
+        });
+    </script>
+}
