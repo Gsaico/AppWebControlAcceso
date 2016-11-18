@@ -191,7 +191,7 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNull(result, "Debería devolver nulo si hay colaboradores");
 
         }
-
+        [TestMethod]
         public void Details_NoNull_ColaboradorNoExiste()
         {
             // Arrange
@@ -205,6 +205,49 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNull(result, "Debería devolver nulo porque no exite dni");
 
         }
+        [TestMethod]
+        public void Create()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "00000000";
+            // Act
+            ViewResult result = controller.Create() as ViewResult;
+
+            // Assert
+
+            Assert.IsNotNull(result, "Debería devolver no nulo ");
+
+        }
+        [TestMethod]
+        public void Edith_DniNull()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "";
+            // Act
+            ViewResult result = controller.Edit(dni) as ViewResult;
+
+            // Assert
+
+            Assert.IsNull(result, "Debería devolver nulo porque no exite dni");
+
+        }
+        [TestMethod]
+        public void Edith_DniNoNull_ColaboradorNUll()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "00000000";
+            // Act
+            ViewResult result = controller.Edit(dni) as ViewResult;
+
+            // Assert
+
+            Assert.IsNull(result, "Debería devolver nulo porque no exite colaborador");
+
+        }
+
 
     }
 }
