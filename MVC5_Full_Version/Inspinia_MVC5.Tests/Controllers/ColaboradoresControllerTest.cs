@@ -317,7 +317,22 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.AreEqual("¿Estás seguro que quieres eliminar los datos del colaborador?", result.ViewBag.mensajedelete);
 
         }
+        /*
+        [TestMethod]
+        public void DeleteConfirme()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "12345677";
+            // Act
+            ViewResult result = controller.Delete(dni) as ViewResult;
 
-        
+            // Assert
+
+            Assert.AreEqual("El colaborador se elimino de la Base de Datos", result.ViewBag.MensajeAlerta);
+
+        }
+        */
+
     }
 }
