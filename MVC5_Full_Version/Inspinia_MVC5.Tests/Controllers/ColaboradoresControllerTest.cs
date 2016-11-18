@@ -14,69 +14,156 @@ namespace Inspinia_MVC5.Tests.Controllers
     [TestClass]
     public class ColaboradoresControllerTest
     {
-       
+        /*
+         [TestMethod]
+         public void Test_MostrarColaboradores()
+         {
+             // Arrange
+             ColaboradoresController controller = new ColaboradoresController();
+
+             // Act
+             ViewResult result = controller.Index() as ViewResult;
+
+             // Assert
+             Assert.IsNotNull(result);
+         }
+         [TestMethod]
+         public void Test_DetalleColaboradores()
+         {
+             // Arrange
+             ColaboradoresController controller = new ColaboradoresController();
+
+             // Act
+             ViewResult result = controller.Details("11111111") as ViewResult;
+
+             // Assert
+             Assert.IsNotNull(result);
+         }
+         [TestMethod]
+         public void Test_CreateColaboradores()
+         {
+             // Arrange
+             ColaboradoresController controller = new ColaboradoresController();
+
+             // Act
+             ViewResult result = controller.Create() as ViewResult;
+
+             // Assert
+             Assert.IsNotNull(result);
+         }
+
+         [TestMethod]
+         public void Test_EditColaboradores()
+         {
+             // Arrange
+             ColaboradoresController controller = new ColaboradoresController();
+
+             // Act
+             ViewResult result = controller.Edit("11111111") as ViewResult;
+
+             // Assert
+             Assert.IsNotNull(result);
+         }
+
+         [TestMethod]
+         public void Test_DeleteColaboradores()
+         {
+             // Arrange
+             ColaboradoresController controller = new ColaboradoresController();
+
+             // Act
+             ViewResult result = controller.Delete("11111111") as ViewResult;
+
+             // Assert
+             Assert.IsNotNull(result);
+         }
+        */
+        /*
         [TestMethod]
-        public void Test_MostrarColaboradores()
+        public async Task Search_ByDNI_Existente()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            Colaboradores colaborador = new Colaboradores();
+
+            string DNI = "11111111";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area);
+            
+            foreach(Colaboradores col in result.ExecuteResult)
+            {
+
+            }
+            
+            //result.GetHashCode();
+          //  ViewResult vr = result  ;
+            ActionResult rs = result;
+      
+               // PartialViewResult r = result ;
+           
+           // Assert.AreEqual(0,result);
+            
+            // Assert
+           // Assert.IsNotNull(result);
+        }
+        
+        [TestMethod]
+        public void Search_ByDNI_Inexistente()
         {
             // Arrange
             ColaboradoresController controller = new ColaboradoresController();
 
+            // Act
+            ViewResult result = controller.Edit("00000000") as ViewResult;
+
+            // Assert
+            Assert.IsNull(result);
+        }
+       */
+        [TestMethod]
+        public void empypage()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+
+            // Act
+            ViewResult result = controller.EmptyPage() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Search_Imprimir()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string id = "11111111";
+            // Act
+            ViewResult result = controller.SearchImprimir(id) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Index()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+          
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
-        }
-        [TestMethod]
-        public void Test_DetalleColaboradores()
-        {
-            // Arrange
-            ColaboradoresController controller = new ColaboradoresController();
+            Assert.IsNotNull(result,"Debería devolver no nulo si hay colaboradores");
 
-            // Act
-            ViewResult result = controller.Details("11111111") as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-        [TestMethod]
-        public void Test_CreateColaboradores()
-        {
-            // Arrange
-            ColaboradoresController controller = new ColaboradoresController();
-
-            // Act
-            ViewResult result = controller.Create() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public void Test_EditColaboradores()
-        {
-            // Arrange
-            ColaboradoresController controller = new ColaboradoresController();
 
-            // Act
-            ViewResult result = controller.Edit("11111111") as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
-        public void Test_DeleteColaboradores()
-        {
-            // Arrange
-            ColaboradoresController controller = new ColaboradoresController();
-
-            // Act
-            ViewResult result = controller.Delete("11111111") as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-       
     }
 }

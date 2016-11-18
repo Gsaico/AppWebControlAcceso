@@ -80,6 +80,7 @@ namespace Inspinia_MVC5.Controllers
 
             return View();
 
+
         }
        
         public  ActionResult SearchImprimir(string id)
