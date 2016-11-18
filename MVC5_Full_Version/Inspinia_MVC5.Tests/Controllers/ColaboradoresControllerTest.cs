@@ -247,7 +247,77 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNull(result, "Debería devolver nulo porque no exite colaborador");
 
         }
+        [TestMethod]
+        public void Edith_DniNoNull_Colaborador()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "11111111";
+            // Act
+            ViewResult result = controller.Edit(dni) as ViewResult;
 
+            // Assert
 
+            Assert.IsNotNull(result, "Debería devolver no nulo porque  exite colaborador");
+
+        }
+        [TestMethod]
+        public void Delete_DniNull()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "";
+            // Act
+            ViewResult result = controller.Delete(dni) as ViewResult;
+
+            // Assert
+
+            Assert.IsNull(result, "Debería devolver nulo porque no exite dni");
+
+        }
+        [TestMethod]
+        public void Delete_DniNoNull_ColaboradorNull()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "00000000";
+            // Act
+            ViewResult result = controller.Delete(dni) as ViewResult;
+
+            // Assert
+
+            Assert.IsNull(result, "Debería devolver nulo porque no exite colaborador");
+
+        }
+        [TestMethod]
+        public void Delete_DniNoNull_Colaborador_CONRegistrosDiarios()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "11111111";
+            // Act
+            ViewResult result = controller.Delete(dni) as ViewResult;
+
+            // Assert
+
+            Assert.AreEqual("Los datos del colaborador no se pueden eliminar, ya existe información registrada", result.ViewBag.mensajedelete);
+
+        }
+        [TestMethod]
+        public void Delete_DniNoNull_Colaborador_SinRegistrosDiarios()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "99999999";
+            // Act
+            ViewResult result = controller.Delete(dni) as ViewResult;
+
+            // Assert
+
+            Assert.AreEqual("¿Estás seguro que quieres eliminar los datos del colaborador?", result.ViewBag.mensajedelete);
+
+        }
+
+        
     }
 }
