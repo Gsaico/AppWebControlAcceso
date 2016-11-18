@@ -163,7 +163,48 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNotNull(result,"Debería devolver no nulo si hay colaboradores");
 
         }
+        [TestMethod]
+        public void Details_NoNull()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "11111111";
+            // Act
+            ViewResult result = controller.Details(dni) as ViewResult;
 
+            // Assert
+            
+            Assert.IsNotNull(result, "Debería devolver no nulo si hay colaboradores");
+
+        }
+        [TestMethod]
+        public void Details_Null()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "";
+            // Act
+            ViewResult result = controller.Details(dni) as ViewResult;
+
+            // Assert
+
+            Assert.IsNull(result, "Debería devolver nulo si hay colaboradores");
+
+        }
+
+        public void Details_NoNull_ColaboradorNoExiste()
+        {
+            // Arrange
+            ColaboradoresController controller = new ColaboradoresController();
+            string dni = "00000000";
+            // Act
+            ViewResult result = controller.Details(dni) as ViewResult;
+
+            // Assert
+
+            Assert.IsNull(result, "Debería devolver nulo porque no exite dni");
+
+        }
 
     }
 }
