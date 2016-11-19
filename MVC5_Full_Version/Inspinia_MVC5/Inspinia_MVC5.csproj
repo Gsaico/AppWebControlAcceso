@@ -196,6 +196,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="cnx\Conexion.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -240,6 +241,9 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\RegistrosDiarios.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_DetalleColaborador_Result.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TiposDeDias.cs">
@@ -390,6 +394,7 @@
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\switchery\switchery.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
+    <Content Include="Doc\Modelos\Colaborador.txt" />
     <Content Include="Doc\Presentacion Trabajo Final.txt" />
     <Content Include="Doc\Configuracion BasedeDatosLogin.txt" />
     <Content Include="Doc\script.sql" />
@@ -480,6 +485,7 @@
     <Content Include="Doc\_bin_deployableAssemblies.zip" />
     <Content Include="Doc\backupidcheck.zip" />
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
+    <Content Include="Views\Colaboradores\FotocheckColaboradorPDF.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

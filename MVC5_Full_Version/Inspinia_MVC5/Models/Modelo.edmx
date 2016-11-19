@@ -131,6 +131,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_DetalleColaborador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodColaborador" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="IDCHECKDBModelStoreContainer">
           <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendarios" EntityType="Self.Calendarios" Schema="dbo" store:Type="Tables" />
@@ -184,6 +187,9 @@
             <End Role="Colaboradores" EntitySet="Colaboradores" />
             <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
           </AssociationSet>
+          <FunctionImport Name="SP_DetalleColaborador" ReturnType="Collection(IDCHECKDBModel.SP_DetalleColaborador_Result)">
+            <Parameter Name="CodColaborador" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Areas">
           <Key>
@@ -319,6 +325,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="SP_DetalleColaborador_Result">
+          <Property Type="String" Name="COD_Colaborador" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ApellidoMaterno" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombres" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -408,6 +421,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_DetalleColaborador" FunctionName="IDCHECKDBModel.Store.SP_DetalleColaborador">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IDCHECKDBModel.SP_DetalleColaborador_Result">
+                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
