@@ -8,6 +8,7 @@ using Inspinia_MVC5.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace Inspinia_MVC5.Tests.Controllers
 {
@@ -78,52 +79,6 @@ namespace Inspinia_MVC5.Tests.Controllers
              Assert.IsNotNull(result);
          }
         */
-        /*
-        [TestMethod]
-        public async Task Search_ByDNI_Existente()
-        {
-            // Arrange
-            ColaboradoresController controller = new ColaboradoresController();
-            Colaboradores colaborador = new Colaboradores();
-
-            string DNI = "11111111";
-            string ApePaterno = "";
-            string ApeMaterno = "";
-            string Nombres = "";
-            string Area = "";
-            // Act
-            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area);
-            
-            foreach(Colaboradores col in result.ExecuteResult)
-            {
-
-            }
-            
-            //result.GetHashCode();
-          //  ViewResult vr = result  ;
-            ActionResult rs = result;
-      
-               // PartialViewResult r = result ;
-           
-           // Assert.AreEqual(0,result);
-            
-            // Assert
-           // Assert.IsNotNull(result);
-        }
-        
-        [TestMethod]
-        public void Search_ByDNI_Inexistente()
-        {
-            // Arrange
-            ColaboradoresController controller = new ColaboradoresController();
-
-            // Act
-            ViewResult result = controller.Edit("00000000") as ViewResult;
-
-            // Assert
-            Assert.IsNull(result);
-        }
-       */
         [TestMethod]
         public void ConvertirAImagen_DniExistente()
         {
@@ -131,11 +86,14 @@ namespace Inspinia_MVC5.Tests.Controllers
             var controller = new ColaboradoresController();
             string dni = "11111111";
             //act
-            var result = controller.ConvertirAImagen(dni) ;
+            var result = controller.ConvertirAImagen(dni);
             //asert
             Assert.IsNotNull(result);
 
         }
+        
+        
+       
 
         [TestMethod]
         public void ConvertirAImagen_DniINExistente()
@@ -174,7 +132,235 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+        [TestMethod]
+        public async Task Search_ByDNI_Existente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            
+            string DNI = "11111111";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            
+            Assert.IsNotNull(result.Model);
 
+           
+        }
+        [TestMethod]
+        public async Task Search_ByDNI_Inexistente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            
+            string DNI = "00000000";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            Assert.AreEqual("No hay datos", result.ViewBag.Datos);
+        }
+
+        [TestMethod]
+        public async Task Search_ApellidoPaterno_Existente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            Colaboradores colaborador = new Colaboradores();
+
+            string DNI = "";
+            string ApePaterno = "SULLA";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+
+
+        }
+        [TestMethod]
+        public async Task Search_ApellidoPaterno_Inexistente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "";
+            string ApePaterno = "ZZZZZZZZZ";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //asert
+            Assert.AreEqual("No hay datos", result.ViewBag.Datos);
+
+        }
+
+        [TestMethod]
+        public async Task Search_ApellidoMaterno_Existente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            Colaboradores colaborador = new Colaboradores();
+
+            string DNI = "";
+            string ApePaterno = "";
+            string ApeMaterno = "OLAECHEA";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+
+
+        }
+        [TestMethod]
+        public async Task Search_ApellidoMaterno_Inexistente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "";
+            string ApePaterno ="" ;
+            string ApeMaterno = "ZZZ";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //assert
+            Assert.AreEqual("No hay datos", result.ViewBag.Datos);
+
+        }
+
+        [TestMethod]
+        public async Task Search_Nombres_Existente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            Colaboradores colaborador = new Colaboradores();
+
+            string DNI = "";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "JOSE CARLOS";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+
+
+        }
+        [TestMethod]
+        public async Task Search_Nombres_Inexistente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "EVARISTO";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //assert
+            Assert.AreEqual("No hay datos", result.ViewBag.Datos);
+
+        }
+        [TestMethod]
+        public async Task Search_AREA_Existente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            Colaboradores colaborador = new Colaboradores();
+
+            string DNI = "";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "1";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+
+
+        }
+        [TestMethod]
+        public async Task Search_AREA_Inexistente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "0";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //assert
+            Assert.AreEqual("No hay datos", result.ViewBag.Datos);
+
+        }
+        [TestMethod]
+        public async Task Search_TODOS_CAMPOS_VACIO()
+        {
+            //En esta prueba cuando no se le escribe nada envía todos la listad e trabajadores por default
+            // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "";
+            string ApePaterno = "";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //assert
+            Assert.AreEqual("hay datos", result.ViewBag.Datos);
+
+        }
+        [TestMethod]
+        public async Task Search_2CAMPOS_EXISTENTES_MISMO_COLABORADOR()
+        {
+            //En esta prueba de datos del mismo colaborador resulve solo uno
+            // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "11111111";
+            string ApePaterno = "SULLA";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //assert
+            Assert.AreEqual("hay datos", result.ViewBag.Datos);
+
+        }
+        [TestMethod]
+        public async Task Search_2CAMPOS_EXISTENTES_DIFERENTE_COLABORADOR()
+        {
+            //LA FORMA DE BUSQUEDA ES:EL primer filtro DNI y sobre eso hacen las demás busquedas.Es por eso que cuando pones mas datos devolverá null
+             // Arrange
+            var controller = new ColaboradoresController();
+            string DNI = "11111111";
+            string ApePaterno = "ACEVEDO";
+            string ApeMaterno = "";
+            string Nombres = "";
+            string Area = "";
+            // Act
+            var result = await controller.Search(DNI, ApePaterno, ApeMaterno, Nombres, Area) as ViewResult;
+            //assert
+            Assert.AreEqual("No hay datos", result.ViewBag.Datos);
+
+        }
         [TestMethod]
         public void Index()
         {

@@ -114,6 +114,7 @@ namespace Inspinia_MVC5.Controllers
             if (!String.IsNullOrEmpty(SearchStringDNI))
             {
                 colaboradoresquery = colaboradoresquery.Where(s => s.COD_Colaborador.Contains(SearchStringDNI));
+                
             }
 
             if (!String.IsNullOrEmpty(SearchStringApePaterno))
@@ -138,8 +139,18 @@ namespace Inspinia_MVC5.Controllers
 
                 colaboradoresquery = colaboradoresquery.Where(x => x.ID_Area == id);
             }
-            //}
 
+            if (colaboradoresquery.Count() != 0)
+            {
+
+                ViewBag.datos = "hay datos";
+            }
+            else
+            {
+                ViewBag.datos = "No hay datos";
+            }
+            
+           
             return View(await colaboradoresquery.ToListAsync());
         }
 
