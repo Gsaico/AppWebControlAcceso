@@ -17,25 +17,27 @@ namespace Inspinia_MVC5.Tests.Controllers
         public void ShowReportRegistro()
         {
             // Arrange
-            ReportesController controller = new ReportesController() ;
+            var controller = new ReportesController() ;
 
             // Act
-            ViewResult result = controller.ShowReportRegistroControlDeAsistenciasXDNI() as ViewResult;
-
+            //ViewResult result = controller.ShowReportRegistroControlDeAsistenciasXDNI() as ViewResult;
+            var result = controller.ShowReportRegistroControlDeAsistenciasXDNI()  as RedirectResult;
+            
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Url);
         }
         [TestMethod]
         public void ShowReportNumeroColaboradoresEnLasInstalacionesHoy()
-        {//NO FUNCIONAN ESTAS PRUEBAS PORQUE NO ESTA VIGENTE LOS REPORTES
+        {
             // Arrange
-            ReportesController controller = new ReportesController();
+            var controller = new ReportesController();
 
             // Act
-            ViewResult result = controller.ShowReportNumeroColaboradoresEnLasInstalacionesHoy() as ViewResult;
+            //ViewResult result = controller.ShowReportRegistroControlDeAsistenciasXDNI() as ViewResult;
+            var result = controller.ShowReportNumeroColaboradoresEnLasInstalacionesHoy() as RedirectResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Url);
         }
     }
 }
