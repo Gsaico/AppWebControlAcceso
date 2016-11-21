@@ -101,7 +101,6 @@
     <Compile Include="Controllers\ColaboradoresControllerTest.cs" />
     <Compile Include="Controllers\RegistrosDiariosControllerTest.cs" />
     <Compile Include="Controllers\ReporteControllerTest.cs" />
-    <Compile Include="Controllers\ReportesControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

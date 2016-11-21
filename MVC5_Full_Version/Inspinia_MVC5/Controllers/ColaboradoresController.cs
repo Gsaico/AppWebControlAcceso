@@ -60,10 +60,16 @@ namespace Inspinia_MVC5.Controllers
         public ActionResult ConvertirAImagen(string COD_Colaborador)
         {
             var imagenMunicipio = db.Colaboradores.Where(x => x.COD_Colaborador == COD_Colaborador).FirstOrDefault();
-
-            if (imagenMunicipio.Foto != null)
+            if (imagenMunicipio != null)
             {
-                return File(imagenMunicipio.Foto, "image/jpeg");
+                if (imagenMunicipio.Foto != null)
+                {
+                    return File(imagenMunicipio.Foto, "image/jpeg");
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {

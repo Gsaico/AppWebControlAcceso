@@ -125,6 +125,31 @@ namespace Inspinia_MVC5.Tests.Controllers
         }
        */
         [TestMethod]
+        public void ConvertirAImagen_DniExistente()
+        {
+            //arrange
+            var controller = new ColaboradoresController();
+            string dni = "11111111";
+            //act
+            var result = controller.ConvertirAImagen(dni) ;
+            //asert
+            Assert.IsNotNull(result);
+
+        }
+
+        [TestMethod]
+        public void ConvertirAImagen_DniINExistente()
+        {
+            //arrange
+            var controller = new ColaboradoresController();
+            string dni = "00000000";
+            //act
+            var result = controller.ConvertirAImagen(dni);
+            //asert
+            Assert.IsNull(result);
+
+        }
+        [TestMethod]
         public void empypage()
         {
             // Arrange
