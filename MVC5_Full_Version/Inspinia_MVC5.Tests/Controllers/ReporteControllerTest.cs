@@ -12,10 +12,11 @@ namespace Inspinia_MVC5.Tests.Controllers
     /// </summary>
     [TestClass]
     public class ReporteControllerTest
-    {
-        [TestMethod]
+    {   [TestMethod]
         public void ShowReportRegistro()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método SHOWREPORT REGISTROCONTROL DE ASISTENCIA, se prueba su funcionamiento
+
             // Arrange
             var controller = new ReportesController() ;
 
@@ -28,7 +29,9 @@ namespace Inspinia_MVC5.Tests.Controllers
         }
         [TestMethod]
         public void ShowReportNumeroColaboradoresEnLasInstalacionesHoy()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método SHOWREPORT NUMERO COLABORADORES, se prueba su funcionamiento
+
             // Arrange
             var controller = new ReportesController();
 
