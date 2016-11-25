@@ -169,7 +169,7 @@ namespace Inspinia_MVC5.Controllers
             return View();
 
         }
-
+        
         public async Task<ActionResult> Search(string SearchStringDNI, string SearchStringApePaterno, string SearchStringApeMaterno, string SearchStringNombres, string Areasx)
         {
 

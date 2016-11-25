@@ -134,6 +134,9 @@
         <Function Name="SP_DetalleColaborador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodColaborador" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_RegistroControlDeAsistenciasXDNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodColaborador" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="IDCHECKDBModelStoreContainer">
           <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendarios" EntityType="Self.Calendarios" Schema="dbo" store:Type="Tables" />
@@ -188,7 +191,10 @@
             <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
           </AssociationSet>
           <FunctionImport Name="SP_DetalleColaborador" ReturnType="Collection(IDCHECKDBModel.SP_DetalleColaborador_Result)">
-            <Parameter Name="CodColaborador" Mode="In" Type="String" />
+          <Parameter Name="CodColaborador" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RegistroControlDeAsistenciasXDNI" ReturnType="Collection(IDCHECKDBModel.SP_RegistroControlDeAsistenciasXDNI_Result)">
+          <Parameter Name="CodColaborador" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Areas">
@@ -332,6 +338,16 @@
           <Property Type="String" Name="Nombres" Nullable="false" MaxLength="100" />
           <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
         </ComplexType>
+        <ComplexType Name="SP_RegistroControlDeAsistenciasXDNI_Result">
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RUC" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Apellidos_y_Nombres" Nullable="false" MaxLength="302" />
+          <Property Type="String" Name="DNI" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Hora_Ingreso" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Hora_Salida" Nullable="true" MaxLength="8" />
+          <Property Type="Decimal" Name="Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -429,6 +445,20 @@
                 <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RegistroControlDeAsistenciasXDNI" FunctionName="IDCHECKDBModel.Store.SP_RegistroControlDeAsistenciasXDNI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IDCHECKDBModel.SP_RegistroControlDeAsistenciasXDNI_Result">
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon Social" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="Apellidos_y_Nombres" ColumnName="Apellidos y Nombres" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora_Ingreso" ColumnName="Hora Ingreso" />
+                <ScalarProperty Name="Hora_Salida" ColumnName="Hora Salida" />
+                <ScalarProperty Name="Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral" ColumnName="Tiempo de Permanencia Fuera de la Jornada Laboral" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

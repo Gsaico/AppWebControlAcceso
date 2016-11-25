@@ -43,5 +43,14 @@ namespace Inspinia_MVC5.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DetalleColaborador_Result>("SP_DetalleColaborador", codColaboradorParameter);
         }
+    
+        public virtual ObjectResult<SP_RegistroControlDeAsistenciasXDNI_Result> SP_RegistroControlDeAsistenciasXDNI(string codColaborador)
+        {
+            var codColaboradorParameter = codColaborador != null ?
+                new ObjectParameter("CodColaborador", codColaborador) :
+                new ObjectParameter("CodColaborador", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_RegistroControlDeAsistenciasXDNI_Result>("SP_RegistroControlDeAsistenciasXDNI", codColaboradorParameter);
+        }
     }
 }
