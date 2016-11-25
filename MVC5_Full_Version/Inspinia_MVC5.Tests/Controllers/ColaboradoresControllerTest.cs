@@ -1,13 +1,11 @@
-﻿using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Inspinia_MVC5;
 using Inspinia_MVC5.Controllers;
 using System.Threading.Tasks;
 using Inspinia_MVC5.Models;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 using System;
+using System.Drawing;
+using System.Web;
 using System.Linq;
 
 namespace Inspinia_MVC5.Tests.Controllers
@@ -91,10 +89,6 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNotNull(result);
 
         }
-        
-        
-       
-
         [TestMethod]
         public void ConvertirAImagen_DniINExistente()
         {
@@ -119,7 +113,6 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-
         [TestMethod]
         public void Search_Imprimir()
         {
@@ -132,6 +125,7 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+        #region SEARCH
         [TestMethod]
         public async Task Search_ByDNI_Existente()
         {
@@ -362,6 +356,8 @@ namespace Inspinia_MVC5.Tests.Controllers
 
         }
         [TestMethod]
+        #endregion
+
         public void Index()
         {
             // Arrange
@@ -374,6 +370,7 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNotNull(result,"Debería devolver no nulo si hay colaboradores");
 
         }
+        #region DETAILS
         [TestMethod]
         public void Details_NoNull()
         {
@@ -416,12 +413,13 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNull(result, "Debería devolver nulo porque no exite dni");
 
         }
+        #endregion
         [TestMethod]
         public void Create()
         {
             // Arrange
             ColaboradoresController controller = new ColaboradoresController();
-            string dni = "00000000";
+            //string dni = "00000000";
             // Act
             ViewResult result = controller.Create() as ViewResult;
 
@@ -430,6 +428,69 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNotNull(result, "Debería devolver no nulo ");
 
         }
+        #region CREATE
+        [TestMethod]
+        public  async Task Create_Colaborador_Existente()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            Colaboradores col = new Colaboradores();
+            {
+                col.COD_Colaborador = "11111111";
+                col.COD_Empresa = "20234567543";
+                col.ApellidoPaterno = "SAICO";
+                col.ApellidoMaterno = "LOPEZ";
+                col.Nombres = "ALBERTO";
+                col.ID_Area = 1;
+                col.FechaNacimiento = Convert.ToDateTime("2016-10-5");
+                col.FechaContratacion = Convert.ToDateTime("01/12/2012");
+                col.FechaIngresoReingreso = Convert.ToDateTime("01/01/2012");
+                col.FechaCese = Convert.ToDateTime("01/5/2012");
+                col.Direccion = "CAYMA AV LAS PEÑAS";
+                col.Cargo = "OPERADOR DE CAMION";
+                col.Estado = true;
+            };
+          //  string ruta = "D:/GitHub/AppWebControlAcceso/Extras/Imagenes/OperadorImagen.jpg";
+            //Image img = Image.FromFile(ruta);
+            // Imagen img = Image.FromFile(ruta);
+           // HttpPostedFileBase ht= img;
+            // Act
+            var result = await controller.Create(col,null) as ViewResult;
+            // Assert
+            Assert.AreEqual("Error El DNI que ud desea ingresar ya existe en la Base de Datos", result.ViewBag.MensajeAlerta);
+
+        }
+        [TestMethod]
+        public async Task Create_Colaborador_Nuevo()
+        {
+            // Arrange
+            var controller = new ColaboradoresController();
+            IDCHECKDBEntities db = new IDCHECKDBEntities();
+            Colaboradores col = new Colaboradores();
+            {
+                col.COD_Colaborador = "12888888";
+                col.COD_Empresa = "20234567543";
+                col.ApellidoPaterno = "SAICO";
+                col.ApellidoMaterno = "LOPEZ";
+                col.Nombres = "ALBERTO";
+                col.ID_Area = 1;
+                col.FechaNacimiento = Convert.ToDateTime("2016-10-5");
+                col.FechaContratacion = Convert.ToDateTime("01/12/2012");
+                col.FechaIngresoReingreso = Convert.ToDateTime("01/01/2012");
+                col.FechaCese = Convert.ToDateTime("01/5/2012");
+                col.Direccion = "CAYMA AV LAS PEÑAS";
+                col.Cargo = "OPERADOR DE CAMION";
+                col.Estado = true;
+            };
+            var result = await controller.Create(col, null) as RedirectToRouteResult;
+
+            var query = db.Colaboradores.Where(q => q.COD_Colaborador == col.COD_Colaborador);
+            
+            //var result = await controller.Create(col, null) as RedirectResult;
+             Assert.IsNotNull(query);
+        }
+        #endregion
+        #region EDIT
         [TestMethod]
         public void Edith_DniNull()
         {
@@ -472,6 +533,8 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.IsNotNull(result, "Debería devolver no nulo porque  exite colaborador");
 
         }
+        #endregion
+        #region DELETE
         [TestMethod]
         public void Delete_DniNull()
         {
@@ -519,7 +582,7 @@ namespace Inspinia_MVC5.Tests.Controllers
         {
             // Arrange
             ColaboradoresController controller = new ColaboradoresController();
-            string dni = "99999999";
+            string dni = "12888888";
             // Act
             ViewResult result = controller.Delete(dni) as ViewResult;
 
@@ -528,22 +591,23 @@ namespace Inspinia_MVC5.Tests.Controllers
             Assert.AreEqual("¿Estás seguro que quieres eliminar los datos del colaborador?", result.ViewBag.mensajedelete);
 
         }
-        /*
+
+       
         [TestMethod]
         public void DeleteConfirme()
         {
             // Arrange
             ColaboradoresController controller = new ColaboradoresController();
-            string dni = "12345677";
+            string dni = "12888888";
             // Act
-            ViewResult result = controller.Delete(dni) as ViewResult;
-
+          var result = controller.DeleteConfirmed(dni) ;
+            IDCHECKDBEntities db = new IDCHECKDBEntities();
             // Assert
-
-            Assert.AreEqual("El colaborador se elimino de la Base de Datos", result.ViewBag.MensajeAlerta);
+            var query = db.Colaboradores.Where(q => q.COD_Colaborador == dni);
+            Assert.AreEqual(0,query.Count());
 
         }
-        */
-
+        
+        #endregion
     }
 }
