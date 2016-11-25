@@ -14,7 +14,8 @@ namespace Inspinia_MVC5.Tests.Controllers
     {
         [TestMethod]
         public void Index()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método INDEX, su funcionamiento
             // Arrange
             HomeController controller = new HomeController();
 
@@ -29,7 +30,8 @@ namespace Inspinia_MVC5.Tests.Controllers
 
         [TestMethod]
         public void About()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método ABOUT, su funcionamiento
             // Arrange
             HomeController controller = new HomeController();
 
@@ -42,7 +44,8 @@ namespace Inspinia_MVC5.Tests.Controllers
 
         [TestMethod]
         public void Contact()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método su funcionamiento
             // Arrange
             HomeController controller = new HomeController();
 
