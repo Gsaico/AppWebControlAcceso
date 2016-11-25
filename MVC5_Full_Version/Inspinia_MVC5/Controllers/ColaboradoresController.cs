@@ -11,7 +11,10 @@ using Inspinia_MVC5.Models;
 using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
 using Inspinia_MVC5.PDF;
+using Inspinia_MVC5.Reports;
+using Inspinia_MVC5.cnx;
 using static System.Net.Mime.MediaTypeNames;
+using System.Data.SqlClient;
 
 namespace Inspinia_MVC5.Controllers
 {
@@ -52,10 +55,81 @@ namespace Inspinia_MVC5.Controllers
             stream.Seek(0, SeekOrigin.Begin);
 
 
+            return  File(stream, "application/pdf");
+
+            // return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
+        }
+        public ActionResult ImprimirColaboradorStoreProcedure(string COD_Colaborador)
+        {
+            //creamos nuestro objeto
+            Conexion oConexion = new Conexion();
+
+            //ejecutamos el metodo
+            oConexion.getData();
+
+            //imprimimos el resultado
+           // Console.WriteLine("data source= " + oConexion.servidor + ";initial catalog=" + oConexion.baseDeDatos + ";persist security info=True;user id=" + oConexion.usuario + ";password=" + oConexion.password);
+
+            String ConnStr = "data source= " + oConexion.servidor + ";initial catalog=" + oConexion.baseDeDatos + ";persist security info=True;user id=" + oConexion.usuario + ";password=" + oConexion.password;
+
+           // String ConnStr = @"data source=.;initial catalog=IDCHECKDB;persist security info=True;user id=sa;password=12345";
+
+            SqlConnection myConnection = new SqlConnection(ConnStr);
+            DataTable dt = new DataTable();
+            try
+            {
+                myConnection.Open();
+                SqlDataAdapter da = new SqlDataAdapter("SP_DetalleColaborador", myConnection);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@CodColaborador", COD_Colaborador.ToString());
+           
+                da.Fill(dt);
+                myConnection.Close();
+
+            }
+            catch (Exception e)
+            {
+
+               
+            }
+            ReportClass rpth = new ReportClass();
+            rpth.FileName = Server.MapPath("~/Reports/CrystalReportFotocheck.rpt");
+            rpth.Load();
+            rpth.SetDataSource(dt);
+            Stream stream = rpth.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+
             return File(stream, "application/pdf");
             // return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
         }
-   
+        public ActionResult ImprimirColaboradorQueryClasic(string COD_Colaborador)
+        {
+            String ConnStr = @"data source=.;initial catalog=IDCHECKDB;persist security info=True;user id=sa;password=12345";
+
+            SqlConnection myConnection = new SqlConnection(ConnStr);
+            DataTable dt = new DataTable();
+            try
+            {
+                myConnection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COD_Colaborador, ApellidoPaterno, ApellidoMaterno, Nombres, Foto  FROM Colaboradores where COD_Colaborador =" + COD_Colaborador, myConnection);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dt);
+                myConnection.Close();
+            }
+            catch (Exception e)
+            {
+
+
+            }
+            ReportClass rpth = new ReportClass();
+            rpth.FileName = Server.MapPath("~/Reports/CrystalReportFotocheck.rpt");
+            rpth.Load();
+            rpth.SetDataSource(dt);
+            Stream stream = rpth.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+
+            return File(stream, "application/pdf");
+            // return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
+        }
+
 
         public ActionResult ConvertirAImagen(string COD_Colaborador)
         {

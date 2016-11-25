@@ -12,6 +12,8 @@ namespace Inspinia_MVC5.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class IDCHECKDBEntities : DbContext
     {
@@ -32,5 +34,14 @@ namespace Inspinia_MVC5.Models
         public virtual DbSet<TiposDeDias> TiposDeDias { get; set; }
         public virtual DbSet<Ubigeos> Ubigeos { get; set; }
         public virtual DbSet<RegistrosDiarios> RegistrosDiarios { get; set; }
+    
+        public virtual ObjectResult<SP_DetalleColaborador_Result> SP_DetalleColaborador(string codColaborador)
+        {
+            var codColaboradorParameter = codColaborador != null ?
+                new ObjectParameter("CodColaborador", codColaborador) :
+                new ObjectParameter("CodColaborador", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DetalleColaborador_Result>("SP_DetalleColaborador", codColaboradorParameter);
+        }
     }
 }
