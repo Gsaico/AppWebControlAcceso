@@ -20,17 +20,17 @@ namespace Inspinia_MVC5.Reports {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DSReportRegistroControlDeAsistenciasXDNI")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DSReportTareoPersonal")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DSReportRegistroControlDeAsistenciasXDNI : global::System.Data.DataSet {
+    public partial class DSReportTareoPersonal : global::System.Data.DataSet {
         
-        private DTControlAsistenciaDataTable tableDTControlAsistencia;
+        private DataTable1DataTable tableDataTable1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DSReportRegistroControlDeAsistenciasXDNI() {
+        public DSReportTareoPersonal() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Inspinia_MVC5.Reports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected DSReportRegistroControlDeAsistenciasXDNI(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DSReportTareoPersonal(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace Inspinia_MVC5.Reports {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DTControlAsistencia"] != null)) {
-                    base.Tables.Add(new DTControlAsistenciaDataTable(ds.Tables["DTControlAsistencia"]));
+                if ((ds.Tables["DataTable1"] != null)) {
+                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Inspinia_MVC5.Reports {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DTControlAsistenciaDataTable DTControlAsistencia {
+        public DataTable1DataTable DataTable1 {
             get {
-                return this.tableDTControlAsistencia;
+                return this.tableDataTable1;
             }
         }
         
@@ -127,7 +127,7 @@ namespace Inspinia_MVC5.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DSReportRegistroControlDeAsistenciasXDNI cln = ((DSReportRegistroControlDeAsistenciasXDNI)(base.Clone()));
+            DSReportTareoPersonal cln = ((DSReportTareoPersonal)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace Inspinia_MVC5.Reports {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DTControlAsistencia"] != null)) {
-                    base.Tables.Add(new DTControlAsistenciaDataTable(ds.Tables["DTControlAsistencia"]));
+                if ((ds.Tables["DataTable1"] != null)) {
+                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Inspinia_MVC5.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableDTControlAsistencia = ((DTControlAsistenciaDataTable)(base.Tables["DTControlAsistencia"]));
+            this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
             if ((initTable == true)) {
-                if ((this.tableDTControlAsistencia != null)) {
-                    this.tableDTControlAsistencia.InitVars();
+                if ((this.tableDataTable1 != null)) {
+                    this.tableDataTable1.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace Inspinia_MVC5.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DSReportRegistroControlDeAsistenciasXDNI";
+            this.DataSetName = "DSReportTareoPersonal";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DSReportRegistroControlDeAsistenciasXDNI.xsd";
+            this.Namespace = "http://tempuri.org/DSReportTareoPersonal.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableDTControlAsistencia = new DTControlAsistenciaDataTable();
-            base.Tables.Add(this.tableDTControlAsistencia);
+            this.tableDataTable1 = new DataTable1DataTable();
+            base.Tables.Add(this.tableDataTable1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDTControlAsistencia() {
+        private bool ShouldSerializeDataTable1() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace Inspinia_MVC5.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DSReportRegistroControlDeAsistenciasXDNI ds = new DSReportRegistroControlDeAsistenciasXDNI();
+            DSReportTareoPersonal ds = new DSReportTareoPersonal();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,18 +270,14 @@ namespace Inspinia_MVC5.Reports {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void DTControlAsistenciaRowChangeEventHandler(object sender, DTControlAsistenciaRowChangeEvent e);
+        public delegate void DataTable1RowChangeEventHandler(object sender, DataTable1RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DTControlAsistenciaDataTable : global::System.Data.TypedTableBase<DTControlAsistenciaRow> {
-            
-            private global::System.Data.DataColumn columnRazon_Social;
-            
-            private global::System.Data.DataColumn columnRUC;
+        public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
             
             private global::System.Data.DataColumn columnApellidos_y_Nombres;
             
@@ -293,14 +289,18 @@ namespace Inspinia_MVC5.Reports {
             
             private global::System.Data.DataColumn columnHora_Salida;
             
-            private global::System.Data.DataColumn columnTiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral;
+            private global::System.Data.DataColumn columnHorasTrabajadas;
             
-            private global::System.Data.DataColumn columnDomingos_y_Feriados;
+            private global::System.Data.DataColumn columnHN;
+            
+            private global::System.Data.DataColumn columnT1;
+            
+            private global::System.Data.DataColumn columnT2;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DTControlAsistenciaDataTable() {
-                this.TableName = "DTControlAsistencia";
+            public DataTable1DataTable() {
+                this.TableName = "DataTable1";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -308,7 +308,7 @@ namespace Inspinia_MVC5.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DTControlAsistenciaDataTable(global::System.Data.DataTable table) {
+            internal DataTable1DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -325,25 +325,9 @@ namespace Inspinia_MVC5.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DTControlAsistenciaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Razon_SocialColumn {
-                get {
-                    return this.columnRazon_Social;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RUCColumn {
-                get {
-                    return this.columnRUC;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -388,17 +372,33 @@ namespace Inspinia_MVC5.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Tiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralColumn {
+            public global::System.Data.DataColumn HorasTrabajadasColumn {
                 get {
-                    return this.columnTiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral;
+                    return this.columnHorasTrabajadas;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Domingos_y_FeriadosColumn {
+            public global::System.Data.DataColumn HNColumn {
                 get {
-                    return this.columnDomingos_y_Feriados;
+                    return this.columnHN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn T1Column {
+                get {
+                    return this.columnT1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn T2Column {
+                get {
+                    return this.columnT2;
                 }
             }
             
@@ -413,53 +413,53 @@ namespace Inspinia_MVC5.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DTControlAsistenciaRow this[int index] {
+            public DataTable1Row this[int index] {
                 get {
-                    return ((DTControlAsistenciaRow)(this.Rows[index]));
+                    return ((DataTable1Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DTControlAsistenciaRowChangeEventHandler DTControlAsistenciaRowChanging;
+            public event DataTable1RowChangeEventHandler DataTable1RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DTControlAsistenciaRowChangeEventHandler DTControlAsistenciaRowChanged;
+            public event DataTable1RowChangeEventHandler DataTable1RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DTControlAsistenciaRowChangeEventHandler DTControlAsistenciaRowDeleting;
+            public event DataTable1RowChangeEventHandler DataTable1RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DTControlAsistenciaRowChangeEventHandler DTControlAsistenciaRowDeleted;
+            public event DataTable1RowChangeEventHandler DataTable1RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDTControlAsistenciaRow(DTControlAsistenciaRow row) {
+            public void AddDataTable1Row(DataTable1Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DTControlAsistenciaRow AddDTControlAsistenciaRow(string Razon_Social, string RUC, string Apellidos_y_Nombres, string DNI, string Fecha, string Hora_Ingreso, string Hora_Salida, decimal Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral, decimal Domingos_y_Feriados) {
-                DTControlAsistenciaRow rowDTControlAsistenciaRow = ((DTControlAsistenciaRow)(this.NewRow()));
+            public DataTable1Row AddDataTable1Row(string Apellidos_y_Nombres, string DNI, string Fecha, string Hora_Ingreso, string Hora_Salida, decimal HorasTrabajadas, decimal HN, decimal T1, decimal T2) {
+                DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Razon_Social,
-                        RUC,
                         Apellidos_y_Nombres,
                         DNI,
                         Fecha,
                         Hora_Ingreso,
                         Hora_Salida,
-                        Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral,
-                        Domingos_y_Feriados};
-                rowDTControlAsistenciaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDTControlAsistenciaRow);
-                return rowDTControlAsistenciaRow;
+                        HorasTrabajadas,
+                        HN,
+                        T1,
+                        T2};
+                rowDataTable1Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataTable1Row);
+                return rowDataTable1Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                DTControlAsistenciaDataTable cln = ((DTControlAsistenciaDataTable)(base.Clone()));
+                DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -467,30 +467,26 @@ namespace Inspinia_MVC5.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new DTControlAsistenciaDataTable();
+                return new DataTable1DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnRazon_Social = base.Columns["Razon Social"];
-                this.columnRUC = base.Columns["RUC"];
                 this.columnApellidos_y_Nombres = base.Columns["Apellidos y Nombres"];
                 this.columnDNI = base.Columns["DNI"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnHora_Ingreso = base.Columns["Hora Ingreso"];
                 this.columnHora_Salida = base.Columns["Hora Salida"];
-                this.columnTiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral = base.Columns["Tiempo de Permanencia Fuera de la Jornada Laboral"];
-                this.columnDomingos_y_Feriados = base.Columns["Domingos y Feriados"];
+                this.columnHorasTrabajadas = base.Columns["HorasTrabajadas"];
+                this.columnHN = base.Columns["HN"];
+                this.columnT1 = base.Columns["T1"];
+                this.columnT2 = base.Columns["T2"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnRazon_Social = new global::System.Data.DataColumn("Razon Social", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRazon_Social);
-                this.columnRUC = new global::System.Data.DataColumn("RUC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRUC);
                 this.columnApellidos_y_Nombres = new global::System.Data.DataColumn("Apellidos y Nombres", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnApellidos_y_Nombres);
                 this.columnDNI = new global::System.Data.DataColumn("DNI", typeof(string), null, global::System.Data.MappingType.Element);
@@ -501,36 +497,40 @@ namespace Inspinia_MVC5.Reports {
                 base.Columns.Add(this.columnHora_Ingreso);
                 this.columnHora_Salida = new global::System.Data.DataColumn("Hora Salida", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHora_Salida);
-                this.columnTiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral = new global::System.Data.DataColumn("Tiempo de Permanencia Fuera de la Jornada Laboral", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral);
-                this.columnDomingos_y_Feriados = new global::System.Data.DataColumn("Domingos y Feriados", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDomingos_y_Feriados);
+                this.columnHorasTrabajadas = new global::System.Data.DataColumn("HorasTrabajadas", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHorasTrabajadas);
+                this.columnHN = new global::System.Data.DataColumn("HN", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHN);
+                this.columnT1 = new global::System.Data.DataColumn("T1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnT1);
+                this.columnT2 = new global::System.Data.DataColumn("T2", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnT2);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DTControlAsistenciaRow NewDTControlAsistenciaRow() {
-                return ((DTControlAsistenciaRow)(this.NewRow()));
+            public DataTable1Row NewDataTable1Row() {
+                return ((DataTable1Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DTControlAsistenciaRow(builder);
+                return new DataTable1Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(DTControlAsistenciaRow);
+                return typeof(DataTable1Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DTControlAsistenciaRowChanged != null)) {
-                    this.DTControlAsistenciaRowChanged(this, new DTControlAsistenciaRowChangeEvent(((DTControlAsistenciaRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowChanged != null)) {
+                    this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -538,8 +538,8 @@ namespace Inspinia_MVC5.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DTControlAsistenciaRowChanging != null)) {
-                    this.DTControlAsistenciaRowChanging(this, new DTControlAsistenciaRowChangeEvent(((DTControlAsistenciaRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowChanging != null)) {
+                    this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -547,8 +547,8 @@ namespace Inspinia_MVC5.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DTControlAsistenciaRowDeleted != null)) {
-                    this.DTControlAsistenciaRowDeleted(this, new DTControlAsistenciaRowChangeEvent(((DTControlAsistenciaRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowDeleted != null)) {
+                    this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -556,14 +556,14 @@ namespace Inspinia_MVC5.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DTControlAsistenciaRowDeleting != null)) {
-                    this.DTControlAsistenciaRowDeleting(this, new DTControlAsistenciaRowChangeEvent(((DTControlAsistenciaRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowDeleting != null)) {
+                    this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDTControlAsistenciaRow(DTControlAsistenciaRow row) {
+            public void RemoveDataTable1Row(DataTable1Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -572,7 +572,7 @@ namespace Inspinia_MVC5.Reports {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSReportRegistroControlDeAsistenciasXDNI ds = new DSReportRegistroControlDeAsistenciasXDNI();
+                DSReportTareoPersonal ds = new DSReportTareoPersonal();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -590,7 +590,7 @@ namespace Inspinia_MVC5.Reports {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DTControlAsistenciaDataTable";
+                attribute2.FixedValue = "DataTable1DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -634,48 +634,15 @@ namespace Inspinia_MVC5.Reports {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DTControlAsistenciaRow : global::System.Data.DataRow {
+        public partial class DataTable1Row : global::System.Data.DataRow {
             
-            private DTControlAsistenciaDataTable tableDTControlAsistencia;
+            private DataTable1DataTable tableDataTable1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DTControlAsistenciaRow(global::System.Data.DataRowBuilder rb) : 
+            internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableDTControlAsistencia = ((DTControlAsistenciaDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Razon_Social {
-                get {
-                    try {
-                        return ((string)(this[this.tableDTControlAsistencia.Razon_SocialColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Razon Social\' de la tabla \'DTControlAsistencia\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableDTControlAsistencia.Razon_SocialColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RUC {
-                get {
-                    try {
-                        return ((string)(this[this.tableDTControlAsistencia.RUCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RUC\' de la tabla \'DTControlAsistencia\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDTControlAsistencia.RUCColumn] = value;
-                }
+                this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -683,15 +650,14 @@ namespace Inspinia_MVC5.Reports {
             public string Apellidos_y_Nombres {
                 get {
                     try {
-                        return ((string)(this[this.tableDTControlAsistencia.Apellidos_y_NombresColumn]));
+                        return ((string)(this[this.tableDataTable1.Apellidos_y_NombresColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Apellidos y Nombres\' de la tabla \'DTControlAsistencia\' es" +
-                                " DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Apellidos y Nombres\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.Apellidos_y_NombresColumn] = value;
+                    this[this.tableDataTable1.Apellidos_y_NombresColumn] = value;
                 }
             }
             
@@ -700,14 +666,14 @@ namespace Inspinia_MVC5.Reports {
             public string DNI {
                 get {
                     try {
-                        return ((string)(this[this.tableDTControlAsistencia.DNIColumn]));
+                        return ((string)(this[this.tableDataTable1.DNIColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DNI\' de la tabla \'DTControlAsistencia\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DNI\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.DNIColumn] = value;
+                    this[this.tableDataTable1.DNIColumn] = value;
                 }
             }
             
@@ -716,14 +682,14 @@ namespace Inspinia_MVC5.Reports {
             public string Fecha {
                 get {
                     try {
-                        return ((string)(this[this.tableDTControlAsistencia.FechaColumn]));
+                        return ((string)(this[this.tableDataTable1.FechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'DTControlAsistencia\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.FechaColumn] = value;
+                    this[this.tableDataTable1.FechaColumn] = value;
                 }
             }
             
@@ -732,15 +698,14 @@ namespace Inspinia_MVC5.Reports {
             public string Hora_Ingreso {
                 get {
                     try {
-                        return ((string)(this[this.tableDTControlAsistencia.Hora_IngresoColumn]));
+                        return ((string)(this[this.tableDataTable1.Hora_IngresoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora Ingreso\' de la tabla \'DTControlAsistencia\' es DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora Ingreso\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.Hora_IngresoColumn] = value;
+                    this[this.tableDataTable1.Hora_IngresoColumn] = value;
                 }
             }
             
@@ -749,158 +714,187 @@ namespace Inspinia_MVC5.Reports {
             public string Hora_Salida {
                 get {
                     try {
-                        return ((string)(this[this.tableDTControlAsistencia.Hora_SalidaColumn]));
+                        return ((string)(this[this.tableDataTable1.Hora_SalidaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora Salida\' de la tabla \'DTControlAsistencia\' es DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora Salida\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.Hora_SalidaColumn] = value;
+                    this[this.tableDataTable1.Hora_SalidaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral {
+            public decimal HorasTrabajadas {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDTControlAsistencia.Tiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralColumn]));
+                        return ((decimal)(this[this.tableDataTable1.HorasTrabajadasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Tiempo de Permanencia Fuera de la Jornada Laboral\' de la " +
-                                "tabla \'DTControlAsistencia\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HorasTrabajadas\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.Tiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralColumn] = value;
+                    this[this.tableDataTable1.HorasTrabajadasColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Domingos_y_Feriados {
+            public decimal HN {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDTControlAsistencia.Domingos_y_FeriadosColumn]));
+                        return ((decimal)(this[this.tableDataTable1.HNColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Domingos y Feriados\' de la tabla \'DTControlAsistencia\' es" +
-                                " DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HN\' de la tabla \'DataTable1\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTControlAsistencia.Domingos_y_FeriadosColumn] = value;
+                    this[this.tableDataTable1.HNColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRazon_SocialNull() {
-                return this.IsNull(this.tableDTControlAsistencia.Razon_SocialColumn);
+            public decimal T1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDataTable1.T1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'T1\' de la tabla \'DataTable1\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.T1Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRazon_SocialNull() {
-                this[this.tableDTControlAsistencia.Razon_SocialColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRUCNull() {
-                return this.IsNull(this.tableDTControlAsistencia.RUCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRUCNull() {
-                this[this.tableDTControlAsistencia.RUCColumn] = global::System.Convert.DBNull;
+            public decimal T2 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDataTable1.T2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'T2\' de la tabla \'DataTable1\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.T2Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsApellidos_y_NombresNull() {
-                return this.IsNull(this.tableDTControlAsistencia.Apellidos_y_NombresColumn);
+                return this.IsNull(this.tableDataTable1.Apellidos_y_NombresColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetApellidos_y_NombresNull() {
-                this[this.tableDTControlAsistencia.Apellidos_y_NombresColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.Apellidos_y_NombresColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDNINull() {
-                return this.IsNull(this.tableDTControlAsistencia.DNIColumn);
+                return this.IsNull(this.tableDataTable1.DNIColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDNINull() {
-                this[this.tableDTControlAsistencia.DNIColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.DNIColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFechaNull() {
-                return this.IsNull(this.tableDTControlAsistencia.FechaColumn);
+                return this.IsNull(this.tableDataTable1.FechaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFechaNull() {
-                this[this.tableDTControlAsistencia.FechaColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.FechaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsHora_IngresoNull() {
-                return this.IsNull(this.tableDTControlAsistencia.Hora_IngresoColumn);
+                return this.IsNull(this.tableDataTable1.Hora_IngresoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetHora_IngresoNull() {
-                this[this.tableDTControlAsistencia.Hora_IngresoColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.Hora_IngresoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsHora_SalidaNull() {
-                return this.IsNull(this.tableDTControlAsistencia.Hora_SalidaColumn);
+                return this.IsNull(this.tableDataTable1.Hora_SalidaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetHora_SalidaNull() {
-                this[this.tableDTControlAsistencia.Hora_SalidaColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.Hora_SalidaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralNull() {
-                return this.IsNull(this.tableDTControlAsistencia.Tiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralColumn);
+            public bool IsHorasTrabajadasNull() {
+                return this.IsNull(this.tableDataTable1.HorasTrabajadasColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralNull() {
-                this[this.tableDTControlAsistencia.Tiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralColumn] = global::System.Convert.DBNull;
+            public void SetHorasTrabajadasNull() {
+                this[this.tableDataTable1.HorasTrabajadasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDomingos_y_FeriadosNull() {
-                return this.IsNull(this.tableDTControlAsistencia.Domingos_y_FeriadosColumn);
+            public bool IsHNNull() {
+                return this.IsNull(this.tableDataTable1.HNColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDomingos_y_FeriadosNull() {
-                this[this.tableDTControlAsistencia.Domingos_y_FeriadosColumn] = global::System.Convert.DBNull;
+            public void SetHNNull() {
+                this[this.tableDataTable1.HNColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsT1Null() {
+                return this.IsNull(this.tableDataTable1.T1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetT1Null() {
+                this[this.tableDataTable1.T1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsT2Null() {
+                return this.IsNull(this.tableDataTable1.T2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetT2Null() {
+                this[this.tableDataTable1.T2Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -908,22 +902,22 @@ namespace Inspinia_MVC5.Reports {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DTControlAsistenciaRowChangeEvent : global::System.EventArgs {
+        public class DataTable1RowChangeEvent : global::System.EventArgs {
             
-            private DTControlAsistenciaRow eventRow;
+            private DataTable1Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DTControlAsistenciaRowChangeEvent(DTControlAsistenciaRow row, global::System.Data.DataRowAction action) {
+            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DTControlAsistenciaRow Row {
+            public DataTable1Row Row {
                 get {
                     return this.eventRow;
                 }

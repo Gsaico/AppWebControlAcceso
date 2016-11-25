@@ -18,6 +18,7 @@ namespace Inspinia_MVC5.Models
         public string Periodo { get; set; }
         public System.DateTime Fecha { get; set; }
         public string ID_TipoDia { get; set; }
+        public int Mes { get; set; }
     
         public virtual TiposDeDias TiposDeDias { get; set; }
     }

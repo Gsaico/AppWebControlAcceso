@@ -49,25 +49,18 @@
                 </ul>
             </li>
             <!--Menu principal de la aplicacion FINAL de Ingreso  y Salida -->
-            <!--Menu principal de la aplicacion INICIO TAREO -->
-
-            <li class="@Html.IsSelected(controller: "Tareos")">
-                <a href="@Url.Action("action", "controller")"><i class="fa fa-edit"></i> <span class="nav-label">Tareo de Personal</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Tareo Mensual</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Tareo por Colaborador</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Tareo por Area</a></li>
-                    <li class="@Html.IsSelected(action: "action")"><a href="@Url.Action("action", "controller")">Imprimir Tareo</a></li>
-                </ul>
-            </li>
-            <!--Menu principal de la aplicacion FINAL TAREO -->
+        
            
             <!--Menu principal de la aplicacion INICIO REPORTES -->
             <li class="@Html.IsSelected(controller: "Reportes")">
                 <a href="@Url.Action("action", "controller")"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">         
                     <li class="@Html.IsSelected(action: "SearchRegistroControlDeAsistenciasXDNI")"><a href="@Url.Action("SearchRegistroControlDeAsistenciasXDNI", "Reportes")">Registro de Control de Asistencias</a></li>
-                    <li class="@Html.IsSelected(action: "VistReportNumeroColaboradoresEnLasInstalacionesHoy")"><a href="@Url.Action("VistReportNumeroColaboradoresEnLasInstalacionesHoy", "Reportes")">Colaboradores En las Instalaciones</a></li>
+                    <li class="@Html.IsSelected(action: "SearchTareoColaboradoresXDNI")"><a href="@Url.Action("SearchTareoColaboradoresXDNI", "Reportes")">Tareo de Colaboradores</a></li>
+
+                    
+                       <li class="@Html.IsSelected(action: "VistReportNumeroColaboradoresEnLasInstalacionesHoy")"><a href="@Url.Action("VistReportNumeroColaboradoresEnLasInstalacionesHoy", "Reportes")">Colaboradores En las Instalaciones</a></li>
+
 
                 </ul>
             </li>

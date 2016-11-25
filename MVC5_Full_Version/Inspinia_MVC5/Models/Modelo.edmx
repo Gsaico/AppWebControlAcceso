@@ -19,6 +19,7 @@
           </Key>
           <Property Name="ID_Calendario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Periodo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="ID_TipoDia" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -61,6 +62,11 @@
           <Property Name="FechaYHoraIngreso" Type="datetime" Nullable="false" />
           <Property Name="FechaYHoraSalida" Type="datetime" />
           <Property Name="UltimaActualizacion" Type="datetime" />
+          <Property Name="ID_TipoDia" Type="nvarchar" MaxLength="50" />
+          <Property Name="HorasTrabajadas" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="HN" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="T1" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="T2" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TiposDeDias">
           <Key>
@@ -83,30 +89,6 @@
           <Property Name="Provincia" Type="nvarchar" MaxLength="100" />
           <Property Name="Distrito" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK_Calendarios_TiposDeDias">
-          <End Role="TiposDeDias" Type="Self.TiposDeDias" Multiplicity="1" />
-          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TiposDeDias">
-              <PropertyRef Name="ID_TipoDia" />
-            </Principal>
-            <Dependent Role="Calendarios">
-              <PropertyRef Name="ID_TipoDia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RegistrosDiarios_Trabajadores">
-          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="1" />
-          <End Role="RegistrosDiarios" Type="Self.RegistrosDiarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Colaboradores">
-              <PropertyRef Name="COD_Colaborador" />
-            </Principal>
-            <Dependent Role="RegistrosDiarios">
-              <PropertyRef Name="COD_Colaborador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Trabajadores_Areas">
           <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
           <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
@@ -136,6 +118,13 @@
         </Function>
         <Function Name="SP_RegistroControlDeAsistenciasXDNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodColaborador" Type="varchar" Mode="In" />
+          <Parameter Name="CodMes" Type="int" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TareodeColaboradoresPormes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodColaborador" Type="varchar" Mode="In" />
+          <Parameter Name="CodMes" Type="int" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="IDCHECKDBModelStoreContainer">
           <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
@@ -145,14 +134,6 @@
           <EntitySet Name="RegistrosDiarios" EntityType="Self.RegistrosDiarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposDeDias" EntityType="Self.TiposDeDias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubigeos" EntityType="Self.Ubigeos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Calendarios_TiposDeDias" Association="Self.FK_Calendarios_TiposDeDias">
-            <End Role="TiposDeDias" EntitySet="TiposDeDias" />
-            <End Role="Calendarios" EntitySet="Calendarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RegistrosDiarios_Trabajadores" Association="Self.FK_RegistrosDiarios_Trabajadores">
-            <End Role="Colaboradores" EntitySet="Colaboradores" />
-            <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
-          </AssociationSet>
           <AssociationSet Name="FK_Trabajadores_Areas" Association="Self.FK_Trabajadores_Areas">
             <End Role="Areas" EntitySet="Areas" />
             <End Role="Colaboradores" EntitySet="Colaboradores" />
@@ -185,16 +166,23 @@
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="Colaboradores" EntitySet="Colaboradores" />
           </AssociationSet>
+          <FunctionImport Name="SP_DetalleColaborador" ReturnType="Collection(IDCHECKDBModel.SP_DetalleColaborador_Result)">
+          <Parameter Name="CodColaborador" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RegistroControlDeAsistenciasXDNI" ReturnType="Collection(IDCHECKDBModel.SP_RegistroControlDeAsistenciasXDNI_Result)">
+            <Parameter Name="CodColaborador" Mode="In" Type="String" />
+            <Parameter Name="CodMes" Mode="In" Type="Int32" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="RegistrosDiarios" EntityType="IDCHECKDBModel.RegistrosDiarios" />
           <AssociationSet Name="FK_RegistrosDiarios_Trabajadores" Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores">
             <End Role="Colaboradores" EntitySet="Colaboradores" />
             <End Role="RegistrosDiarios" EntitySet="RegistrosDiarios" />
           </AssociationSet>
-          <FunctionImport Name="SP_DetalleColaborador" ReturnType="Collection(IDCHECKDBModel.SP_DetalleColaborador_Result)">
-          <Parameter Name="CodColaborador" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistroControlDeAsistenciasXDNI" ReturnType="Collection(IDCHECKDBModel.SP_RegistroControlDeAsistenciasXDNI_Result)">
-          <Parameter Name="CodColaborador" Mode="In" Type="String" />
+          <FunctionImport Name="TareodeColaboradoresPormes" ReturnType="Collection(IDCHECKDBModel.TareodeColaboradoresPormes_Result)">
+            <Parameter Name="CodColaborador" Mode="In" Type="String" />
+            <Parameter Name="CodMes" Mode="In" Type="Int32" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Areas">
@@ -215,6 +203,7 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ID_TipoDia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TiposDeDias" Relationship="IDCHECKDBModel.FK_Calendarios_TiposDeDias" FromRole="Calendarios" ToRole="TiposDeDias" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Colaboradores">
           <Key>
@@ -306,31 +295,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="RegistrosDiarios">
-          <Key>
-            <PropertyRef Name="ID_RegistroDiario" />
-          </Key>
-          <Property Name="ID_RegistroDiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="COD_Colaborador" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
-          <Property Name="Periodo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaYHoraIngreso" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaYHoraSalida" Type="DateTime" Precision="3" />
-          <Property Name="UltimaActualizacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="RegistrosDiarios" ToRole="Colaboradores" />
-        </EntityType>
-        <Association Name="FK_RegistrosDiarios_Trabajadores">
-          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="1" />
-          <End Type="IDCHECKDBModel.RegistrosDiarios" Role="RegistrosDiarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Colaboradores">
-              <PropertyRef Name="COD_Colaborador" />
-            </Principal>
-            <Dependent Role="RegistrosDiarios">
-              <PropertyRef Name="COD_Colaborador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="SP_DetalleColaborador_Result">
           <Property Type="String" Name="COD_Colaborador" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="100" />
@@ -347,6 +311,47 @@
           <Property Type="String" Name="Hora_Ingreso" Nullable="true" MaxLength="8" />
           <Property Type="String" Name="Hora_Salida" Nullable="true" MaxLength="8" />
           <Property Type="Decimal" Name="Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <EntityType Name="RegistrosDiarios">
+          <Key>
+            <PropertyRef Name="ID_RegistroDiario" />
+          </Key>
+          <Property Name="ID_RegistroDiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COD_Colaborador" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Periodo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaYHoraIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaYHoraSalida" Type="DateTime" Precision="3" />
+          <Property Name="UltimaActualizacion" Type="DateTime" Precision="3" />
+          <Property Name="ID_TipoDia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HorasTrabajadas" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HN" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="T1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="T2" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Colaboradores" Relationship="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" FromRole="RegistrosDiarios" ToRole="Colaboradores" />
+        </EntityType>
+        <Association Name="FK_RegistrosDiarios_Trabajadores">
+          <End Type="IDCHECKDBModel.Colaboradores" Role="Colaboradores" Multiplicity="1" />
+          <End Type="IDCHECKDBModel.RegistrosDiarios" Role="RegistrosDiarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="COD_Colaborador" />
+            </Principal>
+            <Dependent Role="RegistrosDiarios">
+              <PropertyRef Name="COD_Colaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="TareodeColaboradoresPormes_Result">
+          <Property Type="String" Name="Apellidos_y_Nombres" Nullable="false" MaxLength="302" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Hora_Ingreso" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Hora_Salida" Nullable="true" MaxLength="8" />
+          <Property Type="Decimal" Name="HorasTrabajadas" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="HN" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="T1" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="T2" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -366,6 +371,7 @@
           <EntitySetMapping Name="Calendarios">
             <EntityTypeMapping TypeName="IDCHECKDBModel.Calendarios">
               <MappingFragment StoreEntitySet="Calendarios">
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
                 <ScalarProperty Name="ID_TipoDia" ColumnName="ID_TipoDia" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
@@ -424,19 +430,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RegistrosDiarios">
-            <EntityTypeMapping TypeName="IDCHECKDBModel.RegistrosDiarios">
-              <MappingFragment StoreEntitySet="RegistrosDiarios">
-                <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
-                <ScalarProperty Name="FechaYHoraSalida" ColumnName="FechaYHoraSalida" />
-                <ScalarProperty Name="FechaYHoraIngreso" ColumnName="FechaYHoraIngreso" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
-                <ScalarProperty Name="ID_RegistroDiario" ColumnName="ID_RegistroDiario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_DetalleColaborador" FunctionName="IDCHECKDBModel.Store.SP_DetalleColaborador">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IDCHECKDBModel.SP_DetalleColaborador_Result">
@@ -459,6 +452,39 @@
                 <ScalarProperty Name="Hora_Ingreso" ColumnName="Hora Ingreso" />
                 <ScalarProperty Name="Hora_Salida" ColumnName="Hora Salida" />
                 <ScalarProperty Name="Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral" ColumnName="Tiempo de Permanencia Fuera de la Jornada Laboral" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="RegistrosDiarios">
+            <EntityTypeMapping TypeName="IDCHECKDBModel.RegistrosDiarios">
+              <MappingFragment StoreEntitySet="RegistrosDiarios">
+                <ScalarProperty Name="T2" ColumnName="T2" />
+                <ScalarProperty Name="T1" ColumnName="T1" />
+                <ScalarProperty Name="HN" ColumnName="HN" />
+                <ScalarProperty Name="HorasTrabajadas" ColumnName="HorasTrabajadas" />
+                <ScalarProperty Name="ID_TipoDia" ColumnName="ID_TipoDia" />
+                <ScalarProperty Name="UltimaActualizacion" ColumnName="UltimaActualizacion" />
+                <ScalarProperty Name="FechaYHoraSalida" ColumnName="FechaYHoraSalida" />
+                <ScalarProperty Name="FechaYHoraIngreso" ColumnName="FechaYHoraIngreso" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="COD_Colaborador" ColumnName="COD_Colaborador" />
+                <ScalarProperty Name="ID_RegistroDiario" ColumnName="ID_RegistroDiario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="TareodeColaboradoresPormes" FunctionName="IDCHECKDBModel.Store.TareodeColaboradoresPormes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IDCHECKDBModel.TareodeColaboradoresPormes_Result">
+                <ScalarProperty Name="Apellidos_y_Nombres" ColumnName="Apellidos y Nombres" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora_Ingreso" ColumnName="Hora Ingreso" />
+                <ScalarProperty Name="Hora_Salida" ColumnName="Hora Salida" />
+                <ScalarProperty Name="HorasTrabajadas" ColumnName="HorasTrabajadas" />
+                <ScalarProperty Name="HN" ColumnName="HN" />
+                <ScalarProperty Name="T1" ColumnName="T1" />
+                <ScalarProperty Name="T2" ColumnName="T2" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

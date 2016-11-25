@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-- ===========================================================================================================
+//-- Author:		Percy Saico Ccapa
+//-- Create date:   10/2016
+//-- Description:	Controlador creado para administrar los colaboradores de la Organización
+//-- ===========================================================================================================
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -153,7 +159,13 @@ namespace Inspinia_MVC5.Controllers
 
         }
 
-        
+        public ActionResult ColaboradorExisteEnDB()
+        {
+
+            return View();
+
+
+        }
 
         public ActionResult EmptyPage()
         {
@@ -290,6 +302,10 @@ namespace Inspinia_MVC5.Controllers
                 ViewBag.MensajeAlerta = "Error El DNI que ud desea ingresar ya existe en la Base de Datos";
                 return Content("<script language='javascript' type='text/javascript'>alert('Error El DNI que ud desea ingresar ya existe en la Base de Datos!');</script>");
                 // return Content("<script language='javascript' type='text/javascript'> toastr.success('Without any options', 'Simple notification!')</script>");
+                // return View(colaboradores);
+
+               // return ColaboradorExisteEnDB();
+
             }
 
             else

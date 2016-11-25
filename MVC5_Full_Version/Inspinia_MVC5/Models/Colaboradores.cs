@@ -22,6 +22,7 @@ namespace Inspinia_MVC5.Models
             this.RegistrosDiarios = new HashSet<RegistrosDiarios>();
         }
 
+
         [DisplayName("DNI")]
         [Required]
         [RegularExpression(@"^.{8,}$", ErrorMessage = "Minimo 8 caracteres")]//minimo
@@ -95,7 +96,6 @@ namespace Inspinia_MVC5.Models
         //[Display(Name = "Estado de Fotocheck")]
         //[Range(typeof(bool), "true", "true", ErrorMessage = "You gotta tick the box!")]
         public bool Estado { get; set; }
-
 
         public virtual Areas Areas { get; set; }
         public virtual Empresas Empresas { get; set; }

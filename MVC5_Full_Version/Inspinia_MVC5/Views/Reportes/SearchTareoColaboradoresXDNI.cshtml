@@ -1,18 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "SearchRegistroControlDeAsistenciasXDNI";
+    ViewBag.Title = "Searchtareo de Colaboradores";
 }
 
 @*<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-4">
-        <h2>Busqueda</h2>
-        <ol class="breadcrumb">
-            <li class="active">
-                <strong>Colaboradores</strong>
-            </li>
-        </ol>
-    </div>
-</div>*@
+        <div class="col-sm-4">
+            <h2>Busqueda</h2>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <strong>Colaboradores</strong>
+                </li>
+            </ol>
+        </div>
+    </div>*@
 
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -46,7 +46,7 @@
 
                 <div class="ibox-content">
 
-                    @using (Html.BeginForm("SearchRegistroControlDeAsistenciasXDNI", "Reportes", FormMethod.Get, htmlAttributes: new { role = "form", id = "form" }))
+                    @using (Html.BeginForm("SearchTareoColaboradoresXDNI", "Reportes", FormMethod.Get, htmlAttributes: new { role = "form", id = "form" }))
                     {
                         <div class="form-horizontal">
 
@@ -55,7 +55,7 @@
                                 @Html.Label("DNI:", htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.TextBox("COD_Colaborador", null, new { @class = "form-control", maxlength = "8", onkeypress = "return justNumbers(event);", placeholder = "Ingrese el Número de DNI" })
-                               
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -75,37 +75,37 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" id="btnBuscar"  value="Buscar Colaborador" class="btn btn-primary" />
-                                  
+                                    <input type="submit" id="btnBuscar" value="Buscar Colaborador" class="btn btn-primary" />
+
                                 </div>
                             </div>
 
                         </div>
                     }
-                  
-                
-                 </div>
 
-             
+
+                </div>
+
+
 
             </div>
         </div>
     </div>
     <div class="row">
         <div id="ImprimirReportRegistroControlDeAsistenciasXDNI" class="col-md-6">
-            
+
         </div>
     </div>
 
-                    <iframe src="@Url.Action("ImprimirReportRegistroControlDeAsistenciasXDNI", "Reportes", new {COD_Colaborador = ViewBag.COD_Colaborador, COD_Mes = ViewBag.COD_Mes,  COD_Year = ViewBag.COD_Year })" width="100%" height="1000" frameborder="0"></iframe>
-               
+    <iframe src="@Url.Action("ImprimirReportTareoColaboradoresXDNI", "Reportes", new {COD_Colaborador = ViewBag.COD_Colaborador, COD_Mes = ViewBag.COD_Mes,  COD_Year = ViewBag.COD_Year })" width="100%" height="1000" frameborder="0"></iframe>
 
-@section Scripts {
 
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/plugins/validate")
+    @section Scripts {
 
-    <script type="text/javascript">
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/plugins/validate")
+
+        <script type="text/javascript">
         $(document).ready(function () {
 
             $("#form").validate({
@@ -134,11 +134,11 @@
             });
 
         });
-    </script>
-    
-  
+        </script>
 
-}
+
+
+    }
 
     <script>
 

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-- ===========================================================================================================
+//-- Author:		Percy Saico Ccapa
+//-- Create date:   10/2016
+//-- Description:	Controlador creado para registrar  y administrar el ingreso y salidad de los colaboradores
+//-- ===========================================================================================================
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -121,19 +127,81 @@ namespace Inspinia_MVC5.Controllers
 
                                 if (GetRegistroDiarioColaborador.FechaYHoraIngreso != null && GetRegistroDiarioColaborador.FechaYHoraSalida == null)//el colaborador ya registro suingreso quedaria pendiente registrar su salida
                                 {
-                                    //REGISTRAR SALIDA
 
-                                    RegistrosDiarios registrodiariosx =  db.RegistrosDiarios.Find(GetRegistroDiarioColaborador.ID_RegistroDiario);
+                                    Calendarios GetCalendario = dbx.Calendarios.Where(r => r.Fecha == DateTime.Today).FirstOrDefault();
+                                    if (GetCalendario != null)
+                                    {    // T2 = Domingos feriados
+                                        //  T1= horas extra 25% y 35%
+                                        //  HN =  horas Normales sin sobretiempo
+                                        double T1=0, T2=0, HN=0, HorasTrabajadas=0, descanso;
+                                        descanso = 1;
+                                        RegistrosDiarios registrodiariosx = db.RegistrosDiarios.Find(GetRegistroDiarioColaborador.ID_RegistroDiario);
+                                        
+                                        DateTime endTime = DateTime.Now;
 
-                                    registrodiariosx.FechaYHoraSalida = DateTime.Now;
-                                    registrodiariosx.UltimaActualizacion = DateTime.Now;
+                                        DateTime startTime = registrodiariosx.FechaYHoraIngreso;
 
-                                    db.Entry(registrodiariosx).State = EntityState.Modified;
-                                    db.SaveChanges();
+                                        
+                                        TimeSpan span = endTime.Subtract(startTime);
+                                        HorasTrabajadas = span.TotalHours;
 
-                                    ViewBag.estado = "ACCESO REGISTRADO";
-                                    ViewBag.ingresosalida = "SALIDA";
-                                    ViewBag.FechayHora = DateTime.Now;
+                                        if (span.TotalHours >= 6)
+                                        {//con descanso
+                                            HorasTrabajadas = span.TotalHours - descanso;
+                                        }
+                                        else
+                                        {//sin descanso
+                                            HorasTrabajadas = span.TotalHours;
+                                        }
+
+
+                                        if (GetCalendario.ID_TipoDia == "T2")
+                                        {
+                                            T2 = HorasTrabajadas;
+                                            T1 = 0;
+                                            HN = 0;
+                                        }
+                                        else if (GetCalendario.ID_TipoDia == "T1")
+                                        {
+                                            if (HorasTrabajadas >= 0.5 && HorasTrabajadas <= 8)
+                                                {
+                                                T2 = 0;
+                                                T1 = 0;
+                                                HN = HorasTrabajadas;
+
+                                            }
+                                            else if (HorasTrabajadas > 8)
+                                            {
+                                                T2 = 0;
+                                                T1 = HorasTrabajadas - 8;
+                                                HN = 8;
+                                                                                               
+                                            }
+                                           
+
+                                        }
+
+
+
+                                        //REGISTRAR SALIDA
+                                                                               
+                                        registrodiariosx.FechaYHoraSalida = DateTime.Now;
+                                        registrodiariosx.UltimaActualizacion = DateTime.Now;
+                                        registrodiariosx.ID_TipoDia = GetCalendario.ID_TipoDia;
+                                        registrodiariosx.HorasTrabajadas = Convert.ToDecimal(HorasTrabajadas);
+                                        registrodiariosx.HN = Convert.ToDecimal(HN);
+                                        registrodiariosx.T1 = Convert.ToDecimal(T1);
+                                        registrodiariosx.T2 = Convert.ToDecimal(T2);
+
+                                        db.Entry(registrodiariosx).State = EntityState.Modified;
+                                        db.SaveChanges();
+
+                                        ViewBag.estado = "ACCESO REGISTRADO";
+                                        ViewBag.ingresosalida = "SALIDA";
+                                        ViewBag.FechayHora = DateTime.Now;
+                                    }
+
+
                                 }
                                 else if (GetRegistroDiarioColaborador.FechaYHoraIngreso != null && GetRegistroDiarioColaborador.FechaYHoraSalida != null)// el colaborador ya registro su ingreso y salida
                                 {

@@ -248,6 +248,9 @@
     <Compile Include="Models\SP_RegistroControlDeAsistenciasXDNI_Result.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TareodeColaboradoresPormes_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TiposDeDias.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -260,6 +263,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReportDSNumeroColaboradoresEnLasInstalacionesHoy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CrystalReportDSReportTareoPersonal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportDSReportTareoPersonal.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\CrystalReportFotocheck.cs">
@@ -292,26 +301,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSReportRegistroControlDeAsistenciasXDNI.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewer.aspx.cs">
-      <DependentUpon>ReportViewer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewer.aspx.designer.cs">
-      <DependentUpon>ReportViewer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerRegistroControlDeAsistenciasXDNI.aspx.cs">
-      <DependentUpon>ReportViewerRegistroControlDeAsistenciasXDNI.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerRegistroControlDeAsistenciasXDNI.aspx.designer.cs">
-      <DependentUpon>ReportViewerRegistroControlDeAsistenciasXDNI.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx.cs">
-      <DependentUpon>ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReportViewerSSRS\ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx.designer.cs">
-      <DependentUpon>ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx</DependentUpon>
+    <Compile Include="Reports\DSReportTareoPersonal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReportTareoPersonal.xsd</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -534,6 +527,19 @@
     </Content>
     <Content Include="Views\Reportes\SearchRegistroControlDeAsistenciasXDNI.cshtml" />
     <Content Include="Views\Reportes\VistReportNumeroColaboradoresEnLasInstalacionesHoy.cshtml" />
+    <Content Include="Views\Reportes\SearchTareoColaboradoresXDNI.cshtml" />
+    <Content Include="Reports\DSReportTareoPersonal.xsc">
+      <DependentUpon>DSReportTareoPersonal.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DSReportTareoPersonal.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReportTareoPersonal.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DSReportTareoPersonal.xss">
+      <DependentUpon>DSReportTareoPersonal.xsd</DependentUpon>
+    </Content>
+    <Content Include="Views\Colaboradores\ColaboradorExisteEnDB.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -635,9 +641,6 @@
     <Content Include="Images\p_big2.jpg" />
     <Content Include="Images\p_big3.jpg" />
     <Content Include="Images\zender_logo.png" />
-    <Content Include="ReportViewerSSRS\ReportViewer.aspx" />
-    <Content Include="ReportViewerSSRS\ReportViewerRegistroControlDeAsistenciasXDNI.aspx" />
-    <Content Include="ReportViewerSSRS\ReportViewerNumeroColaboradoresEnLasInstalacionesHoy.aspx" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\inspinia.min.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
@@ -1106,6 +1109,10 @@
     <EmbeddedResource Include="Reports\CrystalReportDSNumeroColaboradoresEnLasInstalacionesHoy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportDSNumeroColaboradoresEnLasInstalacionesHoy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CrystalReportDSReportTareoPersonal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportDSReportTareoPersonal.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReportFotocheck.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
