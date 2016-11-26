@@ -1,4 +1,8 @@
-﻿
+﻿//-- ===========================================================================================================
+//-- Author:		Percy Saico Ccapa
+//-- Create date:   10/2016
+//-- Description:	Controlador creado para administrar los Usuarios del Sistema
+//-- ===========================================================================================================
 
 
 using Microsoft.AspNet.Identity;

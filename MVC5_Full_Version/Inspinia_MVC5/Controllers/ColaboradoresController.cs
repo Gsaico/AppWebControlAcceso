@@ -29,16 +29,11 @@ namespace Inspinia_MVC5.Controllers
     {
         private IDCHECKDBEntities db = new IDCHECKDBEntities();
 
+        //variable global para almacenar temporalmente el archivo de imagen
         private static Byte[] _MyGlobalVariable;
 
-        //public ActionResult ListadoColaboradores()
-        //{
-        //    ViewBag.ListColaboradores = db.Colaboradores.ToList();
-
-        //    return View();
-        //}
-
       
+      //metodo que permite imprimir el fotocheck del colaborador
         public ActionResult FotocheckColaboradorPDF(string COD_Colaborador)
         {
 
@@ -65,6 +60,8 @@ namespace Inspinia_MVC5.Controllers
 
             // return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
         }
+
+        //Método para imprimir el fotocheck de colaborador usando Procedimientos Almacenados
         public ActionResult ImprimirColaboradorStoreProcedure(string COD_Colaborador)
         {
             //creamos nuestro objeto
@@ -133,10 +130,10 @@ namespace Inspinia_MVC5.Controllers
             Stream stream = rpth.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
 
             return File(stream, "application/pdf");
-            // return File(stream, "application/pdf", "FotocheckColaboradores.pdf");
+           
         }
 
-
+        //metodo creado para realizar la conversion  del archivo enviado por el cliente
         public ActionResult ConvertirAImagen(string COD_Colaborador)
         {
             var imagenMunicipio = db.Colaboradores.Where(x => x.COD_Colaborador == COD_Colaborador).FirstOrDefault();
