@@ -56,8 +56,8 @@
 
                 <div class="ibox-content">
 
-                    @using (Html.BeginForm("Edit", "Colaboradores", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+                    @using (Html.BeginForm("Edit", "Colaboradores", FormMethod.Post, new { enctype = "multipart/form-data", id = "form", role = "form" }))
+                    {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
@@ -235,20 +235,74 @@
             return patron.test(te);
         }
     </script>
-    @Scripts.Render("~/plugins/iCheck")
-    @Scripts.Render("~/plugins/dataPicker")
-    @Scripts.Render("~/plugins/ionRange")
-    @Scripts.Render("~/plugins/nouiSlider")
-    @Scripts.Render("~/plugins/jasnyBootstrap")
-    @Scripts.Render("~/plugins/switchery")
-    @Scripts.Render("~/plugins/chosen")
-    @Scripts.Render("~/plugins/knob")
-    @Scripts.Render("~/plugins/imagecropper")
-    @Scripts.Render("~/plugins/colorpicker")
-    @Scripts.Render("~/plugins/clockpicker")
-    @Scripts.Render("~/plugins/dateRange")
+  
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
 
-    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    </script>
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/plugins/validate")
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#form").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 3
+                    },
+                    url: {
+                        required: true,
+                        url: true
+                    },
+                    number: {
+                        required: true,
+                        number: true
+                    },
+                    COD_Colaborador: {
+                        required: true,
+                        minlength: 8
+                    },
+                    max: {
+                        required: true,
+                        maxlength: 4
+                    }
+                }
+            });
+
+        });
+</script>
+
+@Scripts.Render("~/plugins/iCheck")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/ionRange")
+@Scripts.Render("~/plugins/nouiSlider")
+@Scripts.Render("~/plugins/jasnyBootstrap")
+@Scripts.Render("~/plugins/switchery")
+@Scripts.Render("~/plugins/chosen")
+@Scripts.Render("~/plugins/knob")
+@Scripts.Render("~/plugins/imagecropper")
+@Scripts.Render("~/plugins/colorpicker")
+@Scripts.Render("~/plugins/clockpicker")
+@Scripts.Render("~/plugins/dateRange")
+
+<script type="text/javascript">
         $(document).ready(function () {
 
             var $image = $(".image-crop > img")
@@ -376,10 +430,10 @@
 
             $('input[name="daterange"]').daterangepicker();
 
-            $('#reportrange span').html(moment().subtract(29, 'days').format('DD MM, YYYY') + ' - ' + moment().format('DD MM, YYYY'));
+            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
 
             $('#reportrange').daterangepicker({
-                format: 'DD/MM//YYYY',
+                format: 'MM/DD/YYYY',
                 startDate: moment().subtract(29, 'days'),
                 endDate: moment(),
                 minDate: '01/01/2012',
@@ -416,7 +470,7 @@
                 }
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
-                $('#reportrange span').html(start.format('DD MM, YYYY') + ' - ' + end.format('DD MM, YYYY'));
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             });
 
         });
@@ -513,49 +567,8 @@
                 'max': 80
             }
         });
-    </script>
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#imgInp").change(function () {
-            readURL(this);
-        });
-    </script>
+</script>
 }
 
 
 
-
-@*@section Scripts {
-       @Scripts.Render("~/bundles/jqueryval")
-    <script>
-
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#blah').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#imgInp").change(function () {
-                readURL(this);
-            });
-    </script>
-    }*@

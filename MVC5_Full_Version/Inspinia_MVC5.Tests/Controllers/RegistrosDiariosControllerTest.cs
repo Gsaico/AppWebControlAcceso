@@ -12,10 +12,40 @@ namespace Inspinia_MVC5.Tests.Controllers
     [TestClass]
     public class RegistrosDiariosControllerTest
     {
+        [TestMethod]
+        public void ConvertirAImagen_DniExistente()
+        {
+            //REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método convertir a Imagen cuando existe el
+            //dni del colaborador.
+            //arrange
+            var controller = new RegistrosDiariosController();
+            string dni = "11111111";
+            //act
+            var result = controller.ConvertirAImagen(dni);
+            //asert
+            Assert.IsNotNull(result);
+
+        }
+        [TestMethod]
+        public void ConvertirAImagen_DniINExistente()
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método convertir a Imagen cuado el DNI
+            //del colaborador no esta registrador en la base datos
+            //arrange
+            var controller = new RegistrosDiariosController();
+            string dni = "00000000";
+            //act
+            var result = controller.ConvertirAImagen(dni);
+            //asert
+            Assert.IsNull(result);
+
+        }
 
         [TestMethod]
         public void Test_GetColaboradoresTopCinco()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método TEST GETCOLABORADORES TOP CINCO su funcionamiento
             // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
@@ -25,10 +55,11 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-        /*
+        
         [TestMethod]
         public void Test_GetColaboradorDesconocido()
-        {
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método GET COLABORADOR DESCONOCIDO, su funcionamiento
             // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
@@ -38,6 +69,7 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+        /*
         [TestMethod]
         public void Test_GetColaboradorById()
         {
@@ -54,7 +86,11 @@ namespace Inspinia_MVC5.Tests.Controllers
         */
         [TestMethod]
         public void Test_GetColaboradorById_ColaboradorNoregistrado()
-        {//Colaborador no registrado en el sistema
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método GETCOLABORADORBYID,en el cual se le envía un DNI de un
+         //colaborador el cual no esta registrado en el sistema
+
+            //Colaborador no registrado en el sistema
             // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
@@ -68,9 +104,11 @@ namespace Inspinia_MVC5.Tests.Controllers
 
         [TestMethod]
         public void Test_GetColaboradorById_ColaboradorEstadoDesactivo()
-        {
-            //colaborador que esta registrado pero que esta desactivo
-            // Arrange
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método GETCOLABORADORBYID, se le envía en DNI de un colaborador
+         // que esta registrado pero no su ESTADO es DESACTVIO
+        
+         // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
             // Act
@@ -83,9 +121,11 @@ namespace Inspinia_MVC5.Tests.Controllers
 
         [TestMethod]
         public void Test_GetColaboradorById_ColaboradorEstadoActivoIngreso_ContratoVigente()
-        {
-            //colaborador que esta registrado y registra su Ingreso con contrato Vigente
-            // Arrange
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método GETCOLABORADORBYID, se le envía el DNI de un colaborador
+         // el cual esta registrado y su ESTADO ES ACTIVO Y LA FECHA DE CONTRATO ES VIGENTE.Como es el primer registro del día REGISTRA SU INGRESO
+         
+         // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
             // Act
@@ -97,9 +137,11 @@ namespace Inspinia_MVC5.Tests.Controllers
         }
         [TestMethod]
         public void TTest_GetColaboradorById_ColaboradorEstadoActivoSalida_ContratoVigente()
-        {
-            //colaborador que esta registrado y ya  registro su Ingreso  y esta registrando su SALIDA pero con contrato activo
-            // Arrange
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método GETCOLABORADORBYID, se le envía el DNI de un colaborador
+         // el cual esta registrado y su ESTADO ES ACTIVO Y LA FECHA DE CONTRATO ES VIGENTE.Como es el segundo registro del día REGISTRA SU SALIDA
+         
+         // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
             // Act
@@ -112,9 +154,11 @@ namespace Inspinia_MVC5.Tests.Controllers
 
         [TestMethod]
         public void TTest_GetColaboradorById_ColaboradorEstadoActivo_YaMarcoIngresoYSalida_ContratoVigente()
-        {
-            //colaborador que esta registrado y ya  registro su Ingreso  y salida pero con contrato vigente
-            // Arrange
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método GETCOLABORADORBYID, se le envía el DNI de un colaborador
+         // el cual esta registrado y su ESTADO ES ACTIVO Y LA FECHA DE CONTRATO ES VIGENTE.Como es el Tercer registro del día ENVÏA UN MENSAJE
+         //colaborador que esta registrado y ya  registro su Ingreso  y salida pero con contrato vigente
+         // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
             // Act
@@ -126,9 +170,11 @@ namespace Inspinia_MVC5.Tests.Controllers
         }
         [TestMethod]
         public void TTest_GetColaboradorById_ColaboradorEstadoActivo_ContratoVencido()
-        {
-            //colaborador que esta registrado y su contrato esta vencido
-            // Arrange
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+         //PRUEBA TRATA: Prueba el método GETCOLABORADORBYID, se le envía el DNI de un colaborador
+         // el cual esta registrado y su ESTADO ES ACTIVO Y LA FECHA DE CONTRATO ESTA VENCIDA
+        
+         // Arrange
             RegistrosDiariosController controller = new RegistrosDiariosController();
 
             // Act
@@ -137,6 +183,21 @@ namespace Inspinia_MVC5.Tests.Controllers
             // Assert
             Assert.AreEqual("ACCESO DENEGADO", result.ViewBag.estado);
 
+        }
+
+        [TestMethod]
+        public void RegistroDiario()
+        {//REALIZADO POR: JORGE KLAUZ VALDIVIA DAVALOS
+            //PRUEBA TRATA: Prueba el método REGISTRODIARIO su funcionamiento
+           
+            // Arrange
+            RegistrosDiariosController controller = new RegistrosDiariosController();
+
+            // Act
+            var result = controller.RegistroDiario() as ActionResult;
+
+            // Assert
+            Assert.IsNotNull(result);
         }
     }
 }

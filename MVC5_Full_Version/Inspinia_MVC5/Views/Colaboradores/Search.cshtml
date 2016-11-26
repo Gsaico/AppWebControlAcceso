@@ -47,11 +47,9 @@
 
 
 
-                    @using (Html.BeginForm("Search", "Colaboradores", FormMethod.Post))
+                    @using (Html.BeginForm("Search", "Colaboradores", FormMethod.Post, htmlAttributes: new { role = "form", id = "form" }))
                     {
-                        <div class="form-horizontal">
-
-
+                        <div class="form-horizontal">                            
                             <div class="form-group">
                                 @Html.Label("DNI:", htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
@@ -236,6 +234,39 @@
 
         });
     </script>
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/plugins/validate")
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#form").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 3
+                    },
+                    url: {
+                        required: true,
+                        url: true
+                    },
+                    number: {
+                        required: true,
+                        number: true
+                    },
+                    SearchStringDNI: {
+                        required: true,
+                        minlength: 8
+                    },
+                    max: {
+                        required: true,
+                        maxlength: 4
+                    }
+                }
+            });
+
+        });
+</script>
 }
 
 

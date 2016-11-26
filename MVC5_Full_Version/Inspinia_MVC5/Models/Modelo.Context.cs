@@ -12,6 +12,8 @@ namespace Inspinia_MVC5.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class IDCHECKDBEntities : DbContext
     {
@@ -32,5 +34,48 @@ namespace Inspinia_MVC5.Models
         public virtual DbSet<TiposDeDias> TiposDeDias { get; set; }
         public virtual DbSet<Ubigeos> Ubigeos { get; set; }
         public virtual DbSet<RegistrosDiarios> RegistrosDiarios { get; set; }
+    
+        public virtual ObjectResult<SP_DetalleColaborador_Result> SP_DetalleColaborador(string codColaborador)
+        {
+            var codColaboradorParameter = codColaborador != null ?
+                new ObjectParameter("CodColaborador", codColaborador) :
+                new ObjectParameter("CodColaborador", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DetalleColaborador_Result>("SP_DetalleColaborador", codColaboradorParameter);
+        }
+    
+        public virtual ObjectResult<SP_RegistroControlDeAsistenciasXDNI_Result> SP_RegistroControlDeAsistenciasXDNI(string codColaborador, Nullable<int> codMes, Nullable<int> year)
+        {
+            var codColaboradorParameter = codColaborador != null ?
+                new ObjectParameter("CodColaborador", codColaborador) :
+                new ObjectParameter("CodColaborador", typeof(string));
+    
+            var codMesParameter = codMes.HasValue ?
+                new ObjectParameter("CodMes", codMes) :
+                new ObjectParameter("CodMes", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_RegistroControlDeAsistenciasXDNI_Result>("SP_RegistroControlDeAsistenciasXDNI", codColaboradorParameter, codMesParameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<TareodeColaboradoresPormes_Result> TareodeColaboradoresPormes(string codColaborador, Nullable<int> codMes, Nullable<int> year)
+        {
+            var codColaboradorParameter = codColaborador != null ?
+                new ObjectParameter("CodColaborador", codColaborador) :
+                new ObjectParameter("CodColaborador", typeof(string));
+    
+            var codMesParameter = codMes.HasValue ?
+                new ObjectParameter("CodMes", codMes) :
+                new ObjectParameter("CodMes", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TareodeColaboradoresPormes_Result>("TareodeColaboradoresPormes", codColaboradorParameter, codMesParameter, yearParameter);
+        }
     }
 }

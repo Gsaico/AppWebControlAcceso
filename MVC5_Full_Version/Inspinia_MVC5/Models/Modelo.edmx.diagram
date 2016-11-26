@@ -14,7 +14,7 @@
         <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Areas" />
         <AssociationConnector Association="IDCHECKDBModel.FK_Calendarios_TiposDeDias" />
         <AssociationConnector Association="IDCHECKDBModel.FK_Trabajadores_Empresas" />
-        <EntityTypeShape EntityType="IDCHECKDBModel.RegistrosDiarios" Width="4" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="IDCHECKDBModel.RegistrosDiarios" Width="3.625" PointX="5.25" PointY="3" />
         <AssociationConnector Association="IDCHECKDBModel.FK_RegistrosDiarios_Trabajadores" />
       </Diagram>
     </edmx:Diagrams>

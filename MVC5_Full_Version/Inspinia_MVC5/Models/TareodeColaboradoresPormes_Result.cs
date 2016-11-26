@@ -10,23 +10,17 @@
 namespace Inspinia_MVC5.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RegistrosDiarios
+    public partial class TareodeColaboradoresPormes_Result
     {
-        public int ID_RegistroDiario { get; set; }
-        public string COD_Colaborador { get; set; }
-        public string Periodo { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public System.DateTime FechaYHoraIngreso { get; set; }
-        public Nullable<System.DateTime> FechaYHoraSalida { get; set; }
-        public Nullable<System.DateTime> UltimaActualizacion { get; set; }
-        public string ID_TipoDia { get; set; }
+        public string Apellidos_y_Nombres { get; set; }
+        public string DNI { get; set; }
+        public string Fecha { get; set; }
+        public string Hora_Ingreso { get; set; }
+        public string Hora_Salida { get; set; }
         public Nullable<decimal> HorasTrabajadas { get; set; }
         public Nullable<decimal> HN { get; set; }
         public Nullable<decimal> T1 { get; set; }
         public Nullable<decimal> T2 { get; set; }
-    
-        public virtual Colaboradores Colaboradores { get; set; }
     }
 }

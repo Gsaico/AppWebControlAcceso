@@ -10,16 +10,13 @@
 namespace Inspinia_MVC5.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Calendarios
+    public partial class SP_DetalleColaborador_Result
     {
-        public int ID_Calendario { get; set; }
-        public string Periodo { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string ID_TipoDia { get; set; }
-        public int Mes { get; set; }
-    
-        public virtual TiposDeDias TiposDeDias { get; set; }
+        public string COD_Colaborador { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string Nombres { get; set; }
+        public byte[] Foto { get; set; }
     }
 }

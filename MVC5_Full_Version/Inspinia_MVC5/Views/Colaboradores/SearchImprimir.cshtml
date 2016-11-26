@@ -46,7 +46,7 @@
 
                 <div class="ibox-content">
 
-                    @using (Html.BeginForm("Details", "Colaboradores", FormMethod.Get))
+                    @using (Html.BeginForm("Details", "Colaboradores", FormMethod.Get, htmlAttributes: new { role = "form", id = "form" }))
                     {
                         <div class="form-horizontal">
 
@@ -86,5 +86,38 @@
             return /\d/.test(String.fromCharCode(keynum));
         }
     </script>
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/plugins/validate")
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#form").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 3
+                    },
+                    url: {
+                        required: true,
+                        url: true
+                    },
+                    number: {
+                        required: true,
+                        number: true
+                    },
+                    id: {
+                        required: true,
+                        minlength: 8
+                    },
+                    max: {
+                        required: true,
+                        maxlength: 4
+                    }
+                }
+            });
+
+        });
+</script>
 
 }

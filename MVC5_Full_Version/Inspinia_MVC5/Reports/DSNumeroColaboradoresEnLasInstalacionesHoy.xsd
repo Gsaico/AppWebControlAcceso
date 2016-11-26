@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSNumeroColaboradoresEnLasInstalacionesHoy" targetNamespace="http://tempuri.org/DSNumeroColaboradoresEnLasInstalacionesHoy.xsd" xmlns:mstns="http://tempuri.org/DSNumeroColaboradoresEnLasInstalacionesHoy.xsd" xmlns="http://tempuri.org/DSNumeroColaboradoresEnLasInstalacionesHoy.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSNumeroColaboradoresEnLasInstalacionesHoy" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSNumeroColaboradoresEnLasInstalacionesHoy" msprop:Generator_UserDSName="DSNumeroColaboradoresEnLasInstalacionesHoy">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTColaboradoresArea" msprop:Generator_TableClassName="DTColaboradoresAreaDataTable" msprop:Generator_TableVarName="tableDTColaboradoresArea" msprop:Generator_TablePropName="DTColaboradoresArea" msprop:Generator_RowDeletingName="DTColaboradoresAreaRowDeleting" msprop:Generator_RowChangingName="DTColaboradoresAreaRowChanging" msprop:Generator_RowEvHandlerName="DTColaboradoresAreaRowChangeEventHandler" msprop:Generator_RowDeletedName="DTColaboradoresAreaRowDeleted" msprop:Generator_UserTableName="DTColaboradoresArea" msprop:Generator_RowChangedName="DTColaboradoresAreaRowChanged" msprop:Generator_RowEvArgName="DTColaboradoresAreaRowChangeEvent" msprop:Generator_RowClassName="DTColaboradoresAreaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NombreArea" msprop:Generator_ColumnVarNameInTable="columnNombreArea" msprop:Generator_ColumnPropNameInRow="NombreArea" msprop:Generator_ColumnPropNameInTable="NombreAreaColumn" msprop:Generator_UserColumnName="NombreArea" type="xs:string" minOccurs="0" />
+              <xs:element name="CentroCostos" msprop:Generator_ColumnVarNameInTable="columnCentroCostos" msprop:Generator_ColumnPropNameInRow="CentroCostos" msprop:Generator_ColumnPropNameInTable="CentroCostosColumn" msprop:Generator_UserColumnName="CentroCostos" type="xs:string" minOccurs="0" />
+              <xs:element name="CantidadColaboradores" msprop:Generator_ColumnVarNameInTable="columnCantidadColaboradores" msprop:Generator_ColumnPropNameInRow="CantidadColaboradores" msprop:Generator_ColumnPropNameInTable="CantidadColaboradoresColumn" msprop:Generator_UserColumnName="CantidadColaboradores" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

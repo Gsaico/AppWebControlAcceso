@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSReportRegistroControlDeAsistenciasXDNI" targetNamespace="http://tempuri.org/DSReportRegistroControlDeAsistenciasXDNI.xsd" xmlns:mstns="http://tempuri.org/DSReportRegistroControlDeAsistenciasXDNI.xsd" xmlns="http://tempuri.org/DSReportRegistroControlDeAsistenciasXDNI.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSReportRegistroControlDeAsistenciasXDNI" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReportRegistroControlDeAsistenciasXDNI" msprop:Generator_UserDSName="DSReportRegistroControlDeAsistenciasXDNI">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTControlAsistencia" msprop:Generator_TableClassName="DTControlAsistenciaDataTable" msprop:Generator_TableVarName="tableDTControlAsistencia" msprop:Generator_TablePropName="DTControlAsistencia" msprop:Generator_RowDeletingName="DTControlAsistenciaRowDeleting" msprop:Generator_RowChangingName="DTControlAsistenciaRowChanging" msprop:Generator_RowEvHandlerName="DTControlAsistenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="DTControlAsistenciaRowDeleted" msprop:Generator_UserTableName="DTControlAsistencia" msprop:Generator_RowChangedName="DTControlAsistenciaRowChanged" msprop:Generator_RowEvArgName="DTControlAsistenciaRowChangeEvent" msprop:Generator_RowClassName="DTControlAsistenciaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Razon_x0020_Social" msprop:Generator_ColumnVarNameInTable="columnRazon_Social" msprop:Generator_ColumnPropNameInRow="Razon_Social" msprop:Generator_ColumnPropNameInTable="Razon_SocialColumn" msprop:Generator_UserColumnName="Razon Social" type="xs:string" minOccurs="0" />
+              <xs:element name="RUC" msprop:Generator_ColumnVarNameInTable="columnRUC" msprop:Generator_ColumnPropNameInRow="RUC" msprop:Generator_ColumnPropNameInTable="RUCColumn" msprop:Generator_UserColumnName="RUC" type="xs:string" minOccurs="0" />
+              <xs:element name="Apellidos_x0020_y_x0020_Nombres" msprop:Generator_ColumnVarNameInTable="columnApellidos_y_Nombres" msprop:Generator_ColumnPropNameInRow="Apellidos_y_Nombres" msprop:Generator_ColumnPropNameInTable="Apellidos_y_NombresColumn" msprop:Generator_UserColumnName="Apellidos y Nombres" type="xs:string" minOccurs="0" />
+              <xs:element name="DNI" msprop:Generator_ColumnVarNameInTable="columnDNI" msprop:Generator_ColumnPropNameInRow="DNI" msprop:Generator_ColumnPropNameInTable="DNIColumn" msprop:Generator_UserColumnName="DNI" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="Hora_x0020_Ingreso" msprop:Generator_ColumnVarNameInTable="columnHora_Ingreso" msprop:Generator_ColumnPropNameInRow="Hora_Ingreso" msprop:Generator_ColumnPropNameInTable="Hora_IngresoColumn" msprop:Generator_UserColumnName="Hora Ingreso" type="xs:string" minOccurs="0" />
+              <xs:element name="Hora_x0020_Salida" msprop:Generator_ColumnVarNameInTable="columnHora_Salida" msprop:Generator_ColumnPropNameInRow="Hora_Salida" msprop:Generator_ColumnPropNameInTable="Hora_SalidaColumn" msprop:Generator_UserColumnName="Hora Salida" type="xs:string" minOccurs="0" />
+              <xs:element name="Tiempo_x0020_de_x0020_Permanencia_x0020_Fuera_x0020_de_x0020_la_x0020_Jornada_x0020_Laboral" msprop:Generator_ColumnVarNameInTable="columnTiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral" msprop:Generator_ColumnPropNameInRow="Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral" msprop:Generator_ColumnPropNameInTable="Tiempo_de_Permanencia_Fuera_de_la_Jornada_LaboralColumn" msprop:Generator_UserColumnName="Tiempo de Permanencia Fuera de la Jornada Laboral" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Domingos_x0020_y_x0020_Feriados" msprop:Generator_ColumnVarNameInTable="columnDomingos_y_Feriados" msprop:Generator_ColumnPropNameInRow="Domingos_y_Feriados" msprop:Generator_ColumnPropNameInTable="Domingos_y_FeriadosColumn" msprop:Generator_UserColumnName="Domingos y Feriados" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

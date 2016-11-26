@@ -10,16 +10,16 @@
 namespace Inspinia_MVC5.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Calendarios
+    public partial class SP_RegistroControlDeAsistenciasXDNI_Result
     {
-        public int ID_Calendario { get; set; }
-        public string Periodo { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string ID_TipoDia { get; set; }
-        public int Mes { get; set; }
-    
-        public virtual TiposDeDias TiposDeDias { get; set; }
+        public string Razon_Social { get; set; }
+        public string RUC { get; set; }
+        public string Apellidos_y_Nombres { get; set; }
+        public string DNI { get; set; }
+        public string Fecha { get; set; }
+        public string Hora_Ingreso { get; set; }
+        public string Hora_Salida { get; set; }
+        public Nullable<decimal> Tiempo_de_Permanencia_Fuera_de_la_Jornada_Laboral { get; set; }
     }
 }
